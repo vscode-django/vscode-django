@@ -52,6 +52,13 @@
             "language": "django-txt",
             "scopeName": "text.django",
             "path": "./syntaxes/django-txt.tmLanguage.json"
+        }],
+        "snippets": [{
+            "language": "django-html",
+            "path": "./snippets/django-template-snippets.json"
+        }, {
+            "language": "django-txt",
+            "path": "./snippets/django-template-snippets.json"
         }]
     }
 }

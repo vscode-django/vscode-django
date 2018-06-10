@@ -1,0 +1,490 @@
+{
+    "_comment" : "This section is autocomplete for django templates",
+
+    "var": {
+        "description": "{{ var }}",
+        "prefix": "var",
+        "body": [
+            "{{ $1 }}"
+        ]
+    },
+
+    "tag": {
+        "description": "{% tag %}",
+        "prefix": "tag",
+        "body": [
+            "{% $1 %}"
+        ]
+    },
+
+    "autoescape": {
+        "description": "{% autoescape %}",
+        "prefix": "autoescape",
+        "body": [
+            "{% autoescape ${1|off,on|} %}$0",
+            "{% endautoescape %}"
+        ]
+    },
+
+    "endautoescape": {
+        "description": "{% endautoescape %}",
+        "prefix": "endautoescape",
+        "body": [
+            "{% endautoescape %}"
+        ]
+    },
+
+    "block": {
+        "description": "{% block %}",
+        "prefix": "block",
+        "body": [
+            "{% block $1 %}$0",
+            "{% endblock $1 %}"
+        ]
+    },
+
+    "block_inline": {
+        "description": "{% block %} (inline)",
+        "prefix": "blok",
+        "body": [
+            "{% block $1 %}$0{% endblock %}"
+        ]
+    },
+
+    "endblock": {
+        "description": "{% endblock %}",
+        "prefix": "endblock",
+        "body": [
+            "{% endblock %}"
+        ]
+    },
+
+    "comment_inline": {
+        "description": "{% comment %} (inline)",
+        "prefix": "comm",
+        "body": [
+            "{# $1 #}"
+        ]
+    },
+
+    "comment": {
+        "description": "{% comment %}",
+        "prefix": "comment",
+        "body": [
+            "{% comment \"$1\" %}$0",
+            "{% endcomment %}"
+        ]
+    },
+
+    "comment_paste": {
+        "description": "{% comment %} (paste)",
+        "prefix": "comment",
+        "body": [
+            "{% comment %}${CLIPBOARD}",
+            "{% endcomment %}"
+        ]
+    },
+
+    "comment_selection": {
+        "description": "{% comment %} (selection)",
+        "prefix": "comment",
+        "body": [
+            "$0{% comment %}",
+            "\t${TM_SELECTED_TEXT}",
+            "$0{% endcomment %}"
+        ]
+    },
+
+    "endcomment": {
+        "description": "{% endcomment %}",
+        "prefix": "endcomment",
+        "body": [
+            "{% endcomment %}"
+        ]
+    },
+
+    "csrf_token": {
+        "description": "{% csrf_token %}",
+        "prefix": "csrf_token",
+        "body": [
+            "{% csrf_token $1 %}$0",
+            "{% endcsrf_token %}"
+        ]
+    },
+
+    "endcsrf_token": {
+        "description": "{% endcsrf_token %}",
+        "prefix": "endcsrf_token",
+        "body": [
+            "{% endcsrf_token %}"
+        ]
+    },
+
+    "cycle": {
+        "description": "{% cycle %}",
+        "prefix": "cycle",
+        "body": [
+            "{% cycle $1 %}$0",
+            "{% endcycle %}"
+        ]
+    },
+
+    "endcycle": {
+        "description": "{% endcycle %}",
+        "prefix": "endcycle",
+        "body": [
+            "{% endcycle %}"
+        ]
+    },
+
+    "debug": {
+        "description": "{% debug %}",
+        "prefix": "debug",
+        "body": [
+            "{% debug $1 %}$0",
+            "{% enddebug %}"
+        ]
+    },
+
+    "enddebug": {
+        "description": "{% enddebug %}",
+        "prefix": "enddebug",
+        "body": [
+            "{% enddebug %}"
+        ]
+    },
+
+    "extends": {
+        "description": "{% extends %}",
+        "prefix": "extends",
+        "body": [
+            "{% extends $1 %}$0",
+            "{% endextends %}"
+        ]
+    },
+
+    "endextends": {
+        "description": "{% endextends %}",
+        "prefix": "endextends",
+        "body": [
+            "{% endextends %}"
+        ]
+    },
+
+    "filter": {
+        "description": "{% filter %}",
+        "prefix": "filter",
+        "body": [
+            "{% filter $1 %}$0",
+            "{% endfilter %}"
+        ]
+    },
+
+    "endfilter": {
+        "description": "{% endfilter %}",
+        "prefix": "endfilter",
+        "body": [
+            "{% endfilter %}"
+        ]
+    },
+
+    "firstof": {
+        "description": "{% firstof %}",
+        "prefix": "firstof",
+        "body": [
+            "{% firstof $1 %}$0",
+            "{% endfirstof %}"
+        ]
+    },
+
+    "endfirstof": {
+        "description": "{% endfirstof %}",
+        "prefix": "endfirstof",
+        "body": [
+            "{% endfirstof %}"
+        ]
+    },
+
+    "for": {
+        "description": "{% for %}",
+        "prefix": "for",
+        "body": [
+            "{% for $1 %}$0",
+            "{% endfor %}"
+        ]
+    },
+
+    "endfor": {
+        "description": "{% endfor %}",
+        "prefix": "endfor",
+        "body": [
+            "{% endfor %}"
+        ]
+    },
+
+    "forempty": {
+        "description": "{% forempty %}",
+        "prefix": "forempty",
+        "body": [
+            "{% forempty $1 %}$0",
+            "{% endforempty %}"
+        ]
+    },
+
+    "endforempty": {
+        "description": "{% endforempty %}",
+        "prefix": "endforempty",
+        "body": [
+            "{% endforempty %}"
+        ]
+    },
+
+    "if": {
+        "description": "{% if %}",
+        "prefix": "if",
+        "body": [
+            "{% if $1 %}$0",
+            "{% endif %}"
+        ]
+    },
+
+    "endif": {
+        "description": "{% endif %}",
+        "prefix": "endif",
+        "body": [
+            "{% endif %}"
+        ]
+    },
+
+    "ifchanged": {
+        "description": "{% ifchanged %}",
+        "prefix": "ifchanged",
+        "body": [
+            "{% ifchanged $1 %}$0",
+            "{% endifchanged %}"
+        ]
+    },
+
+    "endifchanged": {
+        "description": "{% endifchanged %}",
+        "prefix": "endifchanged",
+        "body": [
+            "{% endifchanged %}"
+        ]
+    },
+
+    "include": {
+        "description": "{% include %}",
+        "prefix": "include",
+        "body": [
+            "{% include $1 %}$0",
+            "{% endinclude %}"
+        ]
+    },
+
+    "endinclude": {
+        "description": "{% endinclude %}",
+        "prefix": "endinclude",
+        "body": [
+            "{% endinclude %}"
+        ]
+    },
+
+    "load": {
+        "description": "{% load tags %}",
+        "prefix": "load",
+        "body": [
+            "{% load ${1|static,i18n,cache,l10n,tz,humanize,flatpages,admin_list,admin_modify,admin_static,admin_urls,base,log|} %}"
+        ]
+    },
+
+    "lorem": {
+        "description": "{% lorem %}",
+        "prefix": "lorem",
+        "body": [
+            "{% lorem $1 %}$0",
+            "{% endlorem %}"
+        ]
+    },
+
+    "endlorem": {
+        "description": "{% endlorem %}",
+        "prefix": "endlorem",
+        "body": [
+            "{% endlorem %}"
+        ]
+    },
+
+    "now": {
+        "description": "{% now %}",
+        "prefix": "now",
+        "body": [
+            "{% now $1 %}$0",
+            "{% endnow %}"
+        ]
+    },
+
+    "endnow": {
+        "description": "{% endnow %}",
+        "prefix": "endnow",
+        "body": [
+            "{% endnow %}"
+        ]
+    },
+
+    "regroup": {
+        "description": "{% regroup %}",
+        "prefix": "regroup",
+        "body": [
+            "{% regroup $1 %}$0",
+            "{% endregroup %}"
+        ]
+    },
+
+    "endregroup": {
+        "description": "{% endregroup %}",
+        "prefix": "endregroup",
+        "body": [
+            "{% endregroup %}"
+        ]
+    },
+
+    "resetcycle": {
+        "description": "{% resetcycle %}",
+        "prefix": "resetcycle",
+        "body": [
+            "{% resetcycle $1 %}$0",
+            "{% endresetcycle %}"
+        ]
+    },
+
+    "endresetcycle": {
+        "description": "{% endresetcycle %}",
+        "prefix": "endresetcycle",
+        "body": [
+            "{% endresetcycle %}"
+        ]
+    },
+
+    "spaceless": {
+        "description": "{% spaceless %}",
+        "prefix": "spaceless",
+        "body": [
+            "{% spaceless $1 %}$0",
+            "{% endspaceless %}"
+        ]
+    },
+
+    "endspaceless": {
+        "description": "{% endspaceless %}",
+        "prefix": "endspaceless",
+        "body": [
+            "{% endspaceless %}"
+        ]
+    },
+
+    "templatetag": {
+        "description": "{% templatetag %}",
+        "prefix": "templatetag",
+        "body": [
+            "{% templatetag $1 %}$0",
+            "{% endtemplatetag %}"
+        ]
+    },
+
+    "endtemplatetag": {
+        "description": "{% endtemplatetag %}",
+        "prefix": "endtemplatetag",
+        "body": [
+            "{% endtemplatetag %}"
+        ]
+    },
+
+    "url": {
+        "description": "{% url %}",
+        "prefix": "url",
+        "body": [
+            "{% url $1 %}$0",
+            "{% endurl %}"
+        ]
+    },
+
+    "endurl": {
+        "description": "{% endurl %}",
+        "prefix": "endurl",
+        "body": [
+            "{% endurl %}"
+        ]
+    },
+
+    "verbatim": {
+        "description": "{% verbatim %}",
+        "prefix": "verbatim",
+        "body": [
+            "{% verbatim $1 %}$0",
+            "{% endverbatim %}"
+        ]
+    },
+
+    "endverbatim": {
+        "description": "{% endverbatim %}",
+        "prefix": "endverbatim",
+        "body": [
+            "{% endverbatim %}"
+        ]
+    },
+
+    "widthratio": {
+        "description": "{% widthratio %}",
+        "prefix": "widthratio",
+        "body": [
+            "{% widthratio $1 %}$0",
+            "{% endwidthratio %}"
+        ]
+    },
+
+    "endwidthratio": {
+        "description": "{% endwidthratio %}",
+        "prefix": "endwidthratio",
+        "body": [
+            "{% endwidthratio %}"
+        ]
+    },
+
+    "with": {
+        "description": "{% with %}",
+        "prefix": "with",
+        "body": [
+            "{% with $1 as $2 %}$0",
+            "{% endwith %}"
+        ]
+    },
+
+    "endwith": {
+        "description": "{% endwith %}",
+        "prefix": "endwith",
+        "body": [
+            "{% endwith %}"
+        ]
+    },
+
+    "with_selection": {
+        "description": "{% with as %} (selection)",
+        "prefix": "with_selection",
+        "body": [
+            "$0{% with $1 as $2 %}",
+            "\t${TM_SELECTED_TEXT}",
+            "$0{% endwith %}"
+        ]
+    },
+
+    "with_paste": {
+        "description": "{% with as %} (paste)",
+        "prefix": "with_paste",
+        "body": [
+            "{% with $1 as $2 %}${CLIPBOARD}",
+            "{% endwith %}"
+        ]
+    }
+
+}
