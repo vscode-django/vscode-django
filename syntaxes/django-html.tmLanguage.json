@@ -339,7 +339,7 @@
   "repository": {
     "django-stuff": {
       "patterns": [{
-          "begin": "{% comment %}",
+          "begin": "{% comment ?(\"([\\w\\s])*\" )?%}",
           "end": "{% endcomment %}",
           "name": "comment.block.django"
         }, {
@@ -377,7 +377,7 @@
               "include": "#django-template-filter"
           }]
         }, {
-          "begin": "({%) (autoescape|endautoescape|block|endblock|blocktrans|endblocktrans|trans|plural|debug|extends|filter|firstof|for|empty|endfor|if|elif|else|endif|include|ifchanged|endifchanged|ifequal|endifequal|ifnotequal|endifnotequal|from|low|regroup|ssi|spaceless|endspaceless|templatetag|widthratio|with|endwith|csrf_token|cycle|url|verbatim|endverbatim|lorem|thumbnail|endthumbnail|get_static_prefix)\\b",
+          "begin": "({%) (autoescape|endautoescape|block|endblock|blocktrans|endblocktrans|trans|plural|comment|endcomment|debug|extends|filter|firstof|for|empty|endfor|if|elif|else|endif|include|ifchanged|endifchanged|ifequal|endifequal|ifnotequal|endifnotequal|from|low|regroup|ssi|spaceless|endspaceless|templatetag|widthratio|with|endwith|csrf_token|cycle|url|verbatim|endverbatim|lorem|thumbnail|endthumbnail|get_static_prefix)\\b",
           "captures": {
             "1": {
               "name": "entity.tag.tagbraces.django"
@@ -457,7 +457,7 @@
           "match": "[a-zA-Z0-9_]+",
           "name": "string.unquoted.tag-string.django"
         }, {
-          "match": "(>=|>|==|!=|<|<=|and|is|not)",
+          "match": "(>=|>|==|!=|<|<=|and|or|is|not|in)",
           "name": "keyword.operator.condition.django"
         }, {
           "include": "#string-double-quoted"

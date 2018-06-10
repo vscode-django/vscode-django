@@ -49,7 +49,7 @@
               "include": "#django-template-filter"
           }]
         }, {
-          "begin": "({%) (autoescape|endautoescape|block|endblock|blocktrans|endblocktrans|trans|plural|debug|extends|filter|firstof|for|empty|endfor|if|elif|else|endif|include|ifchanged|endifchanged|ifequal|endifequal|ifnotequal|endifnotequal|from|low|regroup|ssi|spaceless|endspaceless|templatetag|widthratio|with|endwith|csrf_token|cycle|url|verbatim|endverbatim|lorem|thumbnail|endthumbnail|get_static_prefix)\\b",
+          "begin": "({%) (autoescape|endautoescape|block|endblock|blocktrans|endblocktrans|trans|plural|comment|endcomment|debug|extends|filter|firstof|for|empty|endfor|if|elif|else|endif|include|ifchanged|endifchanged|ifequal|endifequal|ifnotequal|endifnotequal|from|low|regroup|ssi|spaceless|endspaceless|templatetag|widthratio|with|endwith|csrf_token|cycle|url|verbatim|endverbatim|lorem|thumbnail|endthumbnail|get_static_prefix)\\b",
           "captures": {
             "1": {
               "name": "entity.tag.tagbraces.django"
@@ -60,6 +60,7 @@
           },
           "end": "(%})",
           "name": "storage.type.templatetag.django",
+          "patterns": [{
           }, {
               "include": "#django-template-tag"
           }, {
@@ -77,6 +78,7 @@
           },
           "end": "(%})",
           "name": "storage.type.customtemplatetag.django",
+          "patterns": [{
           }, {
               "include": "#django-template-tag"
           }, {
@@ -121,7 +123,7 @@
           "match": "[a-zA-Z0-9_]+",
           "name": "string.unquoted.tag-string.django"
         }, {
-          "match": "(>=|>|==|!=|<|<=|and|is|not)",
+          "match": "(>=|>|==|!=|<|<=|and|or|is|not|in)",
           "name": "keyword.operator.condition.django"
       }]
     },

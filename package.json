@@ -2,7 +2,7 @@
     "name": "vscode-django",
     "displayName": "Django",
     "description": "Beautiful syntax and snippets for perfectionists with deadlines",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "publisher": "batisteo",
     "preview": true,
     "icon": "images/vscode-django.png",
@@ -13,9 +13,9 @@
         "vscode": "^1.24.0"
     },
     "keywords": [
-        "rust",
-        "rust-lang",
-        "rls"
+        "python",
+        "django",
+        "web"
     ],
     "categories": [
         "Programming Languages",
@@ -35,11 +35,13 @@
             "id": "django-html",
             "aliases": ["Django HTML", "django"],
             "extensions": [".html"],
-            "configuration": "./language-configuration.json"
-        },{
+            "firstLine": "{%",
+                "configuration": "./language-configuration.json"
+        }, {
             "id": "django-txt",
             "aliases": ["Django txt", "django"],
             "extensions": [".txt"],
+            "firstLine": "{%",
             "configuration": "./language-configuration.json"
         }],
         "grammars": [{
