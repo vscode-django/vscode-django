@@ -1,0 +1,55 @@
+{
+    "name": "vscode-django",
+    "displayName": "Django",
+    "description": "Beautiful syntax and snippets for perfectionists with deadlines",
+    "version": "0.1.0",
+    "publisher": "batisteo",
+    "preview": true,
+    "icon": "images/vscode-django.png",
+    "galleryBanner": {
+        "color": "#51be95"
+    },
+    "engines": {
+        "vscode": "^1.24.0"
+    },
+    "keywords": [
+        "rust",
+        "rust-lang",
+        "rls"
+    ],
+    "categories": [
+        "Programming Languages",
+        "Snippets"
+    ],
+    "homepage": "https://github.com/vscode-django/vscode-django",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/vscode-django/vscode-django"
+    },
+    "bugs": {
+        "url": "https://github.com/vscode-django/vscode-django/issues",
+        "email": "roberto.huertas@outlook.com"
+    },
+    "contributes": {
+        "languages": [{
+            "id": "django-html",
+            "aliases": ["Django HTML", "django"],
+            "extensions": [".html"],
+            "configuration": "./language-configuration.json"
+        },{
+            "id": "django-txt",
+            "aliases": ["Django txt", "django"],
+            "extensions": [".txt"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "django-html",
+            "scopeName": "text.html.django",
+            "path": "./syntaxes/django-html.tmLanguage.json"
+        },{
+            "language": "django-txt",
+            "scopeName": "text.django",
+            "path": "./syntaxes/django-txt.tmLanguage.json"
+        }]
+    }
+}
