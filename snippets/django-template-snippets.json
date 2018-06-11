@@ -485,6 +485,49 @@
             "{% with $1 as $2 %}${CLIPBOARD}",
             "{% endwith %}"
         ]
-    }
+    },
 
+    "trans": {
+        "description": "{% trans '' %}",
+        "prefix": "trans",
+        "body": [
+            "{% trans '$0' %}"
+        ]
+    },
+
+    "trans_paste": {
+        "description": "{% trans '(paste)' %}",
+        "prefix": "trans_paste",
+        "body": [
+            "{% trans '${CLIPBOARD}' %}"
+        ]
+    },
+
+    "blocktrans": {
+        "description": "{% blocktrans %}{% endblocktrans %}",
+        "prefix": "blocktrans",
+        "body": [
+            "{% blocktrans %}$0",
+            "{% endblocktrans %}"
+        ]
+    },
+
+    "blocktrans_paste": {
+        "description": "{% blocktrans %}(paste){% endblocktrans %}",
+        "prefix": "blocktrans_paste",
+        "body": [
+            "{% blocktrans %}",
+            "    ${CLIPBOARD}",
+            "{% endblocktrans %}"
+        ]
+    },
+
+    "blocktrans_with": {
+        "description": "{% blocktrans as %}{% endblocktrans %}",
+        "prefix": "blocktrans_with",
+        "body": [
+            "{% blocktrans with $1=$2 %}$0",
+            "{% endblocktrans %}"
+        ]
+    }
 }
