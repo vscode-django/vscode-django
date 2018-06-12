@@ -1,0 +1,30 @@
+{
+    "_comment": "Genereted by './snippets/generate.py template'",
+    "var": {
+        "description": "{{ var }}",
+        "prefix": "var",
+        "body": [
+            "",
+            "",
+            ""
+        ]
+    },
+    "tag": {
+        "description": "{% tag %}",
+        "prefix": "tag",
+        "body": [
+            "",
+            "",
+            ""
+        ]
+    },
+    "url": {
+        "description": "{% url %}",
+        "prefix": "url",
+        "body": [
+            "",
+            "",
+            ""
+        ]
+    }
+}

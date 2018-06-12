@@ -1,0 +1,15 @@
+[var]
+description = "{{ var }}"
+prefix = "var"
+var = true
+
+[tag]
+simple = false
+description = "{% tag %}"
+prefix = "tag"
+
+[url]
+simple = true
+description = "{% url %}"
+prefix = "url"
+args = [ { default = '""'}]
