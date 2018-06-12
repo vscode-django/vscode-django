@@ -78,7 +78,7 @@
 		"body": [
 			"class $1Manager(models.Manager):",
 			"\tdef get_queryset(self):",
-			"\t\treturn super ($1Manager, self).get_queryset().${2|filter,exclude,order_by,distinct,reverse|}($3)"
+			"\t\treturn super().get_queryset().${2|filter,exclude,order_by,distinct,reverse|}($3)"
 		],
 		"description": "Add extra Manager methods",
 		"scope": "source.python"

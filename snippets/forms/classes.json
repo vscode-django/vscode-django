@@ -6,7 +6,7 @@
 			"\t\"\"\"${2:$1 definition}.\"\"\"",
 			"",
 			"\t${3:# TODO: Define form fields here}",
-			""],
+		],
 		"description": "Form",
 		"scope": "source.python"
 	},
@@ -21,7 +21,7 @@
 			"",
 			"\t\tmodel = $1",
 			"\t\tfields = ('$3',)",
-			""],
+		],
 		"description": "ModelForm",
 		"scope": "source.python"
 	}

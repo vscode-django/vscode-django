@@ -1,19 +1,20 @@
 {
-	"view": {
-		"prefix": "view",
-		"body": "def ${1:VIEWNAME}(request):",
-		"description": "View",
-		"scope": "source.python"
-	},
 	"dispatch": {
 		"prefix": "dispatch",
-		"body": "\r\ndef dispatch(self, request, *args, **kwargs):\r\n    return super(${1:CLASS_NAME}, self).dispatch(request, *args, **kwargs)\r\n",
+		"body": [
+			"def dispatch(self, request, *args, **kwargs):",
+			"\treturn super().dispatch(request, *args, **kwargs)"
+		],
 		"description": "",
 		"scope": "source.python"
 	},
 	"context": {
 		"prefix": "get_context_data",
-		"body": "\r\ndef get_context_data(self, **kwargs):\r\n    context = super(${1:CLASS_NAME}, self).get_context_data(**kwargs)\r\n    return context\r\n",
+		"body": [
+			"def get_context_data(self, **kwargs):",
+			"\tcontext = super().get_context_data(**kwargs)",
+			"\treturn context"
+		],
 		"description": "",
 		"scope": "source.python"
 	},
@@ -21,7 +22,7 @@
 		"prefix": "get_queryset",
 		"body": [
 			"def get_queryset(self):",
-			"\tqueryset = super(${1:CLASS_NAME}, self).get_queryset()",
+			"\tqueryset = super().get_queryset()",
 			"\tqueryset = queryset${3: # TODO}",
 			"\treturn queryset"
 		],
