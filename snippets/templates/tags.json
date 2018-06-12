@@ -1,0 +1,11 @@
+{
+	"importlib": {
+		"prefix": "importlib",
+		"body": [
+            "from django import template",
+            "register = template.Library()"
+        ],
+		"description": "",
+		"scope": "source.python"
+	},
+}

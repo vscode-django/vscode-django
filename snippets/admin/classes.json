@@ -1,0 +1,70 @@
+{
+    "adminview": {
+        "prefix": "adminview",
+        "body": [
+            "@admin.register(${1})",
+            "class ${1}Admin(admin.ModelAdmin):",
+            "\t'''Admin View for ${1}'''",
+            "",
+            "\tlist_display = ('${2}',)",
+            "\tlist_filter = ('${3}',)",
+            "\tinlines = [",
+            "\t\t${4}Inline,",
+            "\t]",
+            "\traw_id_fields = ('${5}',)",
+            "\treadonly_fields = ('${6}',)",
+            "\tsearch_fields = ('${7}',)",
+            "\tdate_hierarchy = '${8}'",
+            "\tordering = ('${9}',)"           
+        ],
+        "description": "Model Admin View",
+        "scope": "source.python"
+    },
+    "stackedinline": {
+        "prefix": "stackedinline",
+        "body": [
+            "class ${1}Inline(admin.StackedInline):",
+            "\t'''Stacked Inline View for ${1}'''",
+            "",
+            "\tmodel = ${2:${1}}",
+            "\tmin_num = ${3:3}",
+            "\tmax_num = ${4:20}",
+            "\textra = ${5:1}",
+            "\traw_id_fields = (${6},)"
+        ],
+        "description": "Stacked Inline",
+        "scope": "source.python"
+    },
+    "tabularinline": {
+        "prefix": "tabularinline",
+        "body": [
+            "class ${1}Inline(admin.TabularInline):",
+            "\t'''Tabular Inline View for ${1}'''",
+            "",
+            "\tmodel = ${2:${1}}",
+            "\tmin_num = ${3:3}",
+            "\tmax_num = ${4:20}",
+            "\textra = ${5:1}",
+            "\traw_id_fields = (${6},)"
+        ],
+        "description": "Tabular Inline",
+        "scope": "source.python"
+    },
+    "simplelistfilter": {
+        "prefix": "simplelistfilter",
+        "body": [
+            "class ${1:NAME}Filter(admin.SimpleListFilter):",
+            "",
+            "\ttitle = '$2'",
+            "\tparameter_name = '$0'",
+            "",
+            "\tdef lookups(self, request, model_admin):",
+            "\t\tpass",
+            "",
+            "\tdef queryset(self, request, queryset):",
+            "\t\treturn queryset"
+        ],
+        "description": "Admin SimpleList Filter",
+        "scope": "source.python"
+    }      
+}

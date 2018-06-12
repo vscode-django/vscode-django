@@ -1,0 +1,32 @@
+{
+    "fmaimport": {
+        "prefix": "fmaimport",
+        "body": "from .managers import $1QuerySet",
+        "description": "",
+        "scope": "source.python"
+    },
+    "fmimport": {
+        "prefix": "fmimport",
+        "body": "from .models import $1",
+        "description": "",
+        "scope": "source.python"
+    },
+    "importmodels": {
+        "prefix": "importmodels",
+        "body": "from django.db import models",
+        "description": "from ... import models",
+        "scope": "source.python"
+    },
+    "importpostgresmf": {
+        "prefix": "importpostgresmf",
+        "body": "from django.contrib.postgres.fields import ${1|ArrayField,JSONField,HStoreField|}",
+        "description": "PostgreSQL specific model fields",
+        "scope": "source.python"
+    },
+    "importsignals": {
+        "prefix": "importsignals",
+        "body": "from django.db.models.signals import ${1|pre_init,post_init,pre_save,post_save,pre_delete,post_delete,m2m_changed,class_prepared,Management signals,pre_migrate,post_migrate|}",
+        "description": "Signals for Django Model",
+        "scope": "source.python"
+    }
+}

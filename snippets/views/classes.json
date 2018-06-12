@@ -1,0 +1,38 @@
+{
+	"createview": {
+		"prefix": "createview",
+		"body": "\r\nclass ${1:MODEL_NAME}CreateView(CreateView):\r\n    model = ${1:MODEL_NAME}\r\n    template_name = \"${2:TEMPLATE_NAME}\"\r\n",
+		"description": "",
+		"scope": "source.python"
+	},
+	"deleteview": {
+		"prefix": "deleteview",
+		"body": "\r\nclass ${1:MODEL_NAME}DeleteView(DeleteView):\r\n    model = ${1:MODEL_NAME}\r\n    template_name = \"${2:TEMPLATE_NAME}\"\r\n",
+		"description": "",
+		"scope": "source.python"
+	},
+	"detailview": {
+		"prefix": "detailview",
+		"body": "\r\nclass ${1:MODEL_NAME}DetailView(DetailView):\r\n    model = ${1:MODEL_NAME}\r\n    template_name = \"${2:TEMPLATE_NAME}\"\r\n",
+		"description": "",
+		"scope": "source.python"
+	},
+	"listview": {
+		"prefix": "listview",
+		"body": "\r\nclass ${1:MODEL_NAME}ListView(ListView):\r\n    model = ${1:MODEL_NAME}\r\n    template_name = \"${2:TEMPLATE_NAME}\"\r\n",
+		"description": "",
+		"scope": "source.python"
+	},
+	"templateview": {
+		"prefix": "templateview",
+		"body": "\r\nclass ${1:CLASS_NAME}(TemplateView):\r\n    template_name = \"${2:TEMPLATE_NAME}\"\r\n",
+		"description": "",
+		"scope": "source.python"
+	},
+	"updateview": {
+		"prefix": "updateview",
+		"body": "\r\nclass ${1:MODEL_NAME}UpdateView(UpdateView):\r\n    model = ${1:MODEL_NAME}\r\n    template_name = \"${2:TEMPLATE_NAME}\"\r\n",
+		"description": "",
+		"scope": "source.python"
+	}    
+}

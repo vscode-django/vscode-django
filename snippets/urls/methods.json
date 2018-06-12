@@ -1,0 +1,52 @@
+{
+    "url_stack": {
+		"prefix": "url_stack",
+		"body": [
+            "${1|url,re_path|}(",
+            "\tr'^${2:REGEX}/$',",
+            "\t${3:VIEW}${4:.as_view()},",
+            "\tname='$5'",
+            "),"
+        ],
+		"description": "url(regex, view, kwargs=None, name=None)\n\n*url is an alias to re_path*\n\n",
+		"scope": "source.python"
+    },
+    "url_inline": {
+		"prefix": "url_inline",
+		"body": [
+            "${1|url,re_path|}(r'^${2:REGEX}/$', ${3:VIEW}${4:.as_view()}, name='$5'),"
+        ],
+		"description": "url(regex, view, kwargs=None, name=None)\n\n*url is an alias to re_path*\n\n",
+		"scope": "source.python"
+    },
+    "path_stack": {
+		"prefix": "path_stack",
+		"body": [
+            "path(",
+            "\t'${1:ROUTE}/',",
+            "\t${2:VIEW}${3:.as_view()},",
+            "\tname='$4'",
+            "),"
+        ],
+		"description": "path(route, view, kwargs=None, name=None)",
+		"scope": "source.python"
+    },
+    "path_inline": {
+		"prefix": "path_inline",
+		"body": [
+            "path('${1:ROUTE}/', ${2:VIEW}${3:.as_view()}, name='$4'),"
+        ],
+		"description": "path(route, view, kwargs=None, name=None)",
+		"scope": "source.python"
+    },           
+    "urlpatterns": {
+		"prefix": "urlpatterns",
+		"body": [
+            "urlpatterns = [",
+            "\t$0",
+            "]"
+        ],
+		"description": "",
+		"scope": "source.python"
+	}    
+}

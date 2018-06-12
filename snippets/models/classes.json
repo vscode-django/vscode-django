@@ -1,0 +1,96 @@
+{
+	"Model_full": {
+		"prefix": "Model_full",
+		"body": [
+			"class ${1:MODELNAME}(models.Model):",
+			"\t\"\"\"${2:Model definition for $1}.\"\"\"",
+			"",
+			"\t${3:# TODO: Define fields here}",
+			"",
+			"\tclass Meta:",
+			"\t\t\"\"\"Meta definition for $1.\"\"\"",
+			"",
+			"\t\tverbose_name = '$1'",
+			"\t\tverbose_name_plural = '$1s'",
+			"",
+			"\tdef ${4|__str__,__unicode__|}(self):",
+			"\t\t\"\"\"Unicode representation of $1.\"\"\"",
+			"\t\t${7|pass,return '{}'.format(self. ) # TODO,return f'{self. }' # TODO|}",
+			"",
+			"\tdef save(self):",
+			"\t\t\"\"\"Save method for $1.\"\"\"",
+			"\t\tpass",
+			"",
+			"\tdef get_absolute_url(self):",
+			"\t\t\"\"\"Return absolute url for $1.\"\"\"",
+			"\t\treturn ('')",
+			"",
+			"\t${6:# TODO: Define custom methods here}",
+			""
+		],
+		"description": "Model (full)",
+		"scope": "source.python"
+	},
+	"Model": {
+		"prefix": "Model",
+		"body": [
+			"class ${1:MODELNAME}(models.Model):",
+			"\t\"\"\"${2:Model definition for $1}.\"\"\"",
+			"",
+			"\t${3:# TODO: Define fields here}",
+			"",
+			"\tclass Meta:",
+			"\t\t\"\"\"Meta definition for $1.\"\"\"",
+			"",
+			"\t\tverbose_name = '$1'",
+			"\t\tverbose_name_plural = '$1s'",
+			"",
+			"\tdef ${4|__str__,__unicode__|}(self):",
+			"\t\t\"\"\"Unicode representation of $1.\"\"\"",
+			"\t\t${5|pass,return '{}'.format(self. ) # TODO,return f'{self. }' # TODO|}",
+			""
+		],
+		"description": "Model",
+		"scope": "source.python"
+	},
+	"modelmixin": {
+		"prefix": "modelmixin",
+		"body": [
+			"class $1Mixin(models.Model):",
+			"\t${2:# TODO}\r\n",
+			"\tclass Meta:",
+			"\t\tabstract = True"
+		],
+		"description": "",
+		"scope": "source.python"
+	},
+	"queryset": {
+		"prefix": "qs",
+		"body": [
+			"class $1QuerySet(models.QuerySet):",
+			"\tpass"
+		],
+		"description": "",
+		"scope": "source.python"
+	},
+	"manager": {
+		"prefix": "mngr",
+		"body": [
+			"class $1Manager(models.Manager):",
+			"\tdef get_queryset(self):",
+			"\t\treturn super ($1Manager, self).get_queryset().${2|filter,exclude,order_by,distinct,reverse|}($3)"
+		],
+		"description": "Add extra Manager methods",
+		"scope": "source.python"
+	},
+	"queryset_from_manager": {
+		"prefix": "qs_mngr",
+		"body": [
+			"class $1Manager(models.Manager):",
+			"\tdef get_queryset(self):",
+			"\t\treturn $1QuerySet(self.model, using=self._db)"
+		],
+		"description": "Modify the initial QuerySet the Manager returns.",
+		"scope": "source.python"
+	}
+}

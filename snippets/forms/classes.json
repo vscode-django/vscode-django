@@ -1,0 +1,28 @@
+{
+	"Form": {
+		"prefix": "Form",
+		"body": [
+			"class ${1:FORMNAME}(forms.Form):",
+			"\t\"\"\"${2:$1 definition}.\"\"\"",
+			"",
+			"\t${3:# TODO: Define form fields here}",
+			""],
+		"description": "Form",
+		"scope": "source.python"
+	},
+	"ModelForm": {
+		"prefix": "ModelForm",
+		"body": [
+			"class ${1:MODELNAME}Form(forms.ModelForm):",
+			"\t\"\"\"${2:Form definition for $1}.\"\"\"",
+			"",
+			"\tclass Meta:",
+			"\t\t\"\"\"Meta definition for ${1}form.\"\"\"",
+			"",
+			"\t\tmodel = $1",
+			"\t\tfields = ('$3',)",
+			""],
+		"description": "ModelForm",
+		"scope": "source.python"
+	}
+}
