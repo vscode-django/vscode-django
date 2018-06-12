@@ -1,0 +1,14 @@
+{
+	"importadmin": {
+		"prefix": "importadmin",
+		"body": "from django.contrib import admin",
+		"description": "from django.contrib import admin",
+		"scope": "source.python"
+	},
+	"importadminsite": {
+		"prefix": "importadminsite",
+		"body": "from django.contrib.admin import AdminSite",
+		"description": "from django.contrib import AdminSite",
+		"scope": "source.python"
+	}	
+}

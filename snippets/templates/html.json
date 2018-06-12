@@ -107,16 +107,7 @@
         "description": "{% csrf_token %}",
         "prefix": "csrf_token",
         "body": [
-            "{% csrf_token $1 %}$0",
-            "{% endcsrf_token %}"
-        ]
-    },
-
-    "endcsrf_token": {
-        "description": "{% endcsrf_token %}",
-        "prefix": "endcsrf_token",
-        "body": [
-            "{% endcsrf_token %}"
+            "{% csrf_token %}"
         ]
     },
 
@@ -158,16 +149,7 @@
         "description": "{% extends %}",
         "prefix": "extends",
         "body": [
-            "{% extends $1 %}$0",
-            "{% endextends %}"
-        ]
-    },
-
-    "endextends": {
-        "description": "{% endextends %}",
-        "prefix": "endextends",
-        "body": [
-            "{% endextends %}"
+            "{% extends $1 %}$0"
         ]
     },
 
@@ -192,8 +174,7 @@
         "description": "{% firstof %}",
         "prefix": "firstof",
         "body": [
-            "{% firstof $1 %}$0",
-            "{% endfirstof %}"
+            "{% firstof $0 %}"
         ]
     },
 
@@ -226,16 +207,9 @@
         "description": "{% forempty %}",
         "prefix": "forempty",
         "body": [
-            "{% forempty $1 %}$0",
-            "{% endforempty %}"
-        ]
-    },
-
-    "endforempty": {
-        "description": "{% endforempty %}",
-        "prefix": "endforempty",
-        "body": [
-            "{% endforempty %}"
+            "{% for $1 %}$0",
+            "{% empty %}$2",
+            "{% endfor %}"
         ]
     },
 
@@ -246,6 +220,28 @@
             "{% if $1 %}$0",
             "{% endif %}"
         ]
+    },
+
+    "ifelse": {
+		"prefix": "ifelse",
+		"body": [
+            "{% if $1 %}$2",
+            "{% else %}$3",
+            "{% endif %}"
+        ],
+		"description": "if... else..."
+    },
+
+    "elif": {
+		"prefix": "elif",
+		"body": "{% elif %}%0",
+		"description": "elif"
+	},
+    
+    "else": {
+		"prefix": "else",
+		"body": "{% else %}",
+		"description": "else"
     },
 
     "endif": {
@@ -277,16 +273,7 @@
         "description": "{% include %}",
         "prefix": "include",
         "body": [
-            "{% include $1 %}$0",
-            "{% endinclude %}"
-        ]
-    },
-
-    "endinclude": {
-        "description": "{% endinclude %}",
-        "prefix": "endinclude",
-        "body": [
-            "{% endinclude %}"
+            "{% include $1 %}"
         ]
     },
 
@@ -387,16 +374,7 @@
         "description": "{% templatetag %}",
         "prefix": "templatetag",
         "body": [
-            "{% templatetag $1 %}$0",
-            "{% endtemplatetag %}"
-        ]
-    },
-
-    "endtemplatetag": {
-        "description": "{% endtemplatetag %}",
-        "prefix": "endtemplatetag",
-        "body": [
-            "{% endtemplatetag %}"
+            "{% templatetag $1 %}",
         ]
     },
 
@@ -404,16 +382,23 @@
         "description": "{% url %}",
         "prefix": "url",
         "body": [
-            "{% url $1 %}$0",
-            "{% endurl %}"
+            "{% url '$1' %}"
         ]
     },
 
-    "endurl": {
-        "description": "{% endurl %}",
-        "prefix": "endurl",
+    "urlslug": {
+        "description": "{% url %}",
+        "prefix": "urlslug",
         "body": [
-            "{% endurl %}"
+            "{% url '$1' slug=$2 %}"
+        ]
+    },
+
+    "urlpk": {
+        "description": "{% url %}",
+        "prefix": "urlpk",
+        "body": [
+            "{% url '$1' pk=$2 %}"
         ]
     },
 
@@ -491,7 +476,7 @@
         "description": "{% trans '' %}",
         "prefix": "trans",
         "body": [
-            "{% trans '$0' %}"
+            "{% trans '${0:$SELECTION}' %}"
         ]
     },
 
@@ -529,5 +514,17 @@
             "{% blocktrans with $1=$2 %}$0",
             "{% endblocktrans %}"
         ]
-    }
+    },
+
+    "static": {
+		"prefix": "static",
+		"body": "{% static '${1:$SELECTION}' %}",
+		"description": "static"
+    },
+
+    "super": {
+		"prefix": "super",
+		"body": "{{ block.super }}",
+		"description": "block.super"
+    },
 }

@@ -1,0 +1,32 @@
+{
+    "__str__": {
+        "prefix": "str",
+        "body": [
+            "def __str__(self):",
+            "\treturn self${1: # TODO}"
+        ],
+        "description": "",
+        "scope": "source.python"
+    },
+    "get_absolute_url": {
+        "prefix": "get_absolute_url",
+        "body": [
+            "def get_absolute_url(self):",
+            "\tfrom django.core.urlresolvers import reverse",
+            "\treturn reverse('$1', kwargs={'pk': self.pk})"
+        ],
+        "description": "",
+        "scope": "source.python"
+    },
+    "receiver": {
+        "prefix": "receiver",
+        "body": [
+            "def ${1:FUNCTIONNAME}_${2|pre_init,post_init,pre_save,post_save,pre_delete,post_delete,m2m_changed,class_prepared,Management signals,pre_migrate,post_migrate|}_receiver(sender, instance, *args, **kwargs):",
+            "\tpass",
+            "\n\n${2|pre_init,post_init,pre_save,post_save,pre_delete,post_delete,m2m_changed,class_prepared,Management signals,pre_migrate,post_migrate|}.connect(${1:name}_${2|pre_init,post_init,pre_save,post_save,pre_delete,post_delete,m2m_changed,class_prepared,Management signals,pre_migrate,post_migrate|}_receiver, sender=${3:MODELNAME})"
+        ],
+        "description": "",
+        "scope": "source.python"
+    }
+}
+

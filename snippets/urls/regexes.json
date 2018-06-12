@@ -1,0 +1,20 @@
+{
+    "regexpk": {
+		"prefix": "regexpk",
+		"body": "r'^(?P<${1:pk}>\d+)/$'",
+		"description": "PK URL regex",
+		"scope": "source.python"
+	},
+    "regexslug": {
+		"prefix": "regexslug",
+		"body": "r'^(?P<${1:slug}>[-\w]+)/$'",
+		"description": "Slug URL regex",
+		"scope": "source.python"
+	},
+	"regexusername": {
+		"prefix": "regexusername",
+		"body": "r'^(?P<username>[\w.@+-]+)/$'",
+		"description": "Username regex",
+		"scope": "source.python"
+	}   	  
+}
