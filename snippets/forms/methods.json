@@ -3,7 +3,7 @@
         "prefix": "clean_data",
         "body": [
             "def clean_${1:FIELD}(self):",
-            "\t${1:FIELD} = self.cleaned_data.get('${1:FIELD}')",
+            "\t${1:FIELD} = self.cleaned_data.get(\"${1:FIELD}\")",
             "\treturn ${1:FIELD}"
         ],
         "description": "",

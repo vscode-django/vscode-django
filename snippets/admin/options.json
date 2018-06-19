@@ -4,7 +4,7 @@
 		"body": [
             "fieldsets = (",
             "\t(None, {",
-            "\t\t'fields': (",
+            "\t\t\"fields\": (",
             "\t\t\t$1",
             "\t\t),",
             "\t}),",

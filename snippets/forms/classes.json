@@ -20,7 +20,7 @@
 			"\t\t\"\"\"Meta definition for ${1}form.\"\"\"",
 			"",
 			"\t\tmodel = $1",
-			"\t\tfields = ('$3',)",
+			"\t\tfields = (\"$3\",)",
 		],
 		"description": "ModelForm",
 		"scope": "source.python"

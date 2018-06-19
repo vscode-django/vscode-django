@@ -3,7 +3,7 @@
 		"prefix": "register_assignment_tag",
 		"body": [
             "def get_$1(context):",
-            "\trequest = context.get('request')",
+            "\trequest = context.get(\"request\")",
             "\t$1 = ${2:[]}",
             "\treturn ${3:$1}"
         ],
@@ -23,12 +23,12 @@
     "register_inclusion_tag": {
 		"prefix": "register_inclusion_tag",
 		"body": [
-            "@register.inclusion_tag(${2:'$1.html'}, takes_context=True)",
+            "@register.inclusion_tag(${2:\"$1.html\"}, takes_context=True)",
             "def $1(context):",
-            "\trequest = context.get('request')",
+            "\trequest = context.get(\"request\")",
             "\t$3",
             "\treturn {",
-            "\t\t'request': request,",
+            "\t\t\"request\": request,",
             "\t\t$4",
             "\t}"
         ],
@@ -40,8 +40,8 @@
 		"body": [
             "@register.simple_tag(takes_context=True)",
             "def $1(context):",
-            "\trequest = context.get('request')",
-            "\treturn ${2:'It Works!'}"
+            "\trequest = context.get(\"request\")",
+            "\treturn ${2:\"It Works!\"}"
         ],
 		"description": "",
 		"scope": "source.python"

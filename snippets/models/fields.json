@@ -115,7 +115,7 @@
 	},
 	"mgenericip": {
 		"prefix": "mgenericip",
-		"body": "${1:FIELDNAME} = models.GenericIPAddressField($2, protocol=${3:'both'}, unpack_ipv4=${4:False})",
+		"body": "${1:FIELDNAME} = models.GenericIPAddressField($2, protocol=${3:\"both\"}, unpack_ipv4=${4:False})",
 		"description": "GenericIPAddressField (mimg).\n\nAn IPv4 or IPv6 address, in string format.\n\n",
 		"scope": "source.python"
 	},

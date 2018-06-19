@@ -29,9 +29,7 @@
     "endautoescape": {
         "description": "{% endautoescape %}",
         "prefix": "endautoescape",
-        "body": [
-            "{% endautoescape %}"
-        ]
+        "body": "{% endautoescape %}"
     },
 
     "block": {
@@ -46,25 +44,19 @@
     "block_inline": {
         "description": "{% block %} (inline)",
         "prefix": "blok",
-        "body": [
-            "{% block $1 %}$0{% endblock %}"
-        ]
+        "body": "{% block $1 %}$0{% endblock %}"
     },
 
     "endblock": {
         "description": "{% endblock %}",
         "prefix": "endblock",
-        "body": [
-            "{% endblock %}"
-        ]
+        "body": "{% endblock %}"
     },
 
     "comment_inline": {
         "description": "{% comment %} (inline)",
         "prefix": "comm",
-        "body": [
-            "{# $1 #}"
-        ]
+        "body": "{# $1 #}"
     },
 
     "comment": {
@@ -98,17 +90,13 @@
     "endcomment": {
         "description": "{% endcomment %}",
         "prefix": "endcomment",
-        "body": [
-            "{% endcomment %}"
-        ]
+        "body": "{% endcomment %}"
     },
 
     "csrf_token": {
         "description": "{% csrf_token %}",
         "prefix": "csrf_token",
-        "body": [
-            "{% csrf_token %}"
-        ]
+        "body": "{% csrf_token %}"
     },
 
     "cycle": {
@@ -123,9 +111,7 @@
     "endcycle": {
         "description": "{% endcycle %}",
         "prefix": "endcycle",
-        "body": [
-            "{% endcycle %}"
-        ]
+        "body": "{% endcycle %}"
     },
 
     "debug": {
@@ -140,16 +126,14 @@
     "enddebug": {
         "description": "{% enddebug %}",
         "prefix": "enddebug",
-        "body": [
-            "{% enddebug %}"
-        ]
+        "body": "{% enddebug %}"
     },
 
     "extends": {
         "description": "{% extends %}",
         "prefix": "extends",
         "body": [
-            "{% extends $1 %}$0"
+            "{% extends \"$1\" %}$0"
         ]
     },
 
@@ -165,9 +149,7 @@
     "endfilter": {
         "description": "{% endfilter %}",
         "prefix": "endfilter",
-        "body": [
-            "{% endfilter %}"
-        ]
+        "body": "{% endfilter %}"
     },
 
     "firstof": {
@@ -181,9 +163,7 @@
     "endfirstof": {
         "description": "{% endfirstof %}",
         "prefix": "endfirstof",
-        "body": [
-            "{% endfirstof %}"
-        ]
+        "body": "{% endfirstof %}"
     },
 
     "for": {
@@ -198,9 +178,7 @@
     "endfor": {
         "description": "{% endfor %}",
         "prefix": "endfor",
-        "body": [
-            "{% endfor %}"
-        ]
+        "body": "{% endfor %}"
     },
 
     "forempty": {
@@ -247,9 +225,7 @@
     "endif": {
         "description": "{% endif %}",
         "prefix": "endif",
-        "body": [
-            "{% endif %}"
-        ]
+        "body": "{% endif %}"
     },
 
     "ifchanged": {
@@ -264,9 +240,7 @@
     "endifchanged": {
         "description": "{% endifchanged %}",
         "prefix": "endifchanged",
-        "body": [
-            "{% endifchanged %}"
-        ]
+        "body": "{% endifchanged %}"
     },
 
     "include": {
@@ -297,9 +271,7 @@
     "endlorem": {
         "description": "{% endlorem %}",
         "prefix": "endlorem",
-        "body": [
-            "{% endlorem %}"
-        ]
+        "body": "{% endlorem %}"
     },
 
     "now": {
@@ -314,9 +286,7 @@
     "endnow": {
         "description": "{% endnow %}",
         "prefix": "endnow",
-        "body": [
-            "{% endnow %}"
-        ]
+        "body": "{% endnow %}"
     },
 
     "regroup": {
@@ -331,9 +301,7 @@
     "endregroup": {
         "description": "{% endregroup %}",
         "prefix": "endregroup",
-        "body": [
-            "{% endregroup %}"
-        ]
+        "body": "{% endregroup %}"
     },
 
     "resetcycle": {
@@ -348,9 +316,7 @@
     "endresetcycle": {
         "description": "{% endresetcycle %}",
         "prefix": "endresetcycle",
-        "body": [
-            "{% endresetcycle %}"
-        ]
+        "body": "{% endresetcycle %}"
     },
 
     "spaceless": {
@@ -365,9 +331,7 @@
     "endspaceless": {
         "description": "{% endspaceless %}",
         "prefix": "endspaceless",
-        "body": [
-            "{% endspaceless %}"
-        ]
+        "body": "{% endspaceless %}"
     },
 
     "templatetag": {
@@ -381,25 +345,19 @@
     "url": {
         "description": "{% url %}",
         "prefix": "url",
-        "body": [
-            "{% url '$1' %}"
-        ]
-    },
-
-    "urlslug": {
-        "description": "{% url %}",
-        "prefix": "urlslug",
-        "body": [
-            "{% url '$1' slug=$2 %}"
-        ]
+        "body": "{% url \"$1\" %}"
     },
 
     "urlpk": {
-        "description": "{% url %}",
+        "description": "{% url pk=object.pk %}",
         "prefix": "urlpk",
-        "body": [
-            "{% url '$1' pk=$2 %}"
-        ]
+        "body": "{% url \"$1\" pk=${2:${3:object}.pk} %}"
+    },
+
+    "urlslug": {
+        "description": "{% url slug=object.slug %}",
+        "prefix": "urlslug",
+        "body": "{% url \"$1\" slug=${2:${3:object}.slug} %}"
     },
 
     "verbatim": {
@@ -414,9 +372,7 @@
     "endverbatim": {
         "description": "{% endverbatim %}",
         "prefix": "endverbatim",
-        "body": [
-            "{% endverbatim %}"
-        ]
+        "body": "{% endverbatim %}"
     },
 
     "widthratio": {
@@ -431,9 +387,7 @@
     "endwidthratio": {
         "description": "{% endwidthratio %}",
         "prefix": "endwidthratio",
-        "body": [
-            "{% endwidthratio %}"
-        ]
+        "body": "{% endwidthratio %}"
     },
 
     "with": {
@@ -448,9 +402,7 @@
     "endwith": {
         "description": "{% endwith %}",
         "prefix": "endwith",
-        "body": [
-            "{% endwith %}"
-        ]
+        "body": "{% endwith %}"
     },
 
     "with_selection": {
@@ -473,18 +425,18 @@
     },
 
     "trans": {
-        "description": "{% trans '' %}",
+        "description": "{% trans \"\" %}",
         "prefix": "trans",
         "body": [
-            "{% trans '${0:$SELECTION}' %}"
+            "{% trans \"${0:$SELECTION}\" %}"
         ]
     },
 
     "trans_paste": {
-        "description": "{% trans '(paste)' %}",
+        "description": "{% trans \"(paste)\" %}",
         "prefix": "trans_paste",
         "body": [
-            "{% trans '${CLIPBOARD}' %}"
+            "{% trans \"${CLIPBOARD}\" %}"
         ]
     },
 
@@ -518,13 +470,13 @@
 
     "static": {
         "prefix": "static",
-        "body": "{% static '${1:$SELECTION}' %}",
+        "body": "{% static \"${1:$SELECTION}\" %}",
         "description": "static"
     },
 
     "super": {
+        "description": "{{ block.super }}",
         "prefix": "super",
-        "body": "{{ block.super }}",
-        "description": "block.super"
+        "body": "{{ block.super }}"
     }
 }
