@@ -292,31 +292,32 @@
     "regroup": {
         "description": "{% regroup %}",
         "prefix": "regroup",
-        "body": [
-            "{% regroup $1 %}$0",
-            "{% endregroup %}"
-        ]
+        "body": "{% regroup $1 by $2 as ${3:_list} %}"
     },
 
-    "endregroup": {
-        "description": "{% endregroup %}",
-        "prefix": "endregroup",
-        "body": "{% endregroup %}"
+    "regroup_example": {
+        "description": "{% regroup %}",
+        "prefix": "regroup_example",
+        "body": [
+            "{% regroup ${1:object_list} by ${2:category} as ${2:category}_list %}",
+            "<ul>",
+            "    {% for ${2:category}, ${3:obj}_list in ${2:category}_list %}",
+            "        <li>{{ ${2:category} }}",
+            "        <ul>",
+            "            {% for ${3:obj} in ${3:obj}_list %}",
+            "                <li>{{ ${3:obj} }}</li>",
+            "            {% endfor %}",
+            "        </ul>",
+            "        </li>",
+            "    {% endfor %}",
+            "</ul>"
+        ]
     },
 
     "resetcycle": {
         "description": "{% resetcycle %}",
         "prefix": "resetcycle",
-        "body": [
-            "{% resetcycle $1 %}$0",
-            "{% endresetcycle %}"
-        ]
-    },
-
-    "endresetcycle": {
-        "description": "{% endresetcycle %}",
-        "prefix": "endresetcycle",
-        "body": "{% endresetcycle %}"
+        "body": "{% resetcycle %}"
     },
 
     "spaceless": {
