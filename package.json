@@ -2,7 +2,7 @@
     "name": "vscode-django",
     "displayName": "Django",
     "description": "Beautiful syntax and snippets for perfectionists with deadlines",
-    "version": "0.3.0",
+    "version": "0.4.0",
     "publisher": "batisteo",
     "preview": true,
     "icon": "images/vscode-django.png",
@@ -27,8 +27,7 @@
         "url": "https://github.com/vscode-django/vscode-django"
     },
     "bugs": {
-        "url": "https://github.com/vscode-django/vscode-django/issues",
-        "email": "roberto.huertas@outlook.com"
+        "url": "https://github.com/vscode-django/vscode-django/issues"
     },
     "contributes": {
         "languages": [{
@@ -36,7 +35,7 @@
             "aliases": ["Django HTML", "django"],
             "extensions": [".html"],
             "firstLine": "{%",
-                "configuration": "./language-configuration.json"
+            "configuration": "./language-configuration.json"
         }, {
             "id": "django-txt",
             "aliases": ["Django txt", "django"],
@@ -44,21 +43,80 @@
             "firstLine": "{%",
             "configuration": "./language-configuration.json"
         }],
+
         "grammars": [{
             "language": "django-html",
             "scopeName": "text.html.django",
             "path": "./syntaxes/django-html.tmLanguage.json"
-        },{
+        }, {
             "language": "django-txt",
             "scopeName": "text.django",
             "path": "./syntaxes/django-txt.tmLanguage.json"
         }],
+
         "snippets": [{
             "language": "django-html",
-            "path": "./snippets/django-template-snippets.json"
+            "path": "./snippets/templates/html.json"
         }, {
             "language": "django-txt",
-            "path": "./snippets/django-template-snippets.json"
+            "path": "./snippets/templates/html.json"
+        }, {
+            "language": "python",
+            "path": "./snippets/templates/tags.json"
+        }, {
+            "language": "python",
+            "path": "./snippets/templates/methods.json"
+        }, {
+            "language": "python",
+            "path": "./snippets/forms/fields.json"
+        }, {
+            "language": "python",
+            "path": "./snippets/forms/classes.json"
+        }, {
+            "language": "python",
+            "path": "./snippets/forms/methods.json"
+        }, {
+            "language": "python",
+            "path": "./snippets/forms/imports.json"
+        }, {
+            "language": "python",
+            "path": "./snippets/urls/methods.json"
+        }, {
+            "language": "python",
+            "path": "./snippets/urls/regexes.json"
+        }, {
+            "language": "python",
+            "path": "./snippets/urls/imports.json"
+        }, {
+            "language": "python",
+            "path": "./snippets/admin/classes.json"
+        }, {
+            "language": "python",
+            "path": "./snippets/admin/options.json"
+        }, {
+            "language": "python",
+            "path": "./snippets/admin/imports.json"
+        }, {
+            "language": "python",
+            "path": "./snippets/models/classes.json"
+        }, {
+            "language": "python",
+            "path": "./snippets/views/classes.json"
+        }, {
+            "language": "python",
+            "path": "./snippets/views/methods.json"
+        }, {
+            "language": "python",
+            "path": "./snippets/views/imports.json"
+        }, {
+            "language": "python",
+            "path": "./snippets/models/fields.json"
+        }, {
+            "language": "python",
+            "path": "./snippets/models/methods.json"
+        }, {
+            "language": "python",
+            "path": "./snippets/models/imports.json"
         }]
     }
 }

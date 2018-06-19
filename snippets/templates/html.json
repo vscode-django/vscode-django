@@ -1,9 +1,9 @@
 {
     "_comment" : "This section is autocomplete for django templates",
 
-    "var": {
+    "variable": {
         "description": "{{ var }}",
-        "prefix": "var",
+        "prefix": "variable",
         "body": [
             "{{ $1 }}"
         ]
@@ -223,25 +223,25 @@
     },
 
     "ifelse": {
-		"prefix": "ifelse",
-		"body": [
+        "prefix": "ifelse",
+        "body": [
             "{% if $1 %}$2",
             "{% else %}$3",
             "{% endif %}"
         ],
-		"description": "if... else..."
+        "description": "if... else..."
     },
 
     "elif": {
-		"prefix": "elif",
-		"body": "{% elif %}%0",
-		"description": "elif"
-	},
+        "prefix": "elif",
+        "body": "{% elif %}%0",
+        "description": "elif"
+    },
     
     "else": {
-		"prefix": "else",
-		"body": "{% else %}",
-		"description": "else"
+        "prefix": "else",
+        "body": "{% else %}",
+        "description": "else"
     },
 
     "endif": {
@@ -374,7 +374,7 @@
         "description": "{% templatetag %}",
         "prefix": "templatetag",
         "body": [
-            "{% templatetag $1 %}",
+            "{% templatetag ${1|openblock,closeblock,openvariable,closevariable,openbrace,closebrace,opencomment,closecomment|} %}"
         ]
     },
 
@@ -501,8 +501,8 @@
         "description": "{% blocktrans %}(paste){% endblocktrans %}",
         "prefix": "blocktrans_paste",
         "body": [
-            "{% blocktrans %}",
-            "    ${CLIPBOARD}",
+            "{% blocktrans ${2:trimmed }%}",
+            "    ${CLIPBOARD}$1",
             "{% endblocktrans %}"
         ]
     },
@@ -511,20 +511,20 @@
         "description": "{% blocktrans as %}{% endblocktrans %}",
         "prefix": "blocktrans_with",
         "body": [
-            "{% blocktrans with $1=$2 %}$0",
+            "{% blocktrans with $1=$2 ${3:trimmed }%}$0",
             "{% endblocktrans %}"
         ]
     },
 
     "static": {
-		"prefix": "static",
-		"body": "{% static '${1:$SELECTION}' %}",
-		"description": "static"
+        "prefix": "static",
+        "body": "{% static '${1:$SELECTION}' %}",
+        "description": "static"
     },
 
     "super": {
-		"prefix": "super",
-		"body": "{{ block.super }}",
-		"description": "block.super"
-    },
+        "prefix": "super",
+        "body": "{{ block.super }}",
+        "description": "block.super"
+    }
 }
