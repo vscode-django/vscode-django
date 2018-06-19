@@ -63,7 +63,7 @@
         "description": "{% comment %}",
         "prefix": "comment",
         "body": [
-            "{% comment \"$1\" %}$0",
+            "{% comment '$1' %}$0",
             "{% endcomment %}"
         ]
     },
@@ -133,7 +133,7 @@
         "description": "{% extends %}",
         "prefix": "extends",
         "body": [
-            "{% extends \"$1\" %}$0"
+            "{% extends '$1' %}$0"
         ]
     },
 
@@ -156,7 +156,7 @@
         "description": "{% firstof %}",
         "prefix": "firstof",
         "body": [
-            "{% firstof $0 %}"
+            "{% firstof $1 as $2 %}"
         ]
     },
 
@@ -170,7 +170,7 @@
         "description": "{% for %}",
         "prefix": "for",
         "body": [
-            "{% for $1 %}$0",
+            "{% for $1 in $2 %}$0",
             "{% endfor %}"
         ]
     },
@@ -185,8 +185,8 @@
         "description": "{% forempty %}",
         "prefix": "forempty",
         "body": [
-            "{% for $1 %}$0",
-            "{% empty %}$2",
+            "{% for $1 in $2 %}$0",
+            "{% empty %}$3",
             "{% endfor %}"
         ]
     },
@@ -324,7 +324,17 @@
         "description": "{% spaceless %}",
         "prefix": "spaceless",
         "body": [
-            "{% spaceless $1 %}$0",
+            "{% spaceless %}$1",
+            "{% endspaceless %}"
+        ]
+    },
+
+    "spaceless_paste": {
+        "description": "{% spaceless %} (paste)",
+        "prefix": "spaceless_paste",
+        "body": [
+            "{% spaceless %}",
+            "    ${CLIPBOARD}$1",
             "{% endspaceless %}"
         ]
     },
@@ -346,19 +356,19 @@
     "url": {
         "description": "{% url %}",
         "prefix": "url",
-        "body": "{% url \"$1\" %}"
+        "body": "{% url '$1' %}"
     },
 
     "urlpk": {
         "description": "{% url pk=object.pk %}",
         "prefix": "urlpk",
-        "body": "{% url \"$1\" pk=${2:${3:object}.pk} %}"
+        "body": "{% url '$1' pk=${2:${3:object}.pk} %}"
     },
 
     "urlslug": {
         "description": "{% url slug=object.slug %}",
         "prefix": "urlslug",
-        "body": "{% url \"$1\" slug=${2:${3:object}.slug} %}"
+        "body": "{% url '$1' slug=${2:${3:object}.slug} %}"
     },
 
     "verbatim": {
@@ -471,7 +481,7 @@
 
     "static": {
         "prefix": "static",
-        "body": "{% static \"${1:$SELECTION}\" %}",
+        "body": "{% static '${1:$SELECTION}' %}",
         "description": "static"
     },
 
