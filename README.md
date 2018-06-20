@@ -4,16 +4,18 @@
 
 ## Usage
 
-Configure you file association for `Django HTML` in the **Language Mode** menu or drop this in your settings:
+Configure you file association for `Django HTML` in the **Language Mode** menu
+or drop this in your settings for more precision:
 
 ```json
 "files.associations": {
-    "*.html": "django-html",
-    "*.txt": "django-txt",
+    "**/templates/*.html": "django-html",
+    "**/templates/*": "django-txt",
+    "**/requirements{/**,*}.{txt,in}": "pip-requirements"
 },
 ```
 
-Emmet enthusiasts should add this to their configuration:
+Emmet enthusiasts should have this to their configuration as well:
 
 ```json
 "emmet.includeLanguages": {"django-html": "html"},
