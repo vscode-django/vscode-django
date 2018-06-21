@@ -41,11 +41,57 @@ to jump to this template
   - In the id, class or any attribute
   - In inline CSS or Javascript code
 
-![Syntax with Gruvbox](images/django-html-syntax-gruvbox.png)
-![Syntax with Monokai](images/django-html-syntax-monokai.png)
+![Syntax with Gruvbox](images/vscode-django-syntax-gruvbox.png)
+![Syntax with Monokai](images/vscode-django-syntax-monokai.png)
 
 ### Snippets
 
 - No unnecessary new lines
 - Support for selected text (when inserting snippet from the menu)
 - Support for copied text
+
+## Contributing
+
+### Issues
+
+Something odd? New feature request?
+Please [create an issue on Github](https://github.com/vscode-django/vscode-django/issues/new).
+
+### Setup
+
+```bash
+git clone https://github.com/vscode-django/vscode-django
+cd vscode-django
+npm install
+code .
+```
+
+It’s better to have [TSlint](https://marketplace.visualstudio.com/items?itemName=eg2.tslint) installed.
+
+
+### Launching the extension debugger
+
+Make sure you have this snippet in `.vscode/launch.json`:
+
+```javascript
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Extension",
+      "type": "extensionHost",
+      "request": "launch",
+      "runtimeExecutable": "${execPath}",
+      "args": [
+        "--extensionDevelopmentPath=${workspaceFolder}"
+      ]
+    }
+  ]
+}
+```
+
+Press <kbd>F5</kbd> or click on Debug then Start (▶️) to launch the extension host window.
+
+Hack around
+
+Press <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>F5</kbd> or 🔄 to reload.
