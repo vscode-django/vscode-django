@@ -1,9 +1,10 @@
 {
     "name": "vscode-django",
     "displayName": "Django",
-    "description": "Beautiful syntax and snippets for perfectionists with deadlines",
-    "version": "0.9.1",
+    "description": "Beautiful syntax and scoped snippets for perfectionists with deadlines",
+    "version": "0.10.0",
     "publisher": "batisteo",
+    "license": "MIT",
     "preview": true,
     "icon": "images/vscode-django-icon.png",
     "galleryBanner": {
@@ -11,7 +12,7 @@
         "theme": "dark"
     },
     "engines": {
-        "vscode": "^1.18.0"
+        "vscode": "^1.23.0"
     },
     "recommendations": [
         "ms-python.python"
@@ -47,11 +48,12 @@
         "test": "npm run compile && node ./node_modules/vscode/bin/test"
     },
     "devDependencies": {
-        "typescript": "^2.6.1",
-        "vscode": "^1.1.6",
-        "tslint": "^5.8.0",
+        "@types/mocha": "^2.2.42",
         "@types/node": "^7.0.43",
-        "@types/mocha": "^2.2.42"
+        "tslint": "^5.8.0",
+        "toml": "^2.3.3",
+        "typescript": "^2.6.1",
+        "vscode": "1.1.6"
     },
     "contributes": {
         "languages": [
@@ -95,87 +97,19 @@
         "snippets": [
             {
                 "language": "django-html",
-                "path": "./snippets/templates/html.json"
-            },
-            {
-                "language": "django-txt",
-                "path": "./snippets/templates/html.json"
-            },
-            {
-                "language": "python",
                 "path": "./snippets/templates/tags.json"
             },
             {
-                "language": "python",
-                "path": "./snippets/templates/methods.json"
+                "language": "django-html",
+                "path": "./snippets/templates/filters.json"
             },
             {
-                "language": "python",
-                "path": "./snippets/forms/fields.json"
+                "language": "django-txt",
+                "path": "./snippets/templates/tags.json"
             },
             {
-                "language": "python",
-                "path": "./snippets/forms/classes.json"
-            },
-            {
-                "language": "python",
-                "path": "./snippets/forms/methods.json"
-            },
-            {
-                "language": "python",
-                "path": "./snippets/forms/imports.json"
-            },
-            {
-                "language": "python",
-                "path": "./snippets/urls/methods.json"
-            },
-            {
-                "language": "python",
-                "path": "./snippets/urls/regexes.json"
-            },
-            {
-                "language": "python",
-                "path": "./snippets/urls/imports.json"
-            },
-            {
-                "language": "python",
-                "path": "./snippets/admin/classes.json"
-            },
-            {
-                "language": "python",
-                "path": "./snippets/admin/options.json"
-            },
-            {
-                "language": "python",
-                "path": "./snippets/admin/imports.json"
-            },
-            {
-                "language": "python",
-                "path": "./snippets/models/classes.json"
-            },
-            {
-                "language": "python",
-                "path": "./snippets/views/classes.json"
-            },
-            {
-                "language": "python",
-                "path": "./snippets/views/methods.json"
-            },
-            {
-                "language": "python",
-                "path": "./snippets/views/imports.json"
-            },
-            {
-                "language": "python",
-                "path": "./snippets/models/fields.json"
-            },
-            {
-                "language": "python",
-                "path": "./snippets/models/methods.json"
-            },
-            {
-                "language": "python",
-                "path": "./snippets/models/imports.json"
+                "language": "django-txt",
+                "path": "./snippets/templates/filters.json"
             }
         ]
     }

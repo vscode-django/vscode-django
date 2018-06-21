@@ -1,0 +1,10 @@
+
+[[snippets]]
+prefix = "from_views_import"
+detail = ""
+body = "from .views import $1"
+
+[[snippets]]
+prefix = "from_generic_import_views"
+detail = "Generic class-based views"
+body = "from django.views.generic import ${1|CreateView,DetailView,FormView,ListView,TemplateView,UpdateView|}"

@@ -1,0 +1,23 @@
+
+[[snippets]]
+prefix = "args"
+detail = "*args"
+body = "*args"
+
+[[snippets]]
+prefix = "args_kwargs"
+detail = "*args, **kwargs"
+body = "*args, **kwargs"
+
+[[snippets]]
+prefix = "method"
+detail = "def method(self, *args, **kwargs):"
+description = """```python
+def method(self, *args, **kwargs):
+    return super().method(*args, **kwargs)
+```
+"""
+body = """
+$1(self, $2*args, **kwargs):
+    ${3:return} super().$1($2*args, **kwargs)$0
+"""

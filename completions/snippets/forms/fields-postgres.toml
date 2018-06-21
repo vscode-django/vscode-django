@@ -1,0 +1,50 @@
+
+
+[[snippets]]
+prefix = "simplearray_field"
+body = "SimpleArrayField()"
+description = "postgres.forms.SimpleArrayField()"
+
+[[snippets]]
+prefix = "splitarray_field"
+body = "SplitArrayField()"
+description = "postgres.forms.SplitArrayField()"
+
+[[snippets]]
+prefix = "hstore_field"
+body = "HStoreField()"
+description = "postgres.forms.HStoreField()"
+
+[[snippets]]
+prefix = "json_field"
+body = "JSONField()"
+description = "postgres.forms.JSONField()"
+
+[[snippets]]
+prefix = "intrange_field"
+body = "IntegerRangeField()"
+description = "postgres.forms.IntegerRangeField()"
+
+[[snippets]]
+prefix = "floatrange_field"
+body = "FloatRangeField()"
+description = "postgres.forms.FloatRangeField()"
+
+[[snippets]]
+prefix = "datetimerange_field"
+body = "DateTimeRangeField()"
+description = "postgres.forms.DateTimeRangeField()"
+
+[[snippets]]
+prefix = "daterange_field"
+body = "DateRangeField()"
+description = "postgres.forms.DateRangeField()"
+
+[[snippets]]
+prefix = "range_widget"
+body = "RangeWidget(${1:base_widget=})"
+detail = "postgres.forms.RangeWidget()"
+description = """```python
+class RangeWidget(base_widget, attrs=None)
+```
+"""

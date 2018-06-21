@@ -1,0 +1,26 @@
+
+[[snippets]]
+prefix = "dispatch"
+detail = "dispatch(self, request, *args, **kwargs)"
+body = """
+def dispatch(self, request, *args, **kwargs):
+    return super().dispatch(request, *args, **kwargs)
+"""
+
+[[snippets]]
+prefix = "get_context_data"
+detail = "get_context_data(self, **kwargs)"
+body = """
+def get_context_data(self, **kwargs):
+    context = super().get_context_data(**kwargs)
+    context["$1"] = $0
+    return context
+"""
+
+[[snippets]]
+prefix = "get_queryset"
+detail = "get_queryset(self)"
+body = """
+def get_queryset(self):
+    ${1:return} super().get_queryset()$0
+"""

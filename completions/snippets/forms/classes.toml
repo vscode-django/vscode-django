@@ -1,0 +1,21 @@
+
+[[snippets]]
+prefix = "Form"
+body = """
+class $1Form(forms.Form):
+    $0
+"""
+detail = "class Form(forms.Form)"
+description = ""
+
+[[snippets]]
+prefix = "ModelForm"
+body = """
+class $1Form(forms.ModelForm):
+    $0
+    class Meta:
+        model = $1",
+        fields = ("$2",$3)
+"""
+detail = "class $1Form(forms.ModelForm)"
+description = ""

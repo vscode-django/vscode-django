@@ -1,0 +1,15 @@
+
+[[snippets]]
+prefix = "import_library_register"
+detail = "register = template.Library()"
+description = """```python
+from django import template
+
+register = template.Library()
+```
+"""
+body = """
+from django import template
+
+register = template.Library()$0
+"""

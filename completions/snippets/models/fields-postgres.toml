@@ -1,0 +1,64 @@
+# https://docs.djangoproject.com/en/stable/ref/contrib/postgres/fields/
+
+[[snippets]]
+prefix = 'postgres_array_field'
+body = 'ArrayField(${1:base_field=})'
+detail = 'ArrayField()'
+
+[[snippets]]
+prefix = 'postgres_hstore_field'
+body = 'HStoreField($1)'
+detail = 'HStoreField()'
+
+[[snippets]]
+prefix = 'postgres_ci_char_field'
+body = 'CICharField($1)'
+detail = 'CICharField()'
+description = 'Case-insensitive CharField()'
+
+[[snippets]]
+prefix = 'postgres_ci_email_field'
+body = 'CIEmailField($1)'
+detail = 'CIEmailField()'
+description = 'Case-insensitive EmailField()'
+
+[[snippets]]
+prefix = 'postgres_ci_text_field'
+body = 'CITextField($1)'
+detail = 'CITextField()'
+description = 'Case-insensitive TextField()'
+
+[[snippets]]
+prefix = 'postgres_json_field'
+body = 'JSONField(${1:encoder="$2"})'
+detail = 'JSONField()'
+
+[[snippets]]
+prefix = 'postgres_integer_range_field'
+body = 'IntegerRangeField($1)'
+detail = "IntegerRangeField()"
+description = "Stores a range of integers."
+
+[[snippets]]
+prefix = 'postgres_big_integer_range_field'
+body = 'BigIntegerRangeField($1)'
+detail = "BigIntegerRangeField()"
+description = "Stores a range of large integers."
+
+[[snippets]]
+prefix = 'postgres_float_range_field'
+body = 'FloatRangeField($1)'
+detail = "FloatRangeField()"
+description = "Stores a range of floating point values."
+
+[[snippets]]
+prefix = 'postgres_date_time_range_field'
+body = 'DateTimeRangeField($1)'
+detail = "DateTimeRangeField()"
+description = "Stores a range of timestamps."
+
+[[snippets]]
+prefix = 'postgres_date_range_field'
+body = 'DateRangeField($1)'
+detail = "DateRangeField()"
+description = "Stores a range of dates."

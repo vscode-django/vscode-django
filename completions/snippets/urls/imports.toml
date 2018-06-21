@@ -1,0 +1,20 @@
+
+[[snippets]]
+prefix = "from_urls_import_reverse"
+body = "from django.urls import ${1|reverse,reverse_lazy,resolve,get_script_prefix|}"
+detail = "import reverse, resolve…"
+
+[[snippets]]
+prefix = "from_urls_import_url"
+body = "from django.conf.urls import ${1|url,include,static|}"
+detail = "import url, include…"
+
+[[snippets]]
+prefix = "from_urls_import_handler"
+body = "from django.conf.urls import ${1|handler400,handler403,handler404,handler500|}"
+detail = "import handler404…"
+
+[[snippets]]
+prefix = "from_urls_import_path"
+body = "from django.urls import ${1|path,re_path,include,reverse,reverse_lazy,static,register_converter|}"
+detail = "import path, path_re…"

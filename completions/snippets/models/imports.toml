@@ -1,0 +1,36 @@
+
+[[snippets]]
+prefix = "import_model"
+body = "from .models import $1"
+detail = "from .models import Model"
+description = "Relative import of app model"
+
+[[snippets]]
+prefix = "import_manager"
+body = "from .managers import $1Manager"
+detail = "from .managers import Manager"
+description = "Relative import of manager"
+
+[[snippets]]
+prefix = "import_queryset"
+body = "from .managers import $1QuerySet"
+detail = "from .managers import QuerySet"
+description = "Relative import of queryset"
+
+[[snippets]]
+prefix = "import_db_models"
+body = "from django.db import models"
+detail = "from django.db import models"
+description = "Imports the Django models module"
+
+[[snippets]]
+prefix = "import_postgres_models"
+body = "from django.contrib.postgres.fields import ${1|ArrayField,JSONField,HStoreField,CICharField,CIEmailField,CITextField,IntegerRangeField,BigIntegerRangeField,FloatRangeField,DateTimeRangeField,DateRangeField|}"
+detail = "from django.contrib.postgres.fields import"
+description = "PostgreSQL specific model fields"
+
+[[snippets]]
+prefix = "import_signals"
+body = "from django.db.models.signals import ${1|pre_init,post_init,pre_save,post_save,pre_delete,post_delete,m2m_changed,class_prepared,Management signals,pre_migrate,post_migrate|}"
+detail = "from django.db.models.signals import"
+description = "Signals for Django Model"

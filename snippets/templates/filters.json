@@ -1,0 +1,339 @@
+{
+    "_comment" : "This section is autocomplete for django template filters",
+
+    "join": {
+        "description": "Filter |join:', '",
+        "prefix": "join",
+        "body": "join:${1:', '}$0"
+    },
+
+    "addslashes": {
+        "description": "Filter |addslashes",
+        "prefix": "addslashes",
+        "body": "addslashes"
+    },
+
+    "capfirst": {
+        "description": "Filter |capfirst",
+        "prefix": "capfirst",
+        "body": "capfirst"
+    },
+
+    "escapejs": {
+        "description": "Filter |escapejs",
+        "prefix": "escapejs",
+        "body": "escapejs"
+    },
+
+    "floatformat": {
+        "description": "Filter |floatformat",
+        "prefix": "floatformat",
+        "body": "floatformat"
+    },
+
+    "iriencode": {
+        "description": "Filter |iriencode",
+        "prefix": "iriencode",
+        "body": "iriencode"
+    },
+
+    "linenumbers": {
+        "description": "Filter |linenumbers",
+        "prefix": "linenumbers",
+        "body": "linenumbers"
+    },
+
+    "lower": {
+        "description": "Filter |lower",
+        "prefix": "lower",
+        "body": "lower"
+    },
+
+    "make_list": {
+        "description": "Filter |make_list",
+        "prefix": "make_list",
+        "body": "make_list"
+    },
+
+    "slugify": {
+        "description": "Filter |slugify",
+        "prefix": "slugify",
+        "body": "slugify"
+    },
+
+    "stringformat": {
+        "description": "Filter |stringformat",
+        "prefix": "stringformat",
+        "body": "stringformat"
+    },
+
+    "title": {
+        "description": "Filter |title",
+        "prefix": "title",
+        "body": "title"
+    },
+
+    "truncatechars": {
+        "description": "Filter |truncatechars",
+        "prefix": "truncatechars",
+        "body": "truncatechars"
+    },
+
+    "truncatechars_html": {
+        "description": "Filter |stuff:', truncatechars_html",
+        "prefix": "truncatechars_html",
+        "body": "truncatechars_html"
+    },
+
+    "truncatewords": {
+        "description": "Filter |truncatewords",
+        "prefix": "truncatewords",
+        "body": "truncatewords"
+    },
+
+    "truncatewords_html": {
+        "description": "Filter |stuff:', truncatewords_html",
+        "prefix": "truncatewords_html",
+        "body": "truncatewords_html"
+    },
+
+    "upper": {
+        "description": "Filter |upper",
+        "prefix": "upper",
+        "body": "upper"
+    },
+
+    "urlencode": {
+        "description": "Filter |urlencode",
+        "prefix": "urlencode",
+        "body": "urlencode"
+    },
+
+    "urlize": {
+        "description": "Filter |urlize",
+        "prefix": "urlize",
+        "body": "urlize"
+    },
+
+    "urlizetrunc": {
+        "description": "Filter |urlizetrunc",
+        "prefix": "urlizetrunc",
+        "body": "urlizetrunc"
+    },
+
+    "wordcount": {
+        "description": "Filter |wordcount",
+        "prefix": "wordcount",
+        "body": "wordcount"
+    },
+
+    "wordwrap": {
+        "description": "Filter |wordwrap",
+        "prefix": "wordwrap",
+        "body": "wordwrap"
+    },
+
+    "ljust": {
+        "description": "Filter |ljust",
+        "prefix": "ljust",
+        "body": "ljust"
+    },
+
+    "rjust": {
+        "description": "Filter |rjust",
+        "prefix": "rjust",
+        "body": "rjust"
+    },
+
+    "center": {
+        "description": "Filter |center",
+        "prefix": "center",
+        "body": "center"
+    },
+
+    "cut": {
+        "description": "Filter |cut",
+        "prefix": "cut",
+        "body": "cut"
+    },
+
+    "escape": {
+        "description": "Filter |escape",
+        "prefix": "escape",
+        "body": "escape"
+    },
+
+    "force_escape": {
+        "description": "Filter |force_escape",
+        "prefix": "force_escape",
+        "body": "force_escape"
+    },
+
+    "linebreaks": {
+        "description": "Filter |linebreaks",
+        "prefix": "linebreaks",
+        "body": "linebreaks"
+    },
+
+    "linebreaksbr": {
+        "description": "Filter |linebreaksbr",
+        "prefix": "linebreaksbr",
+        "body": "linebreaksbr"
+    },
+
+    "safe": {
+        "description": "Filter |safe",
+        "prefix": "safe",
+        "body": "safe"
+    },
+
+    "safeseq": {
+        "description": "Filter |safeseq",
+        "prefix": "safeseq",
+        "body": "safeseq"
+    },
+
+    "striptags": {
+        "description": "Filter |striptags",
+        "prefix": "striptags",
+        "body": "striptags"
+    },
+
+    "dictsort": {
+        "description": "Filter |dictsort",
+        "prefix": "dictsort",
+        "body": "dictsort"
+    },
+
+    "dictsortreversed": {
+        "description": "Filter |stuff:dictsortreversed",
+        "prefix": "dictsortreversed",
+        "body": "dictsortreversed"
+    },
+
+    "first": {
+        "description": "Filter |first",
+        "prefix": "first",
+        "body": "first"
+    },
+
+    "last": {
+        "description": "Filter |last",
+        "prefix": "last",
+        "body": "last"
+    },
+
+    "length": {
+        "description": "Filter |length",
+        "prefix": "length",
+        "body": "length"
+    },
+
+    "length_is": {
+        "description": "Filter |length_is",
+        "prefix": "length_is",
+        "body": "length_is"
+    },
+
+    "random": {
+        "description": "Filter |random",
+        "prefix": "random",
+        "body": "random"
+    },
+
+    "slice": {
+        "description": "Filter |slice",
+        "prefix": "slice",
+        "body": "slice"
+    },
+
+    "unordered_list": {
+        "description": "Filter |unordered_list",
+        "prefix": "unordered_list",
+        "body": "unordered_list"
+    },
+
+    "add": {
+        "description": "Filter |add",
+        "prefix": "add",
+        "body": "add"
+    },
+
+    "get_digit": {
+        "description": "Filter |get_digit",
+        "prefix": "get_digit",
+        "body": "get_digit"
+    },
+
+    "date": {
+        "description": "Filter |date",
+        "prefix": "date",
+        "body": "date"
+    },
+
+    "time": {
+        "description": "Filter |time",
+        "prefix": "time",
+        "body": "time"
+    },
+
+    "timesince": {
+        "description": "Filter |timesince",
+        "prefix": "timesince",
+        "body": "timesince"
+    },
+
+    "timeuntil": {
+        "description": "Filter |timeuntil",
+        "prefix": "timeuntil",
+        "body": "timeuntil"
+    },
+
+    "default": {
+        "description": "Filter |default",
+        "prefix": "default",
+        "body": "default"
+    },
+
+    "default_if_none": {
+        "description": "Filter |stuff:default_if_none",
+        "prefix": "default_if_none",
+        "body": "default_if_none"
+    },
+
+    "divisibleby": {
+        "description": "Filter |divisibleby",
+        "prefix": "divisibleby",
+        "body": "divisibleby"
+    },
+
+    "yesno": {
+        "description": "Filter |yesno",
+        "prefix": "yesno",
+        "body": "yesno"
+    },
+
+    "filesizeformat": {
+        "description": "Filter |filesizeformat",
+        "prefix": "filesizeformat",
+        "body": "filesizeformat"
+    },
+
+    "pluralize": {
+        "description": "Filter |pluralize",
+        "prefix": "pluralize",
+        "body": "pluralize"
+    },
+
+    "phone2numeric": {
+        "description": "Filter |phone2numeric",
+        "prefix": "phone2numeric",
+        "body": "phone2numeric"
+    },
+
+    "pprint": {
+        "description": "Filter |pprint",
+        "prefix": "pprint",
+        "body": "pprint"
+    }
+}

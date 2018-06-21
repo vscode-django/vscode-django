@@ -1,0 +1,47 @@
+
+[[snippets]]
+prefix = "class_modeladmin"
+body = """
+@admin.register($1)
+class $1Admin(admin.ModelAdmin):
+    $0
+"""
+detail = "class ModelAdmin(admin.ModelAdmin)"
+description = """```python
+@admin.register(Model)
+class ModelAdmin(admin.ModelAdmin):
+```
+"""
+
+[[snippets]]
+prefix = "class_stackedinline"
+body = """
+class ${1}Inline(admin.StackedInline):
+    model = $1
+    ${2|extra,min_num,max_num,can_delete,show_change_link,verbose_name,verbose_name_plural,fk_name,template,formset|}
+"""
+description = "Stacked Inline"
+
+[[snippets]]
+prefix = "class_tabularinline"
+body = """
+class $1Inline(admin.TabularInline):
+    model = $1
+    ${2|extra,min_num,max_num,can_delete,show_change_link,verbose_name,verbose_name_plural,fk_name,template,formset|}
+"""
+description = "Tabular Inline"
+
+[[snippets]]
+prefix = "class_simplelistfilter"
+body = """
+class $1Filter(admin.SimpleListFilter):
+    title = _("${2:$1}")
+    parameter_name = "$3"
+
+    def lookups(self, request, model_admin):
+        return ($0)
+
+    def queryset(self, request, queryset):
+        return queryset.filter($3=self.value())
+"""
+description = "Admin SimpleList Filter"

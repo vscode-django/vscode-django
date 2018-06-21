@@ -1,0 +1,42 @@
+
+[[snippets]]
+prefix = "url_stack"
+body = """
+${1|url,re_path|}(
+    r"^$2/$",
+    $3${4:.as_view()},
+    name="$5"
+)
+"""
+
+[[snippets]]
+prefix = "url_inline"
+body = """
+${1|url,re_path|}(r"^$2/$", $3${4:.as_view()}, name="$5"),
+"""
+detail = """url(r"^/$", View.as_view(), name="")"""
+
+[[snippets]]
+prefix = "path_stack"
+body = """
+path(
+    "$1/",
+    ${2:VIEW}${3:.as_view()},
+    name="$4"
+)
+"""
+description = "path(route, view, kwargs=None, name=None)"
+
+[[snippets]]
+prefix = "path_inline"
+body = """path("$1/", $2${3:.as_view()}, name="$4")"""
+description = "path(route, view, kwargs=None, name=None)"
+
+[[snippets]]
+prefix = "urlpatterns"
+body = """
+urlpatterns = [
+    $0
+]
+"""
+detail = "urlpatterns = []"

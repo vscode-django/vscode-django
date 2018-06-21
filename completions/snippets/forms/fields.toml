@@ -1,0 +1,150 @@
+
+[[snippets]]
+prefix = "bool_field"
+body = "forms.BooleanField($1, required=${2:False})"
+detail = "forms.BooleanField()"
+
+[[snippets]]
+prefix = "char_field"
+body = "forms.CharField($1,${2: max_length=$4,} required=${5:False})"
+detail = "forms.CharField()"
+
+[[snippets]]
+prefix = "choice_field"
+body = "forms.ChoiceField($1, choices=[${2:CHOICES}], required=${4:False})"
+detail = "forms.ChoiceField()"
+
+[[snippets]]
+prefix = "combo_field"
+body = "forms.ComboField($1)"
+detail = "forms.ComboField()"
+
+[[snippets]]
+prefix = "date_field"
+body = "forms.DateField($1, required=${2:False})"
+detail = "forms.DateField()"
+
+[[snippets]]
+prefix = "datetime_field"
+body = "forms.DateTimeField($1, required=${2:False})"
+detail = "forms.DateTimeField()"
+
+[[snippets]]
+prefix = "decimal_field"
+body = "forms.DecimalField($1, required=${2:False})"
+detail = "forms.DecimalField()"
+
+[[snippets]]
+prefix = "duration_field"
+body = "forms.DurationField($1, required=${2:False})"
+detail = "forms.DurationField()"
+
+[[snippets]]
+prefix = "email_field"
+body = "forms.EmailField($1, required=${2:False})"
+detail = "forms.EmailField()"
+
+[[snippets]]
+prefix = "file_field"
+body = "forms.FileField($1,${2: max_length=$4,} required=${5:False})"
+detail = "forms.FileField()"
+
+[[snippets]]
+prefix = "filepath_field"
+body = "forms.FilePathField($1, path=${2:/absolute_path/}, required=${4:False})"
+detail = "forms.FilePathField()"
+
+[[snippets]]
+prefix = "float_field"
+body = "forms.FloatField($1, required=${2:False})"
+detail = "forms.FloatField()"
+
+[[snippets]]
+prefix = "ip_field"
+body = "forms.IPAddressField($1)"
+detail = "postgres.forms.IPAddressField()"
+
+[[snippets]]
+prefix = "ip_field"
+body = "forms.GenericIPAddressField($1)"
+detail = "forms.IPAddressField()"
+
+[[snippets]]
+prefix = "img_field"
+body = "forms.ImageField($1, required=${2:False})"
+detail = "forms.ImageField()"
+
+[[snippets]]
+prefix = "int_field"
+body = "forms.IntegerField($1, required=${2:False})"
+detail = "forms.IntegerField()"
+
+[[snippets]]
+prefix = "mochoice_field"
+body = "forms.ModelChoiceField($1)"
+detail = "forms.ModelChoiceField()"
+
+[[snippets]]
+prefix = "momuchoice_field"
+body = "forms.ModelMultipleChoiceField($1)"
+detail = "forms.ModelMultipleChoiceField()"
+
+[[snippets]]
+prefix = "muval_field"
+body = "forms.MultiValueField($1)"
+detail = "forms.MultiValueField()"
+
+[[snippets]]
+prefix = "muchoice_field"
+body = "forms.MultipleChoiceField($1, choices=[${2:CHOICES}], required=${4:False})"
+detail = "forms.MultipleChoiceField()"
+
+[[snippets]]
+prefix = "typedmuchoice_field"
+body = "forms.TypedMultipleChoiceField($1, choices=[${2:CHOICES}], coerce=${4:TYPE}, required=${5:False})"
+detail = "forms.TypedMultipleChoiceField()"
+
+[[snippets]]
+prefix = "nullbool_field"
+body = "forms.NullBooleanField($1, required=${2:False})"
+detail = "forms.NullBooleanField()"
+
+[[snippets]]
+prefix = "regex_field"
+body = "forms.RegexField($1, regex=${2:REGEX}, required=${4:False})"
+detail = "forms.RegexField()"
+
+[[snippets]]
+prefix = "slug_field"
+body = "forms.SlugField($1, allow_unicode=${2:False}, required=${4:False})"
+detail = "forms.SlugField()"
+
+[[snippets]]
+prefix = "sdatetime_field"
+body = "forms.SplitDateTimeField($1)"
+detail = "forms.SplitDateTimeField()"
+
+[[snippets]]
+prefix = "time_field"
+body = "forms.TimeField($1, required=${2:False})"
+detail = "forms.TimeField()"
+
+[[snippets]]
+prefix = "tchoice_field"
+body = "forms.TypedChoiceField($1, required=${2:False})"
+detail = "forms.TypedChoiceField()"
+
+[[snippets]]
+prefix = "tmuchoice_field"
+body = "forms.TypedMultipleChoiceField($1)"
+detail = "forms.TypedMultipleChoiceField()"
+
+[[snippets]]
+prefix = "url_field"
+body = "forms.URLField($1, required=${2:False})"
+detail = "forms.URLField()"
+
+[[snippets]]
+prefix = "uuid_field"
+body = "forms.UUIDField($1, required=${2:False})"
+detail = "forms.UUIDField()"

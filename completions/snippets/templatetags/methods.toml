@@ -1,0 +1,39 @@
+
+[[snippets]]
+prefix = "register_assignment_tag"
+body = """
+def get_$1(context):
+    request = context.get("request")
+    $1 = ${2:[]}
+    return ${3:$1}"
+"""
+
+[[snippets]]
+prefix = "register_filter"
+body = """
+@register.filter
+def $1(value):
+    return value$2
+"""
+
+[[snippets]]
+prefix = "register_inclusion_tag"
+body = """
+@register.inclusion_tag(${1:"$2.html"}, takes_context=True)
+def $1(context):
+    request = context.get("request")
+    $3
+    return {
+        "request": request,
+        $4
+    }
+"""
+
+[[snippets]]
+prefix = "register_simple_tag"
+body = """
+@register.simple_tag(takes_context=True)
+def $1(context):
+    request = context.get("request")
+    return ${2:"It Works!"}
+"""

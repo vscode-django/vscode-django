@@ -1,0 +1,17 @@
+
+[[snippets]]
+prefix = "from_forms_import"
+body = "from .forms import $1"
+detail = "from .forms import ModelForm"
+description = "Relative import of app form"
+
+[[snippets]]
+prefix = "import_forms"
+body = "from django import forms"
+detail = "from django import forms"
+description = "Imports the Django models module"
+
+[[snippets]]
+prefix = "import_postgres_fields"
+body = "from django.contrib.postgres.forms import ${1|SimpleArrayField,SplitArrayField,HStoreField,JSONField,IntegerRangeField,FloatRangeField,DateTimeRangeField,DateRangeField|}"
+description = "PostgreSQL specific forms fields"

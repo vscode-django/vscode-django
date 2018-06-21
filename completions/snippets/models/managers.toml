@@ -1,0 +1,21 @@
+
+[[snippets]]
+prefix = "manager"
+detail = "class Manager(models.Manager)"
+body = """
+class $1Manager(models.Manager):
+    def get_queryset(self):
+        return super().get_queryset().${2|filter,exclude,order_by,distinct,reverse|}($3)
+"""
+description = "Add extra Manager methods"
+
+[[snippets]]
+prefix = "queryset_from_manager"
+detail = "class Manager(models.Manager)"
+body = """
+class $1Manager(models.Manager):
+    def get_queryset(self):
+        return $1QuerySet(self.model, using=self._db)
+}
+"""
+description = "Modify the initial QuerySet the Manager returns."

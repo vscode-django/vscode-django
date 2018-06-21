@@ -1,0 +1,42 @@
+
+[[snippets]]
+prefix = "Model"
+detail = "class Model(models.Model)"
+body = """
+class ${1:Model}(models.Model):
+
+    $0
+
+    class Meta:
+        verbose_name = _("${1:/downcase}")
+        verbose_name_plural = _("${1:/downcase}${2:s}")
+
+    def __str__(self):
+        return self.${3:name}
+
+    def get_absolute_url(self):
+        return reverse("${1:/downcase}${4:_detail}", kwargs={"${5|pk,slug|}": self.$5})
+
+"""
+
+[[snippets]]
+prefix = "modelmixin"
+detail = "class Mixin(models.Model)"
+body = """
+class $1Mixin(models.Model):
+
+    $0
+
+    class Meta:
+        abstract = True
+"""
+description = ""
+
+[[snippets]]
+prefix = "queryset"
+detail = "class QuerySet(models.QuerySet)"
+body = """
+class $1QuerySet(models.QuerySet):
+    pass
+"""
+description = ""
