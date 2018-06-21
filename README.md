@@ -23,6 +23,11 @@ Emmet enthusiasts should have this to their configuration as well:
 
 ## Features
 
+### Go to definition in templates
+
+Ctrl-click or press F12 on the template path in a `include` or `extends` tag
+to jump to this template
+
 ### Improved syntax
 
 - Adds the filetype `django-html` 
