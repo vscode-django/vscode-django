@@ -2,12 +2,12 @@
     "name": "vscode-django",
     "displayName": "Django",
     "description": "Beautiful syntax and snippets for perfectionists with deadlines",
-    "version": "0.9.0",
+    "version": "0.9.1",
     "publisher": "batisteo",
     "preview": true,
     "icon": "images/vscode-django-icon.png",
     "galleryBanner": {
-        "color": "#3ea67e",
+        "color": "#0c4b33",
         "theme": "dark"
     },
     "engines": {
