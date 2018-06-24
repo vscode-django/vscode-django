@@ -1,26 +1,58 @@
 'use strict';
 
-import * as vscode from 'vscode';
+import {
+    CompletionItemProvider,
+    CancellationToken,
+    CompletionContext,
+    CompletionItem,
+    CompletionItemKind,
+    DocumentFilter,
+    MarkdownString,
+    Position,
+    SnippetString,
+    TextDocument,
+} from 'vscode';
+
+import { readSnippets } from '../utils';
+
+interface DjangoSnippet {
+    prefix: string
+    body: string
+    detail: string
+    description: string
+}
 
 
-export class DjangoModelCompletionItemProvider implements vscode.CompletionItemProvider {
+class DjangoCompletionItemProvider implements CompletionItemProvider {
 
-    public selector = { pattern: '**/models{**/,}*.py', scheme: 'file', language: 'python'};
+    snippets: DjangoSnippet[] = [];
 
-    public async createSnippetItem(): Promise<vscode.CompletionItem> {
-
-        let item = new vscode.CompletionItem('Good part of the day', vscode.CompletionItemKind.Snippet);
-        item.insertText = new vscode.SnippetString("Good ${1|morning,afternoon,evening|}.\n\tIt is ${1}, right?");
-        item.documentation = new vscode.MarkdownString("Inserts a snippet that lets you select the _appropriate_ part of the day for your greeting.");
-
-        return item;
+    private buildSnippet(snippet: DjangoSnippet): CompletionItem {
+        let item = new CompletionItem(snippet.prefix, CompletionItemKind.Snippet);
+        item.insertText = new SnippetString(snippet.body);
+        item.detail = snippet.detail;
+        item.documentation = new MarkdownString(snippet.description);
+        return item
     }
 
-    public async provideCompletionItems(document: vscode.TextDocument, position: vscode.Position, token: vscode.CancellationToken, context: vscode.CompletionContext):
-        Promise<vscode.CompletionItem[]> {
-        return [
-            new vscode.CompletionItem('Hello World!'),
-            await this.createSnippetItem()
-        ];
+    public async provideCompletionItems(document: TextDocument, position: Position, token: CancellationToken, context: CompletionContext): Promise<CompletionItem[]> {
+        return this.snippets.map(this.buildSnippet);
     }
+}
+
+export class DjangoModelCompletionItemProvider extends DjangoCompletionItemProvider {
+
+    public selector: DocumentFilter = { pattern: '**/models{**/,}*.py', scheme: 'file', language: 'python'};
+
+    constructor () {
+        super();
+        this.snippets = [
+            ...readSnippets('models/fields.toml'),
+            ...readSnippets('models/fields-postgres.toml'),
+            ...readSnippets('models/classes.toml'),
+            ...readSnippets('models/methods.toml'),
+            ...readSnippets('models/imports.toml'),
+        ]
+    }
+
 }

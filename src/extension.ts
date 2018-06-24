@@ -6,6 +6,7 @@ import { DjangoModelCompletionItemProvider } from './completions/completionItemP
 
 
 export function activate(context: ExtensionContext): void {
+    console.log("vscode-django activated");
     const definitions = new TemplatePathProvider();
     const djangoModelSnippets = new DjangoModelCompletionItemProvider();
 

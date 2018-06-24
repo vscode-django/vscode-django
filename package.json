@@ -4,6 +4,7 @@
     "description": "Beautiful syntax and snippets for perfectionists with deadlines",
     "version": "0.9.1",
     "publisher": "batisteo",
+    "license": "MIT",
     "preview": true,
     "icon": "images/vscode-django-icon.png",
     "galleryBanner": {
@@ -47,11 +48,12 @@
         "test": "npm run compile && node ./node_modules/vscode/bin/test"
     },
     "devDependencies": {
-        "typescript": "^2.6.1",
-        "vscode": "1.1.6",
-        "tslint": "^5.8.0",
+        "@types/mocha": "^2.2.42",
         "@types/node": "^7.0.43",
-        "@types/mocha": "^2.2.42"
+        "tslint": "^5.8.0",
+        "toml": "^2.3.3",
+        "typescript": "^2.6.1",
+        "vscode": "1.1.6"
     },
     "contributes": {
         "languages": [
@@ -151,10 +153,6 @@
             },
             {
                 "language": "python",
-                "path": "./snippets/models/classes.json"
-            },
-            {
-                "language": "python",
                 "path": "./snippets/views/classes.json"
             },
             {
@@ -164,18 +162,6 @@
             {
                 "language": "python",
                 "path": "./snippets/views/imports.json"
-            },
-            {
-                "language": "python",
-                "path": "./snippets/models/fields.json"
-            },
-            {
-                "language": "python",
-                "path": "./snippets/models/methods.json"
-            },
-            {
-                "language": "python",
-                "path": "./snippets/models/imports.json"
             }
         ]
     }

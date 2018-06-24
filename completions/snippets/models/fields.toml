@@ -1,0 +1,193 @@
+# https://docs.djangoproject.com/en/stable/ref/models/fields/
+
+[[snippets]]
+prefix = 'auto_field'
+body = 'models.AutoField(_("$1"))'
+detail = 'models.AutoField()'
+description = 'An IntegerField that automatically increments according to available IDs.'
+
+[[snippets]]
+prefix = 'big_auto_field'
+body = 'models.BigAutoField(_("$1"))'
+detail = 'models.BigAutoField()'
+description = 'A 64-bit integer, much like an AutoField.'
+
+[[snippets]]
+prefix = 'big_integer_field'
+body = 'models.BigIntegerField(_("$1"))'
+detail = 'models.BigIntegerField()'
+description = 'A 64-bit integer, much like an IntegerField.'
+
+[[snippets]]
+prefix = 'binary_field'
+body = 'models.BinaryField(_("$1"))'
+detail = 'models.BinaryField()'
+description = 'A field to store raw binary data.'
+
+[[snippets]]
+prefix = 'boolean_field'
+body = 'models.BooleanField(_("$1"))'
+detail = 'models.BooleanField()'
+description = 'A true/false field.'
+
+[[snippets]]
+prefix = 'char_field'
+body = 'models.CharField(_("$1"), max_length=${3:50})'
+detail = 'models.CharField()'
+description = 'A string field, for small- to large-sized strings.'
+
+[[snippets]]
+prefix = 'date_field'
+body = 'models.DateField(_("$1"), auto_now=${3:False}, auto_now_add=${4:False})'
+detail = 'models.DateField()'
+description = 'A date, represented in Python by a datetime.date instance.'
+
+[[snippets]]
+prefix = 'date_time_field'
+body = 'models.DateTimeField(_("$1"), auto_now=${3:False}, auto_now_add=${4:False})'
+detail = 'models.DateTimeField()'
+description = 'A date, represented in Python by a datetime.datetime instance.'
+
+[[snippets]]
+prefix = 'decimal_field'
+body = 'models.DecimalField(_("$1"), max_digits=${3:5}, decimal_places=${4:2})'
+detail = 'models.DecimalField()'
+description = 'A fixed-precision decimal number, represented in Python by a Decimal instance.'
+
+[[snippets]]
+prefix = 'duration_field'
+body = 'models.DurationField(_("$1"))'
+detail = 'models.DurationField()'
+description = 'A field for storing periods of time - modeled in Python by timedelta.'
+
+[[snippets]]
+prefix = 'email_field'
+body = 'models.EmailField(_("$1"), max_length=${3:254})'
+detail = 'models.EmailField()'
+description = 'A CharField that checks that the value is a valid email address.'
+
+[[snippets]]
+prefix = 'file_field'
+body = 'models.FileField(_("$1"), upload_to=${3:None}, max_length=${4:100})'
+detail = 'models.FileField()'
+description = 'A file-upload field.'
+
+[[snippets]]
+prefix = 'file_path_field'
+body = 'models.FilePathField(_("$1"), path=${3:None}, match=${4:None}, recursive=${5:recursive}, max_length=${6:100})'
+detail = 'models.FilePathField()'
+description = 'A CharField whose choices are limited to the filenames in a certain directory on the filesystem.'
+
+[[snippets]]
+prefix = 'float_field'
+body = 'models.FloatField(_("$1"))'
+detail = 'models.FloatField()'
+description = 'A floating-point number represented in Python by a float instance.'
+
+[[snippets]]
+prefix = 'foreign_key'
+body = 'models.ForeignKey("${1:app}.${2:Model}", verbose_name=_(""), on_delete=models.${3|CASCADE,PROTECT,SET_NULL,SET_DEFAULT,SET(),DO_NOTHING|})'
+detail = 'models.ForeignKey()'
+description = 'ForeignKey (fk).\n\nA many-to-one relationship.\n\non_delete will become a required argument in Django 2.0. In older versions it defaults to CASCADE.\n\n'
+
+[[snippets]]
+prefix = 'ip_address_field'
+body = 'models.IPAddressField(_("$1"))'
+detail = 'models.IPAddressField()'
+description = 'This field has been deprecated since version 1.7 in favor of GenericIPAddressField.'
+
+[[snippets]]
+prefix = 'image_field'
+body = 'models.ImageField(_("$1"), upload_to=${3:None}, height_field=${4:None}, width_field=${5:None}, max_length=${5:100})'
+detail = 'models.ImageField()'
+description = 'Inherits all attributes and methods from FileField, but also validates that the uploaded object is a valid image.'
+
+[[snippets]]
+prefix = 'integer_field'
+body = 'models.IntegerField(_("$1"))'
+detail = 'models.IntegerField()'
+description = 'An integer. Values from -2147483648 to 2147483647 are safe in all databases supported by Django.'
+
+[[snippets]]
+prefix = 'generic_ip_address_field'
+body = 'models.GenericIPAddressField(_("$1"), protocol=${3:"both"}, unpack_ipv4=${4:False})'
+detail = 'models.GenericIPAddressField()'
+description = 'An IPv4 or IPv6 address, in string format.'
+
+[[snippets]]
+prefix = 'many_to_many_field'
+body = 'models.ManyToManyField("${1:app}.${2:Model}", verbose_name=_(""))'
+detail = 'models.ManyToManyField()'
+description = 'A many-to-many relationship.'
+
+[[snippets]]
+prefix = 'null_boolean_field'
+body = 'models.NullBooleanField(_("$1"))'
+detail = 'models.NullBooleanField()'
+description = 'Like a BooleanField, but allows NULL as one of the options.'
+
+[[snippets]]
+prefix = 'one_to_one_field'
+body = 'models.OneToOneField("${1:app}.${2:Model}", verbose_name=_(""), on_delete=models.${3|CASCADE,PROTECT,SET_NULL,SET_DEFAULT,SET(),DO_NOTHING|})'
+detail = 'models.OneToOneField()'
+description = 'A one-to-one relationship.'
+
+[[snippets]]
+prefix = 'phone_number_field'
+body = 'models.PhoneNumberField(_("$1"))'
+detail = 'models.PhoneNumberField()'
+description = '*external package: django-phonenumber-field*'
+
+[[snippets]]
+prefix = 'positive_integer_field'
+body = 'models.PositiveIntegerField(_("$1"))'
+detail = 'models.PositiveIntegerField()'
+description = 'Like an IntegerField, but must be either positive or zero (0).'
+
+[[snippets]]
+prefix = 'positive_small_integer_field'
+body = 'models.PositiveSmallIntegerField(_("$1"))'
+detail = 'models.PositiveSmallIntegerField()'
+description = 'Like a PositiveIntegerField, but only allows values under a certain (database-dependent) point.'
+
+[[snippets]]
+prefix = 'slug_field'
+body = 'models.SlugField(_("$1"))'
+detail = 'models.SlugField()'
+description = 'A slug is a short label for something, containing only letters, numbers, underscores or hyphens. They’re generally used in URLs.'
+
+[[snippets]]
+prefix = 'small_integer_field'
+body = 'models.SmallIntegerField(_("$1"))'
+detail = 'models.SmallIntegerField()'
+description = 'Like an IntegerField, but only allows values under a certain (database-dependent) point.'
+
+[[snippets]]
+prefix = 'text_field'
+body = 'models.TextField(_("$1"))'
+detail = 'models.TextField()'
+description = 'A large text field.'
+
+[[snippets]]
+prefix = 'time_field'
+body = 'models.TimeField(_("$1"), auto_now=${4:False}, auto_now_add=${5:False})'
+detail = 'models.TimeField()'
+description = 'A time, represented in Python by a datetime.time instance.'
+
+[[snippets]]
+prefix = 'url_field'
+body = 'models.URLField(_("$1"), max_length=${3:200})'
+detail = 'models.URLField()'
+description = 'A CharField for a URL.'
+
+[[snippets]]
+prefix = 'us_state_field'
+body = 'models.USStateField(_("$1"))'
+detail = 'models.USStateField()'
+description = '*external package: django-localflavor*'
+
+[[snippets]]
+prefix = 'uuid_field'
+body = 'models.UUIDField(_("$1"))'
+detail = 'models.UUIDField()'
+description = 'A field for storing universally unique identifiers. Uses Python’s UUID class.'
