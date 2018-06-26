@@ -47,12 +47,27 @@ export class DjangoModelCompletionItemProvider extends DjangoCompletionItemProvi
     constructor () {
         super();
         this.snippets = [
+            ...readSnippets('models/classes.toml'),
+            ...readSnippets('models/imports.toml'),
             ...readSnippets('models/fields.toml'),
             ...readSnippets('models/fields-postgres.toml'),
-            ...readSnippets('models/classes.toml'),
             ...readSnippets('models/methods.toml'),
-            ...readSnippets('models/imports.toml'),
         ]
     }
+}
 
+export class DjangoFormCompletionItemProvider extends DjangoCompletionItemProvider {
+
+    public selector: DocumentFilter = { pattern: '**/forms{**/,}*.py', scheme: 'file', language: 'python'};
+
+    constructor () {
+        super();
+        this.snippets = [
+            ...readSnippets('forms/classes.toml'),
+            ...readSnippets('forms/imports.toml'),
+            ...readSnippets('forms/fields.toml'),
+            ...readSnippets('forms/fields-postgres.toml'),
+            ...readSnippets('forms/methods.toml'),
+        ]
+    }
 }

@@ -1,0 +1,22 @@
+
+[[snippets]]
+prefix = "clean_data"
+body = """
+clean_${1:field}(self):
+    ${2:data} = self.cleaned_data["${1:field}"]
+    $0
+    return ${2:data}
+"""
+detail = ""
+description = ""
+
+[[snippets]]
+prefix = "clean_data_get"
+body = """
+clean_${1:field}(self):
+    ${2:data} = self.cleaned_data.get("${1:field}")
+    $0
+    return ${2:data}
+"""
+detail = ""
+description = ""

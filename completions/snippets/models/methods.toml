@@ -1,0 +1,21 @@
+[[snippets]]
+prefix = "__str__"
+body = """
+__str__(self):
+    return self.${3:name}
+"""
+
+[[snippets]]
+prefix = "get_absolute_url"
+body = """
+get_absolute_url(self):
+    return reverse("${1:${2:model}_detail}", kwargs={"${3|pk,slug|}": self.$3})
+"""
+
+[[snippets]]
+prefix = "receiver"
+body = """
+@receiver($2, sender=${3:Model})
+def $1_${2|post_save,pre_init,post_init,pre_save,pre_delete,post_delete,m2m_changed,class_prepared,pre_migrate,post_migrate|}_receiver(sender, **kwargs):
+    $0
+"""

@@ -113,22 +113,6 @@
             },
             {
                 "language": "python",
-                "path": "./snippets/forms/fields.json"
-            },
-            {
-                "language": "python",
-                "path": "./snippets/forms/classes.json"
-            },
-            {
-                "language": "python",
-                "path": "./snippets/forms/methods.json"
-            },
-            {
-                "language": "python",
-                "path": "./snippets/forms/imports.json"
-            },
-            {
-                "language": "python",
                 "path": "./snippets/urls/methods.json"
             },
             {
