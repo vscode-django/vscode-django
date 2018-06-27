@@ -40,10 +40,11 @@ prefix = "daterange_field"
 body = "DateRangeField()"
 description = "postgres.forms.DateRangeField()"
 
-# [[snippets]]
-# prefix = "range_widget"
-# body = "RangeWidget(${1:base_widget=})"
-# detail = "postgres.forms.RangeWidget()"
-# description = """```python
-# class RangeWidget(base_widget, attrs=None)
-# ```"""
+[[snippets]]
+prefix = "range_widget"
+body = "RangeWidget(${1:base_widget=})"
+detail = "postgres.forms.RangeWidget()"
+description = """```python
+class RangeWidget(base_widget, attrs=None)
+```
+"""

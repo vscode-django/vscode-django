@@ -1,42 +1,63 @@
 'use strict';
 
-import {
-    CompletionItemProvider,
-    CancellationToken,
-    CompletionContext,
-    CompletionItem,
-    CompletionItemKind,
-    DocumentFilter,
-    MarkdownString,
-    Position,
-    SnippetString,
-    TextDocument,
-} from 'vscode';
+import { DocumentFilter } from 'vscode'
 
-import { readSnippets } from '../utils';
+import { readSnippets } from '../utils'
+import { DjangoCompletionItemProvider } from './base'
 
-interface DjangoSnippet {
-    prefix: string
-    body: string
-    detail: string
-    description: string
+
+export class DjangoPythonCompletionItemProvider extends DjangoCompletionItemProvider {
+
+    public selector: DocumentFilter = { scheme: 'file', language: 'python'};
+
+    constructor () {
+        super()
+        this.snippets = [
+            ...readSnippets('python/imports.toml'),
+            ...readSnippets('python/utils.toml'),
+        ]
+    }
 }
 
+export class DjangoAdminCompletionItemProvider extends DjangoCompletionItemProvider {
 
-class DjangoCompletionItemProvider implements CompletionItemProvider {
+    public selector: DocumentFilter = { pattern: '**/admin{**/,}*.py', scheme: 'file', language: 'python'};
 
-    snippets: DjangoSnippet[] = [];
-
-    private buildSnippet(snippet: DjangoSnippet): CompletionItem {
-        let item = new CompletionItem(snippet.prefix, CompletionItemKind.Snippet);
-        item.insertText = new SnippetString(snippet.body);
-        item.detail = snippet.detail;
-        item.documentation = new MarkdownString(snippet.description);
-        return item
+    constructor () {
+        super()
+        this.snippets = [
+            ...readSnippets('admin/classes.toml'),
+            ...readSnippets('admin/imports.toml'),
+            ...readSnippets('admin/options.toml'),
+        ]
     }
+}
 
-    public async provideCompletionItems(document: TextDocument, position: Position, token: CancellationToken, context: CompletionContext): Promise<CompletionItem[]> {
-        return this.snippets.map(this.buildSnippet);
+export class DjangoFormCompletionItemProvider extends DjangoCompletionItemProvider {
+
+    public selector: DocumentFilter = { pattern: '**/forms{**/,}*.py', scheme: 'file', language: 'python'};
+
+    constructor () {
+        super()
+        this.snippets = [
+            ...readSnippets('forms/classes.toml'),
+            ...readSnippets('forms/imports.toml'),
+            ...readSnippets('forms/fields.toml'),
+            ...readSnippets('forms/fields-postgres.toml'),
+            ...readSnippets('forms/methods.toml'),
+        ]
+    }
+}
+
+export class DjangoManagerCompletionItemProvider extends DjangoCompletionItemProvider {
+
+    public selector: DocumentFilter = { pattern: '**/{models,managers,querysets}{**/,}*.py', scheme: 'file', language: 'python'};
+
+    constructor () {
+        super()
+        this.snippets = [
+            ...readSnippets('models/managers.toml'),
+        ]
     }
 }
 
@@ -45,7 +66,7 @@ export class DjangoModelCompletionItemProvider extends DjangoCompletionItemProvi
     public selector: DocumentFilter = { pattern: '**/models{**/,}*.py', scheme: 'file', language: 'python'};
 
     constructor () {
-        super();
+        super()
         this.snippets = [
             ...readSnippets('models/classes.toml'),
             ...readSnippets('models/imports.toml'),
@@ -56,18 +77,16 @@ export class DjangoModelCompletionItemProvider extends DjangoCompletionItemProvi
     }
 }
 
-export class DjangoFormCompletionItemProvider extends DjangoCompletionItemProvider {
+export class DjangoViewCompletionItemProvider extends DjangoCompletionItemProvider {
 
-    public selector: DocumentFilter = { pattern: '**/forms{**/,}*.py', scheme: 'file', language: 'python'};
+    public selector: DocumentFilter = { pattern: '**/views{**/,}*.py', scheme: 'file', language: 'python'};
 
     constructor () {
-        super();
+        super()
         this.snippets = [
-            ...readSnippets('forms/classes.toml'),
-            ...readSnippets('forms/imports.toml'),
-            ...readSnippets('forms/fields.toml'),
-            ...readSnippets('forms/fields-postgres.toml'),
-            ...readSnippets('forms/methods.toml'),
+            ...readSnippets('models/classes.toml'),
+            ...readSnippets('models/imports.toml'),
+            ...readSnippets('models/methods.toml'),
         ]
     }
 }

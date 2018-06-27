@@ -12,6 +12,6 @@ detail = "from django import forms"
 description = "Imports the Django models module"
 
 [[snippets]]
-prefix = "importpostgresff"
+prefix = "import_postgres_fields"
 body = "from django.contrib.postgres.forms import ${1|SimpleArrayField,SplitArrayField,HStoreField,JSONField,IntegerRangeField,FloatRangeField,DateTimeRangeField,DateRangeField|}"
 description = "PostgreSQL specific forms fields"

@@ -1,0 +1,18 @@
+
+[[snippets]]
+prefix = "import_admin"
+body = "from django.contrib import admin"
+detail = "from * import admin"
+description = """```python
+from django.contrib import admin
+```
+"""
+
+[[snippets]]
+prefix = "import_adminsite"
+body = "from django.contrib.admin import AdminSite"
+detail = "from * import AdminSite"
+description = """```python
+from django.contrib import AdminSite
+```
+"""

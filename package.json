@@ -122,30 +122,6 @@
             {
                 "language": "python",
                 "path": "./snippets/urls/imports.json"
-            },
-            {
-                "language": "python",
-                "path": "./snippets/admin/classes.json"
-            },
-            {
-                "language": "python",
-                "path": "./snippets/admin/options.json"
-            },
-            {
-                "language": "python",
-                "path": "./snippets/admin/imports.json"
-            },
-            {
-                "language": "python",
-                "path": "./snippets/views/classes.json"
-            },
-            {
-                "language": "python",
-                "path": "./snippets/views/methods.json"
-            },
-            {
-                "language": "python",
-                "path": "./snippets/views/imports.json"
             }
         ]
     }

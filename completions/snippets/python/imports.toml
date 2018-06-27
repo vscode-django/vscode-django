@@ -1,0 +1,25 @@
+
+[[snippets]]
+prefix = "from_conf_import_settings"
+detail = "from django.conf import settings"
+body = "from django.conf import settings"
+
+[[snippets]]
+prefix = "from_trans_import_gettext"
+detail = "import gettext"
+body = "from django.utils.translation import ${1|ugettext_lazy,ugettext,gettext_lazy,gettext|} as _"
+
+[[snippets]]
+prefix = "from_trans_import_ugettext_lazy"
+detail = "import ugettext_lazy as _"
+body = "from django.utils.translation import ugettext_lazy as _"
+
+[[snippets]]
+prefix = "from_trans_import_ngettext"
+detail = "import ngettext (plural)"
+body = "from django.utils.translation import ${1|ungettext,ngettext,npgettext|}"
+
+[[snippets]]
+prefix = "from_trans_import_pgettext"
+detail = "import pgettext (context)"
+body = "from django.utils.translation import ${1|pgettext_lazy,pgettext,npgettext|}"

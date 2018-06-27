@@ -1,0 +1,53 @@
+
+[[snippets]]
+prefix = "class_createview"
+detail = "class ModelCreateView(CreateView)"
+body = """
+class ${1:Model}CreateView(CreateView):
+    model = $1
+    template_name = "$2.html"$0
+"""
+
+[[snippets]]
+prefix = "class_deleteview"
+detail = "class ModelDeleteView(DeleteView)"
+body = """
+class ${1:Model}DeleteView(DeleteView):
+    model = $1
+    template_name = "$2.html"$0
+"""
+
+[[snippets]]
+prefix = "class_detailview"
+detail = "class ModelDetailView(DetailView)"
+body = """
+class ${1:Model}DetailView(DetailView):
+    model = $1
+    template_name = "$2.html"$0
+"""
+
+[[snippets]]
+prefix = "class_listview"
+detail = "class ModelListView(ListView)"
+body = """
+class ${1:Model}ListView(ListView):
+    model = $1
+    template_name = "$2.html"$0
+"""
+
+[[snippets]]
+prefix = "class_templateview"
+detail = "class ModelView(TemplateView)"
+body = """
+class ${1:Model}View(TemplateView):
+    template_name = "$2.html"$0
+"""
+
+[[snippets]]
+prefix = "class_updateview"
+detail = "class ModelUpdateView(UpdateView)"
+body = """
+class ${1:Model}UpdateView(UpdateView):
+    model = $1
+    template_name = "$2.html"$0
+"""

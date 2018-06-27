@@ -1,0 +1,47 @@
+
+[[snippets]]
+prefix = "admin_param"
+body = "${1|list_display,list_display_links,list_filter,list_select_related,list_per_page,list_max_show_all,list_editable,search_fields,date_hierarchy,save_as,save_as_continue,save_on_top,paginator,preserve_filters,inlines,add_form_template,change_form_template,change_list_template,delete_confirmation_template,delete_selected_confirmation_template,object_history_template,popup_response_template,actions,action_form,actions_on_top,actions_on_bottom,actions_selection_counter,checks_class|} = "
+detail = "ModelAdmin parameters"
+description = """```python
+list_display = ("",)
+search_fields = ("",)
+date_hierarchy = ("",)
+…
+```
+"""
+
+[[snippets]]
+prefix = "inline_param"
+body = "${1|extra,min_num,max_num,can_delete,show_change_link,verbose_name,verbose_name_plural,fk_name,template,formset|} = "
+detail = "Inline parameters"
+description = """```python
+extra = 1
+min_num = 3
+max_num = 20
+…
+```
+"""
+
+[[snippets]]
+prefix = "fieldsets"
+body = """
+fieldsets = (
+    (None, {
+        "fields": (
+            $1
+        ),
+    }),
+)
+"""
+detail = "fieldsets = ((None, {}))"
+description = """```python
+fieldsets = (
+    (None, {
+        "fields": (
+            $1
+        ),
+    }),
+)
+```
+"""
