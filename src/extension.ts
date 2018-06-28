@@ -9,6 +9,7 @@ import {
     DjangoModelCompletionItemProvider,
     DjangoPythonCompletionItemProvider,
     DjangoViewCompletionItemProvider,
+    DjangoUrlCompletionItemProvider,
 } from './completions/completionItemProvider'
 
 
@@ -33,4 +34,7 @@ export function activate(context: ExtensionContext): void {
 
     const djangoViewSnippets = new DjangoViewCompletionItemProvider()
     context.subscriptions.push(languages.registerCompletionItemProvider(djangoViewSnippets.selector, djangoViewSnippets))
+
+    const djangoUrlSnippets = new DjangoUrlCompletionItemProvider()
+    context.subscriptions.push(languages.registerCompletionItemProvider(djangoUrlSnippets.selector, djangoUrlSnippets))
 }

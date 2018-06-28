@@ -8,7 +8,7 @@ import { DjangoCompletionItemProvider } from './base'
 
 export class DjangoPythonCompletionItemProvider extends DjangoCompletionItemProvider {
 
-    public selector: DocumentFilter = { scheme: 'file', language: 'python'};
+    public selector: DocumentFilter = { scheme: 'file', language: 'python'}
 
     constructor () {
         super()
@@ -21,7 +21,7 @@ export class DjangoPythonCompletionItemProvider extends DjangoCompletionItemProv
 
 export class DjangoAdminCompletionItemProvider extends DjangoCompletionItemProvider {
 
-    public selector: DocumentFilter = { pattern: '**/admin{**/,}*.py', scheme: 'file', language: 'python'};
+    public selector: DocumentFilter = { pattern: '**/admin{**/,}*.py', scheme: 'file', language: 'python'}
 
     constructor () {
         super()
@@ -35,7 +35,7 @@ export class DjangoAdminCompletionItemProvider extends DjangoCompletionItemProvi
 
 export class DjangoFormCompletionItemProvider extends DjangoCompletionItemProvider {
 
-    public selector: DocumentFilter = { pattern: '**/forms{**/,}*.py', scheme: 'file', language: 'python'};
+    public selector: DocumentFilter = { pattern: '**/forms{**/,}*.py', scheme: 'file', language: 'python'}
 
     constructor () {
         super()
@@ -51,7 +51,7 @@ export class DjangoFormCompletionItemProvider extends DjangoCompletionItemProvid
 
 export class DjangoManagerCompletionItemProvider extends DjangoCompletionItemProvider {
 
-    public selector: DocumentFilter = { pattern: '**/{models,managers,querysets}{**/,}*.py', scheme: 'file', language: 'python'};
+    public selector: DocumentFilter = { pattern: '**/{models,managers,querysets}{**/,}*.py', scheme: 'file', language: 'python'}
 
     constructor () {
         super()
@@ -63,7 +63,7 @@ export class DjangoManagerCompletionItemProvider extends DjangoCompletionItemPro
 
 export class DjangoModelCompletionItemProvider extends DjangoCompletionItemProvider {
 
-    public selector: DocumentFilter = { pattern: '**/models{**/,}*.py', scheme: 'file', language: 'python'};
+    public selector: DocumentFilter = { pattern: '**/models{**/,}*.py', scheme: 'file', language: 'python'}
 
     constructor () {
         super()
@@ -79,7 +79,7 @@ export class DjangoModelCompletionItemProvider extends DjangoCompletionItemProvi
 
 export class DjangoViewCompletionItemProvider extends DjangoCompletionItemProvider {
 
-    public selector: DocumentFilter = { pattern: '**/views{**/,}*.py', scheme: 'file', language: 'python'};
+    public selector: DocumentFilter = { pattern: '**/views{**/,}*.py', scheme: 'file', language: 'python'}
 
     constructor () {
         super()
@@ -87,6 +87,20 @@ export class DjangoViewCompletionItemProvider extends DjangoCompletionItemProvid
             ...readSnippets('models/classes.toml'),
             ...readSnippets('models/imports.toml'),
             ...readSnippets('models/methods.toml'),
+        ]
+    }
+}
+
+export class DjangoUrlCompletionItemProvider extends DjangoCompletionItemProvider {
+
+    public selector: DocumentFilter = { pattern: '**/urls{**/,}*.py', scheme: 'file', language: 'python'}
+
+    constructor () {
+        super()
+        this.snippets = [
+            ...readSnippets('urls/imports.toml'),
+            ...readSnippets('urls/methods.toml'),
+            ...readSnippets('urls/regexes.toml'),
         ]
     }
 }

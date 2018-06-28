@@ -1,0 +1,27 @@
+
+[[snippets]]
+prefix = "regex_pk"
+body = '''r"^$1(?P<${2:pk}>\d+)/$"'''
+detail = '''r"^(?P<pk>\d+)/$"'''
+
+[[snippets]]
+prefix = "regex_slug"
+body = '''r"^$1(?P<${2:slug}>[-\w]+)/$"'''
+detail = '''r"^(?P<slug>[-\w]+)/$"'''
+
+[[snippets]]
+prefix = "regex_username"
+body = '''r"^$1(?P<username>[\w.@+-]+)/$"'''
+detail = '''r"^(?P<username>[\w.@+-]+)/$"'''
+
+[[snippets]]
+prefix = "path_int"
+body = "<int:$1>"
+
+[[snippets]]
+prefix = "path_slug"
+body = "<slug:$1>"
+
+[[snippets]]
+prefix = "path_username"
+body = "<username>"

@@ -110,18 +110,6 @@
             {
                 "language": "python",
                 "path": "./snippets/templates/methods.json"
-            },
-            {
-                "language": "python",
-                "path": "./snippets/urls/methods.json"
-            },
-            {
-                "language": "python",
-                "path": "./snippets/urls/regexes.json"
-            },
-            {
-                "language": "python",
-                "path": "./snippets/urls/imports.json"
             }
         ]
     }
