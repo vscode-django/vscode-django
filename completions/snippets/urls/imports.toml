@@ -6,7 +6,7 @@ detail = "import reverse, resolve…"
 
 [[snippets]]
 prefix = "from_urls_import_url"
-body = "from django.conf.urls import ${1|url,include,static,handler400,handler403,handler404,handler500|}"
+body = "from django.conf.urls import ${1|url,include,static|}"
 detail = "import url, include…"
 
 [[snippets]]

@@ -1,15 +1,15 @@
 
 [[snippets]]
-prefix = "def_dispatch"
-detail = "def dispatch(self, request, *args, **kwargs)"
+prefix = "dispatch"
+detail = "dispatch(self, request, *args, **kwargs)"
 body = """
 def dispatch(self, request, *args, **kwargs):
     return super().dispatch(request, *args, **kwargs)
 """
 
 [[snippets]]
-prefix = "def_get_context_data"
-detail = "def get_context_data(self, **kwargs)"
+prefix = "get_context_data"
+detail = "get_context_data(self, **kwargs)"
 body = """
 def get_context_data(self, **kwargs):
     context = super().get_context_data(**kwargs)
@@ -18,8 +18,8 @@ def get_context_data(self, **kwargs):
 """
 
 [[snippets]]
-prefix = "def_get_queryset"
-detail = "def get_queryset(self)"
+prefix = "get_queryset"
+detail = "get_queryset(self)"
 body = """
 def get_queryset(self):
     ${1:return} super().get_queryset()$0

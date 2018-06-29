@@ -5,26 +5,36 @@
     },
     // symbols used as brackets
     "brackets": [
+        ["<!--", "-->"],
+        ["<", ">"],
         ["{", "}"],
+        ["%", "%"],
         ["(", ")"]
     ],
     // symbols that are auto closed when typing
     "autoClosingPairs": [
-        ["{", "}"],
-        ["[", "]"],
-        ["(", ")"],
-        ["\"", "\""],
-        ["'", "'"]
+        { "open": "{", "close": "}"},
+        { "open": "%", "close": "%"},
+        { "open": "[", "close": "]"},
+        { "open": "(", "close": ")" },
+        { "open": "'", "close": "'" },
+        { "open": "\"", "close": "\"" },
+        { "open": "<!--", "close": "-->", "notIn": [ "comment", "string" ]}
     ],
     // symbols that that can be used to surround a selection
     "surroundingPairs": [
-        ["{", "}"],
-        ["[", "]"],
-        ["(", ")"],
-        ["\"", "\""],
-        ["'", "'"]
+        { "open": "'", "close": "'" },
+        { "open": "\"", "close": "\"" },
+        { "open": "{", "close": "}"},
+        { "open": "%", "close": "%"},
+        { "open": "[", "close": "]"},
+        { "open": "(", "close": ")" },
+        { "open": "<", "close": ">" }
     ],
     "folding": {
-        "offSide": true,
+        "markers": {
+            "start": "^\\s*<!--\\s*#region\\b.*-->",
+            "end": "^\\s*<!--\\s*#endregion\\b.*-->"
+        }
     }
 }

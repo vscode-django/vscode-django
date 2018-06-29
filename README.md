@@ -21,6 +21,17 @@ Emmet enthusiasts should have this to their configuration as well:
 "emmet.includeLanguages": {"django-html": "html"},
 ```
 
+Other nice to have:
+
+```json
+// Controls if suggestions should automatically show up while typing
+"editor.quickSuggestions": {
+  "other": true,
+  "comments": true,
+  "strings": true,
+},
+```
+
 ## Features
 
 ### Go to definition in templates
