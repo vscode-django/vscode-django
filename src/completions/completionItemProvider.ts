@@ -84,9 +84,9 @@ export class DjangoViewCompletionItemProvider extends DjangoCompletionItemProvid
     constructor () {
         super()
         this.snippets = [
-            ...readSnippets('models/classes.toml'),
-            ...readSnippets('models/imports.toml'),
-            ...readSnippets('models/methods.toml'),
+            ...readSnippets('views/classes.toml'),
+            ...readSnippets('views/imports.toml'),
+            ...readSnippets('views/methods.toml'),
         ]
     }
 }
