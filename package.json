@@ -2,7 +2,7 @@
     "name": "vscode-django",
     "displayName": "Django",
     "description": "Beautiful syntax and scoped snippets for perfectionists with deadlines",
-    "version": "0.11.0",
+    "version": "0.12.0",
     "publisher": "batisteo",
     "license": "MIT",
     "preview": true,
@@ -113,6 +113,36 @@
                 "language": "django-txt",
                 "path": "./snippets/templates/filters.json"
             }
-        ]
+        ],
+        "configurationDefaults": {
+            "[django-html]": {
+                "editor.quickSuggestions": {
+                    "other": true,
+                    "comments": true,
+                    "strings": true
+                }
+            }
+        },
+        "configuration": {
+            "type": "object",
+            "title": "Django configuration",
+            "properties": {
+                "django.snippets.use": {
+                    "type":"boolean",
+                    "default": true,
+                    "description": "Activates the Python snippets"
+                },
+                "django.snippets.exclude": {
+                    "type": "array",
+                    "default": ["cms", "wagtail"],
+                    "description": "Exclude Python snippets by their file name. Can be 'import', 'postgres'..."
+                },
+                "django.i18n": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Activates the i18n features for snippets (eg.: _(\"\"))"
+                }
+            }
+        }
     }
 }

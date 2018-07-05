@@ -6,23 +6,44 @@ import {
     CompletionContext,
     CompletionItem,
     CompletionItemKind,
+    DocumentFilter,
     MarkdownString,
     Position,
     SnippetString,
     TextDocument,
+    workspace
 } from 'vscode'
 
-interface DjangoSnippet {
-    prefix: string
-    body: string
-    detail: string
-    description: string
-}
+import { DjangoSnippet, readSnippets } from '../utils'
+
+const settings = workspace.getConfiguration("django");
+
+const exclusions: string[] = settings.snippets.exclude
+
+export const PYTHON_SELECTOR = { scheme: 'file', language: 'python' }
 
 
 export class DjangoCompletionItemProvider implements CompletionItemProvider {
-
+    public selector: DocumentFilter = PYTHON_SELECTOR
+    directory: string = ''
+    files: string[] = []
     snippets: DjangoSnippet[] = []
+
+    loadSnippets() {
+        if (! settings.snippets.use) return
+        if (exclusions.some(word => this.directory.includes(word))) return
+
+        this.snippets = Array.prototype.concat(...this.files
+            .filter(file => ! exclusions.some(word => file.includes(word)))
+            .map(file => readSnippets(`${this.directory}/${file}`))
+        )
+        if (! settings.i18n) {
+            this.snippets = this.snippets.map(snippet => {
+                snippet.body = snippet.body.replace(/_\("(\S*)"\)/g, '"$1"');
+                return snippet
+            })
+        }
+    }
 
     private buildSnippet(snippet: DjangoSnippet): CompletionItem {
         let item = new CompletionItem(snippet.prefix, CompletionItemKind.Snippet);
