@@ -1,6 +1,6 @@
 'use strict'
 
-import { ExtensionContext, languages } from 'vscode'
+import { ExtensionContext, languages, workspace } from 'vscode'
 import { TemplatePathProvider } from './providers/definitionProvider'
 import {
     DjangoAdminCompletionItemProvider,
@@ -18,6 +18,9 @@ export function activate(context: ExtensionContext): void {
     const definitions = new TemplatePathProvider()
     context.subscriptions.push(languages.registerDefinitionProvider(definitions.selector, definitions))
     
+    if workspace.getConfiguration("django.snippets.use") {
+        activateSnippets
+    }
     const djangoPythonSnippets = new DjangoPythonCompletionItemProvider()
     context.subscriptions.push(languages.registerCompletionItemProvider(djangoPythonSnippets.selector, djangoPythonSnippets))
 

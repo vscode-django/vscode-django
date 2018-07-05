@@ -113,6 +113,26 @@
                 "language": "django-txt",
                 "path": "./snippets/templates/filters.json"
             }
-        ]
+        ],
+        "configurationDefaults": {
+            "[django-html]": {
+                "editor.quickSuggestions": {
+                    "other": true,
+                    "comments": true,
+                    "strings": true
+                }
+            }
+        },
+        "configuration": {
+            "type": "object",
+            "title": "Django configuration",
+            "properties": {
+                "django.snippets.use": {
+                    "type":"boolean",
+                    "default": true,
+                    "description": "Activates the Python snippets"
+                }
+            }
+        }
     }
 }
