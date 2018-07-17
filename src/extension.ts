@@ -6,6 +6,7 @@ import {
     DjangoAdminCompletionItemProvider,
     DjangoFormCompletionItemProvider,
     DjangoManagerCompletionItemProvider,
+    DjangoMigrationCompletionItemProvider,
     DjangoModelCompletionItemProvider,
     DjangoPythonCompletionItemProvider,
     DjangoViewCompletionItemProvider,
@@ -29,6 +30,9 @@ export function activate(context: ExtensionContext): void {
 
     const djangoManagerSnippets = new DjangoManagerCompletionItemProvider()
     context.subscriptions.push(languages.registerCompletionItemProvider(djangoManagerSnippets.selector, djangoManagerSnippets))
+
+    const djangoMigrationSnippets = new DjangoMigrationCompletionItemProvider()
+    context.subscriptions.push(languages.registerCompletionItemProvider(djangoMigrationSnippets.selector, djangoMigrationSnippets))
 
     const djangoModelSnippets = new DjangoModelCompletionItemProvider()
     context.subscriptions.push(languages.registerCompletionItemProvider(djangoModelSnippets.selector, djangoModelSnippets))

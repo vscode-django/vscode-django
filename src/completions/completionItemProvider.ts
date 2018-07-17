@@ -55,9 +55,22 @@ export class DjangoManagerCompletionItemProvider extends DjangoCompletionItemPro
 }
 
 
+export class DjangoMigrationCompletionItemProvider extends DjangoCompletionItemProvider {
+
+    public selector = { pattern: '**/migrations/**/*.py', ...PYTHON_SELECTOR }
+    directory = "models"
+    files = ["migrations.toml"]
+
+    constructor () {
+        super()
+        this.loadSnippets()
+    }
+}
+
+
 export class DjangoModelCompletionItemProvider extends DjangoCompletionItemProvider {
 
-    public selector = { pattern: '**/models{**/,}*.py', ...PYTHON_SELECTOR }
+    public selector = { pattern: '**/{models,migrations}{**/,}*.py', ...PYTHON_SELECTOR }
     directory = "models"
     files = ["classes.toml", "imports.toml", "fields.toml", "fields-postgres.toml", "methods.toml"]
 

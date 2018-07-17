@@ -1,6 +1,6 @@
 # Django extension for Visual Studio Code
 
-> Beautiful syntax and snippets for perfectionists with deadlines
+> Beautiful syntax and scoped snippets for perfectionists with deadlines
 
 ## Usage
 

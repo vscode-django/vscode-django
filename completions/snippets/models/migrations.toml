@@ -1,0 +1,169 @@
+
+[[snippets]]
+prefix = "run_python_function"
+body = """
+def $1(apps, schema_editor):
+    ${2:Model} = apps.get_model("${3:${TM_FILEPATH/.*[\\/](\w+)[\\/]migrations.*/$1/g}}", "$2")$0
+"""
+
+[[snippets]]
+prefix = "create_model"
+body = """
+migrations.CreateModel(
+    name='$1',
+    fields=[
+        ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),$3
+    ],
+    options={
+        'verbose_name': '$1',
+        'verbose_name_plural': '$1s$2',
+    }
+)$0
+"""
+
+[[snippets]]
+prefix = "delete_model"
+body = """
+migrations.DeleteModel(
+    name="$1",
+)$0
+"""
+
+[[snippets]]
+prefix = "rename_model"
+body = """
+migrations.RenameModel(
+    old_name=$1,
+    new_name=$2,
+)$0
+"""
+
+[[snippets]]
+prefix = "alter_model_table"
+body = """
+migrations.AlterModelTable(
+    name="$1",
+    table="$2",
+)$0
+"""
+
+[[snippets]]
+prefix = "alter_unique_together"
+body = """
+migrations.AlterUniqueTogether(
+    name="$1",
+    unique_together=("$2", "$3"),
+)$0
+"""
+
+[[snippets]]
+prefix = "alter_index_together"
+body = """
+migrations.AlterIndexTogether(
+    name="$1",
+    index_together=("$2", "$3"),
+)$0
+"""
+
+[[snippets]]
+prefix = "alter_order_with_respect_to"
+body = """
+migrations.AlterOrderWithRespectTo(
+    name="$1",
+    order_with_respect_to=$2,
+)$0
+"""
+
+[[snippets]]
+prefix = "alter_model_options"
+body = """
+migrations.AlterModelOptions(
+    name="$1",
+    options={$2},
+)$0
+"""
+
+[[snippets]]
+prefix = "alter_model_managers"
+body = """
+migrations.AlterModelManagers(
+    name="$1",
+    managers=$2,
+)$0
+"""
+
+[[snippets]]
+prefix = "add_field"
+body = """
+migrations.AddField(
+    model_name="$1",
+    name="$2",
+    field=$3,
+)$0
+"""
+
+[[snippets]]
+prefix = "remove_field"
+body = """
+migrations.RemoveField(
+    model_name="$1",
+    name="$2",
+)$0
+"""
+
+[[snippets]]
+prefix = "alter_field"
+body = """
+migrations.AlterField(
+    model_name="$1",
+    name="$2",
+    field=$3,
+)$0
+"""
+
+[[snippets]]
+prefix = "rename_field"
+body = """
+migrations.RenameField(
+    model_name="$1",
+    old_name="$2",
+    new_name="$3",
+)$0
+"""
+
+[[snippets]]
+prefix = "add_index"
+body = """
+migrations.AddIndex(
+    model_name="$1",
+    index="$2",
+)$0
+"""
+
+[[snippets]]
+prefix = "remove_index"
+body = """
+migrations.RemoveIndex(
+    model_name="$1",
+    name="$2",
+)$0
+"""
+
+[[snippets]]
+prefix = "run_sql"
+body = "migrations.RunSQL($1)"
+
+[[snippets]]
+prefix = "run_python"
+detail = "migrations.RunPython()"
+description = "migrations.RunPython(forward, backward)"
+body = "migrations.RunPython($1${2:, ${3:migrations.RunPython.noop}}),"
+
+[[snippets]]
+prefix = "separate_database_and_state"
+body = """
+migrations.SeparateDatabaseAndState(
+    database_operations=${1:None},
+    state_operations=${2:None},
+)
+"""
