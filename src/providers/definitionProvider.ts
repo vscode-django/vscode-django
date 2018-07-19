@@ -1,5 +1,6 @@
 'use strict'
 
+import { dirname, resolve } from 'path'
 import {
     CancellationToken,
     Definition,
@@ -12,8 +13,14 @@ import {
     workspace,
 } from 'vscode'
 
-const TEMPLATE_PATH_RE = /[\'|\"]([\w/\-]+\.[\w]+)[\'|\"]/
-const TEMPLATE_GLOB = "**/templates/"
+let regex = (regexes: RegExp[]) => new RegExp(regexes.map(re => re.source).join(''))
+
+const quote = /(?:\'|\")/
+const path_re = /([\w/\-]+\.[\w]+)/
+const rel_path_re = /((?:(?:\.\/|(?:\.\.\/)+))[\w/\-]+\.[\w]+)/
+
+const PATH_RE = regex([quote, path_re, quote])
+const RELATIVE_PATH_RE = regex([quote, rel_path_re, quote])
 const BEGIN_OF_FILE = new Position(0, 0)
 
 let cache: any = {}
@@ -24,25 +31,33 @@ export class TemplatePathProvider implements DefinitionProvider {
 
     private static getTemplate(document: TextDocument, position: Position, token: CancellationToken): Thenable<Uri | null> {
 
+        let path: string
+        let search: string
         let line = document.lineAt(position.line).text
-        let matches = line.match(TEMPLATE_PATH_RE)
-        if (! matches) return Promise.resolve(null)
+        let match = line.match(PATH_RE)
+        let relative_match = line.match(RELATIVE_PATH_RE)
 
-        let path = matches[1]
+        if (relative_match) {
+            path = relative_match[1]
+            search = workspace.asRelativePath(resolve(dirname(document.uri.path), path))
+        } else if (match) {
+            path = match[1]
+            search = `**/templates/${path}`
+        } else {
+            return Promise.resolve(null)
+        }
+
         let pos = position.character
         let cursorOverPath = pos > line.indexOf(path) && pos < line.indexOf(path) + path.length
 
-        let template_search = `${TEMPLATE_GLOB}${path}`
-        let exclude = ''
-        let max_results = 1
-        let uri
+        let uri: Thenable<Uri | null>
 
-        if (template_search in cache) {
-            uri = Promise.resolve(cache[template_search])
+        if (search in cache) {
+            uri = Promise.resolve(cache[search])
         } else {
-            uri = workspace.findFiles(template_search, exclude, max_results, token).then(results => {
+            uri = workspace.findFiles(search, '', 1, token).then(results => {
                 let result = results.length ? results[0] : null
-                if (result) cache[template_search] = result
+                if (result) cache[search] = result
                 return result
             })
         }

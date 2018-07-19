@@ -2,7 +2,7 @@
     "name": "vscode-django",
     "displayName": "Django",
     "description": "Beautiful syntax and scoped snippets for perfectionists with deadlines",
-    "version": "0.14.1",
+    "version": "0.15.0",
     "publisher": "batisteo",
     "license": "MIT",
     "preview": true,
@@ -48,6 +48,7 @@
         "test": "npm run compile && node ./node_modules/vscode/bin/test"
     },
     "dependencies": {
+        "path": "^0.12.7",
         "toml": "^2.3.3"
     },
     "devDependencies": {
@@ -128,13 +129,16 @@
             "title": "Django configuration",
             "properties": {
                 "django.snippets.use": {
-                    "type":"boolean",
+                    "type": "boolean",
                     "default": true,
                     "description": "Activates the Python snippets"
                 },
                 "django.snippets.exclude": {
                     "type": "array",
-                    "default": ["cms", "wagtail"],
+                    "default": [
+                        "cms",
+                        "wagtail"
+                    ],
                     "description": "Exclude Python snippets by their file name. Can be 'import', 'postgres'..."
                 },
                 "django.i18n": {
