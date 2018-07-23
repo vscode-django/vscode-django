@@ -1,0 +1,69 @@
+[[patterns]]
+begin = "{% comment ?(\"([\\w\\s])*\" )?%}"
+end = "{% endcomment %}"
+name = "comment.block.django"
+
+[[patterns]]
+match = "{#.*#}"
+name = "comment.line.number-sign.django"
+
+[[patterns]]
+begin = "{{"
+end = "}}"
+name = "storage.type.variable.django"
+[patterns.captures.0]
+name = "entity.tag.tagbraces.django"
+[[patterns.patterns]]
+include = "#django-template-filter"
+
+
+[[patterns]]
+begin = "({%) (load) "
+end = "(%})"
+name = "storage.type.templatetag.django"
+[patterns.captures.1]
+name = "entity.tag.tagbraces.django"
+[patterns.captures.2]
+name = "keyword.control.tag-name.django"
+[[patterns.patterns]]
+include = "#django-template-tag-contrib"
+[[patterns.patterns]]
+include = "#django-template-filter"
+
+
+[[patterns]]
+begin = "({%) (autoescape|endautoescape|block|endblock|blocktrans|endblocktrans|trans|plural|comment|endcomment|debug|extends|filter|firstof|for|empty|endfor|if|elif|else|endif|include|ifchanged|endifchanged|ifequal|endifequal|ifnotequal|endifnotequal|from|low|regroup|ssi|spaceless|endspaceless|templatetag|widthratio|with|endwith|csrf_token|cycle|url|verbatim|endverbatim|lorem|thumbnail|endthumbnail|get_static_prefix)\\b"
+end = "(%})"
+name = "storage.type.templatetag.django"
+[patterns.captures.1]
+name = "entity.tag.tagbraces.django"
+[patterns.captures.2]
+name = "keyword.control.tag-name.django"
+[[patterns.patterns]]
+include = "#string-double-quoted"
+[[patterns.patterns]]
+include = "#string-single-quoted"
+[[patterns.patterns]]
+include = "#django-template-tag"
+[[patterns.patterns]]
+include = "#django-template-filter"
+
+
+[[patterns]]
+begin = "({%) ([a-zA-Z0-9_.]+)"
+end = "(%})"
+name = "storage.type.customtemplatetag.django"
+[patterns.captures.1]
+name = "entity.tag.tagbraces.django"
+[patterns.captures.2]
+name = "constant.other.tag.name.django"
+
+[[patterns.patterns]]
+include = "#string-double-quoted"
+[[patterns.patterns]]
+include = "#string-single-quoted"
+[[patterns.patterns]]
+include = "#django-template-tag"
+[[patterns.patterns]]
+include = "#django-template-filter"
+

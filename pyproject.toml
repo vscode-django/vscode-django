@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "vscode_django"
+version = "1.0.0"
+description = "CLI helpers for the vscode extension"
+authors = ["Baptiste Darthenay <baptiste.darthenay@gmail.com>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = ">=3.4"
+
+[tool.poetry.dev-dependencies]
+bpython = "^0.17.1"
+toml = "*"
+tomlkit = "*"
+
+[tool.poetry.scripts]
+syntax = "syntaxes.build:main"

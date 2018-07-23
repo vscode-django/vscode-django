@@ -1,0 +1,12 @@
+[[patterns]]
+match = "(&)([a-zA-Z0-9]+|#[0-9]+|#x[0-9a-fA-F]+)(;)"
+name = "constant.character.entity.html"
+
+[patterns.captures.1]
+name = "punctuation.definition.entity.html"
+[patterns.captures.3]
+name = "punctuation.definition.entity.html"
+[[patterns]]
+match = "&"
+name = "invalid.illegal.bad-ampersand.html"
+

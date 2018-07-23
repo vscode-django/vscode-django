@@ -1,0 +1,12 @@
+[[patterns]]
+include = "#tag-id-attribute"
+
+[[patterns]]
+include = "#tag-generic-attribute"
+
+[[patterns]]
+include = "#string-double-quoted"
+
+[[patterns]]
+include = "#string-single-quoted"
+

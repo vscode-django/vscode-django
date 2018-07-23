@@ -1,0 +1,271 @@
+name = "Django HTML"
+scopeName = "text.html.django"
+fileTypes = ["html"]
+
+repositories = [
+    "django-stuff",
+    "django-template-filter",
+    "django-template-tag-contrib",
+    "django-template-tag",
+    "entities",
+    "string-double-quoted",
+    "string-single-quoted",
+    "tag-generic-attribute",
+    "tag-id-attribute",
+    "tag-stuff",
+]
+
+[repository]
+
+[[patterns]]
+include = "#django-stuff"
+
+[[patterns]]
+begin = "(<)([a-zA-Z0-9:]++)(?=[^>]*></\\2>)"
+end = "(>)(<)(/)(\\2)(>)"
+name = "meta.tag.any.html"
+[[patterns.patterns]]
+include = "#django-stuff"
+
+[[patterns.patterns]]
+include = "#tag-stuff"
+
+[patterns.beginCaptures.1]
+name = "punctuation.definition.tag.begin.html"
+[patterns.beginCaptures.2]
+name = "entity.name.tag.html"
+[patterns.endCaptures.1]
+name = "punctuation.definition.tag.end.html"
+[patterns.endCaptures.2]
+name = "punctuation.definition.tag.begin.html meta.scope.between-tag-pair.html"
+[patterns.endCaptures.3]
+name = "punctuation.definition.tag.begin.html"
+[patterns.endCaptures.4]
+name = "entity.name.tag.html"
+[patterns.endCaptures.5]
+name = "punctuation.definition.tag.end.html"
+
+[[patterns]]
+begin = "(<\\?)(xml)"
+end = "(\\?>)"
+name = "meta.tag.preprocessor.xml.html"
+[[patterns.patterns]]
+include = "#tag-generic-attribute"
+
+[[patterns.patterns]]
+include = "#string-double-quoted"
+
+[[patterns.patterns]]
+include = "#string-single-quoted"
+
+[patterns.captures.1]
+name = "punctuation.definition.tag.html"
+[patterns.captures.2]
+name = "entity.name.tag.xml.html"
+
+[[patterns]]
+begin = "<!--"
+end = "--\\s*>"
+name = "comment.block.html"
+[[patterns.patterns]]
+match = "--"
+name = "invalid.illegal.bad-comments-or-CDATA.html"
+
+[patterns.captures.0]
+name = "punctuation.definition.comment.html"
+
+[[patterns]]
+begin = "<!"
+end = ">"
+name = "meta.tag.sgml.html"
+[[patterns.patterns]]
+begin = "(?i:DOCTYPE)"
+end = "(?=>)"
+name = "meta.tag.sgml.doctype.html"
+[[patterns.patterns.patterns]]
+match = "\"[^\">]*\""
+name = "string.quoted.double.doctype.identifiers-and-DTDs.html"
+
+[patterns.patterns.captures.1]
+name = "entity.name.tag.doctype.html"
+[[patterns.patterns]]
+begin = "\\[CDATA\\["
+end = "]](?=>)"
+name = "constant.other.inline-data.html"
+
+[[patterns.patterns]]
+match = "(\\s*)(?!--|>)\\S(\\s*)"
+name = "invalid.illegal.bad-comments-or-CDATA.html"
+
+[patterns.captures.0]
+name = "punctuation.definition.tag.html"
+
+[[patterns]]
+begin = "(?:^\\s+)?(<)((?i:style))\\b(?![^>]*/>)"
+end = "(</)((?i:style))(>)(?:\\s*\\n)?"
+name = "source.css.embedded.html"
+[[patterns.patterns]]
+include = "#tag-stuff"
+
+[[patterns.patterns]]
+begin = "(>)"
+end = "(?=</(?i:style))"
+[[patterns.patterns.patterns]]
+include = "#django-stuff"
+
+[[patterns.patterns.patterns]]
+include = "source.css.django"
+
+[patterns.patterns.beginCaptures.1]
+name = "punctuation.definition.tag.end.html"
+
+[patterns.captures.1]
+name = "punctuation.definition.tag.begin.html"
+[patterns.captures.2]
+name = "entity.name.tag.style.html"
+[patterns.captures.3]
+name = "punctuation.definition.tag.html"
+
+[[patterns]]
+begin = "(?:^\\s+)?(<)((?i:script))\\b(?![^>]*/>)(?!.*type=[\"']text/template['\"])"
+end = "(?<=</(script|SCRIPT))(>)(?:\\s*\\n)?"
+name = "source.js.embedded.html"
+[[patterns.patterns]]
+include = "#tag-stuff"
+[[patterns.patterns]]
+include = "#django-stuff"
+
+[[patterns.patterns]]
+begin = "(?<!</(?:script|SCRIPT))(>)"
+end = "(</)((?i:script))"
+[[patterns.patterns.patterns]]
+begin = "{% comment %}"
+end = "{% endcomment %}"
+name = "comment.block.django"
+
+[[patterns.patterns.patterns]]
+match = "{#.*#}"
+name = "comment.line.number-sign.django"
+
+[[patterns.patterns.patterns]]
+begin = "{{"
+end = "}}"
+name = "storage.type.variable.django"
+[[patterns.patterns.patterns.patterns]]
+include = "#django-template-filter"
+
+[patterns.patterns.patterns.captures.0]
+name = "entity.tag.tagbraces.django"
+[[patterns.patterns.patterns]]
+begin = "{%"
+end = "%}"
+name = "storage.type.templatetag.django"
+[[patterns.patterns.patterns.patterns]]
+include = "#django-template-tag"
+
+[[patterns.patterns.patterns.patterns]]
+include = "#django-template-filter"
+
+[patterns.patterns.patterns.captures.0]
+name = "entity.tag.tagbraces.django"
+[[patterns.patterns.patterns]]
+match = "(//).*?((?=</script)|$\\n?)"
+name = "comment.line.double-slash.js"
+
+[patterns.patterns.patterns.captures.1]
+name = "punctuation.definition.comment.js"
+[[patterns.patterns.patterns]]
+begin = "/\\*"
+end = "\\*/|(?=</script)"
+name = "comment.block.js"
+
+[patterns.patterns.patterns.captures.0]
+name = "punctuation.definition.comment.js"
+[[patterns.patterns.patterns]]
+include = "source.js"
+
+[patterns.patterns.captures.1]
+name = "punctuation.definition.tag.end.html"
+[patterns.patterns.captures.2]
+name = "entity.name.tag.script.html"
+
+[patterns.beginCaptures.1]
+name = "punctuation.definition.tag.begin.html"
+[patterns.beginCaptures.2]
+name = "entity.name.tag.script.html"
+[patterns.endCaptures.2]
+name = "punctuation.definition.tag.html"
+
+[[patterns]]
+begin = "(</?)((?i:body|head|html)\\b)"
+end = "(>)"
+name = "meta.tag.structure.any.html"
+[[patterns.patterns]]
+include = "#django-stuff"
+
+[[patterns.patterns]]
+include = "#tag-stuff"
+
+[patterns.captures.1]
+name = "punctuation.definition.tag.begin.html"
+[patterns.captures.2]
+name = "entity.name.tag.structure.any.html"
+[patterns.endCaptures.1]
+name = "punctuation.definition.tag.end.html"
+
+[[patterns]]
+begin = "(</?)((?i:address|blockquote|dd|div|dl|dt|fieldset|form|frame|frameset|h1|h2|h3|h4|h5|h6|iframe|noframes|object|ol|p|ul|applet|center|dir|hr|menu|pre)\\b)"
+end = "(>)"
+name = "meta.tag.block.any.html"
+[[patterns.patterns]]
+include = "#tag-stuff"
+
+[patterns.beginCaptures.1]
+name = "punctuation.definition.tag.begin.html"
+[patterns.beginCaptures.2]
+name = "entity.name.tag.block.any.html"
+[patterns.endCaptures.1]
+name = "punctuation.definition.tag.end.html"
+
+[[patterns]]
+begin = "(</?)((?i:a|abbr|acronym|area|b|base|basefont|bdo|big|br|button|caption|cite|code|col|colgroup|del|dfn|em|font|head|html|i|img|input|ins|isindex|kbd|label|legend|li|link|map|meta|noscript|optgroup|option|param|q|s|samp|script|select|small|span|strike|strong|style|sub|sup|table|tbody|td|textarea|tfoot|th|thead|title|tr|tt|u|var)\\b)"
+end = "((?: ?/)?>)"
+name = "meta.tag.inline.any.html"
+[[patterns.patterns]]
+include = "#django-stuff"
+
+[[patterns.patterns]]
+include = "#tag-stuff"
+
+[patterns.beginCaptures.1]
+name = "punctuation.definition.tag.begin.html"
+[patterns.beginCaptures.2]
+name = "entity.name.tag.inline.any.html"
+[patterns.endCaptures.1]
+name = "punctuation.definition.tag.end.html"
+
+[[patterns]]
+begin = "(</?)([a-zA-Z0-9:]+)"
+end = "(>)"
+name = "meta.tag.other.html"
+[[patterns.patterns]]
+include = "#tag-stuff"
+
+[patterns.beginCaptures.1]
+name = "punctuation.definition.tag.begin.html"
+[patterns.beginCaptures.2]
+name = "entity.name.tag.other.html"
+[patterns.endCaptures.1]
+name = "punctuation.definition.tag.end.html"
+
+[[patterns]]
+include = "#entities"
+
+[[patterns]]
+match = "<>"
+name = "invalid.illegal.incomplete.html"
+
+[[patterns]]
+match = "<"
+name = "invalid.illegal.bad-angle-bracket.html"
+

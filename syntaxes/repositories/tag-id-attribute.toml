@@ -1,0 +1,37 @@
+begin = "\\b(id)\\b\\s*(=)"
+end = "(?<='|\")"
+name = "meta.attribute-with-value.id.html"
+
+[captures.1]
+name = "entity.other.attribute-name.id.html"
+
+[captures.2]
+name = "punctuation.separator.key-value.html"
+
+
+[[patterns]]
+begin = "\""
+contentName = "meta.toc-list.id.html"
+end = "\""
+name = "string.quoted.double.html"
+[patterns.beginCaptures.0]
+name = "punctuation.definition.string.begin.html"
+[patterns.endCaptures.0]
+name = "punctuation.definition.string.end.html"
+[[patterns.patterns]]
+include = "#entities"
+
+
+[[patterns]]
+begin = "'"
+contentName = "meta.toc-list.id.html"
+end = "'"
+name = "string.quoted.single.html"
+[patterns.beginCaptures.0]
+name = "punctuation.definition.string.begin.html"
+[patterns.endCaptures.0]
+name = "punctuation.definition.string.end.html"
+[[patterns.patterns]]
+include = "#entities"
+
+

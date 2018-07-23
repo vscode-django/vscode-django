@@ -1,0 +1,2 @@
+match = "\\b([a-zA-Z\\-:]+)"
+name = "entity.other.attribute-name.html"

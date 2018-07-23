@@ -1,0 +1,13 @@
+begin = "'"
+end = "'"
+name = "string.quoted.single.html"
+
+[beginCaptures.0]
+name = "punctuation.definition.string.begin.html"
+
+[endCaptures.0]
+name = "punctuation.definition.string.end.html"
+
+[[patterns]]
+include = "#entities"
+

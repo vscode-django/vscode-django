@@ -1,0 +1,4 @@
+[[patterns]]
+match = "\\b(and|or|not|is|in|by|as|asvar|trimmed|with)\\b"
+name = "keyword.operator.django"
+

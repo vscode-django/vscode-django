@@ -1,0 +1,4 @@
+[[patterns]]
+match = "\\b(cache|i18n|l10n|static|tz|flatpages|humanize|admin_list|admin_modify|admin_static|admin_urls|base|log)\\b"
+name = "constant.other.contrib.django"
+

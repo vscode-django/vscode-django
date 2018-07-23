@@ -3,3 +3,6 @@ node_modules
 out
 yarn.lock
 package-lock.json
+.venv
+.env
+**/__pycache__

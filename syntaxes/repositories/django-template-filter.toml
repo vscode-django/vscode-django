@@ -1,0 +1,48 @@
+[[patterns]]
+match = "(\\|) ?(add|addslashes|capfirst|center|cut|date|default|default_if_none|dictsort|dictsortreversed|divisibleby|escape|escapejs|filesizeformat|first|fix_ampersands|floatformat|force_escape|get_digit|iriencode|join|last|length|length_is|linebreaks|linebreaksbr|linenumbers|ljust|lower|make_list|phone2numeric|pluralize|pprint|random|removetags|rjust|safe|safeseq|slice|slugify|stringformat|striptags|time|timesince|timeutil|title|truncatewords|truncatewords_html|unordered_list|upper|urlencode|urlize|urlizetrunc|wordcount|wordwrap|yesno|apnumber|intcomma|intword|naturalday|ordinal|STATIC_PREFIX)\\b"
+name = "entity.name.function.filter.django"
+[patterns.captures.1]
+name = "entity.tag.filter-pipe.django"
+[patterns.captures.2]
+name = "keyword.control.filter.django"
+
+
+[[patterns]]
+match = "(\\|)([a-zA-Z0-9_]+)\\b"
+name = "entity.name.function.filter.django"
+[patterns.captures.1]
+name = "entity.tag.filter-pipe.django"
+[patterns.captures.2]
+name = "constant.other.filter.django"
+
+
+[[patterns]]
+match = ":"
+name = "keyword.operator.filter-argument.django"
+
+[[patterns]]
+match = "="
+name = "keyword.operator.assignment.django"
+
+[[patterns]]
+match = ","
+name = "keyword.operator.argument-separator.django"
+
+[[patterns]]
+match = "\\."
+name = "keyword.operator.getter.django"
+
+[[patterns]]
+match = "[a-zA-Z0-9_]+"
+name = "string.unquoted.tag-string.django"
+
+[[patterns]]
+match = "(>=|>|==|!=|<|<=|and|or|is|not|in)"
+name = "keyword.operator.condition.django"
+
+[[patterns]]
+include = "#string-double-quoted"
+
+[[patterns]]
+include = "#string-single-quoted"
+
