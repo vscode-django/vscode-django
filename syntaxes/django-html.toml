@@ -1,0 +1,3 @@
+name = "Django HTML"
+scopeName = "text.html.django"
+fileTypes = ["html"]

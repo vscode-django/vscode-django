@@ -1,0 +1,227 @@
+[django-stuff]
+[[django-stuff.patterns]]
+begin = "{% comment ?(\"([\\w\\s])*\" )?%}"
+end = "{% endcomment %}"
+name = "comment.block.django"
+
+[[django-stuff.patterns]]
+begin = "{#"
+end = "#}"
+name = "comment.line.number-sign.django"
+
+[[django-stuff.patterns]]
+begin = "{{"
+end = "}}"
+name = "storage.type.variable.django"
+[[django-stuff.patterns.patterns]]
+include = "#django-template-filter"
+
+
+[django-stuff.patterns.captures.0]
+name = "entity.tag.tagbraces.django"
+[[django-stuff.patterns]]
+begin = "({%) (load) "
+end = "(%})"
+name = "storage.type.templatetag.django"
+[[django-stuff.patterns.patterns]]
+include = "#django-template-tag-contrib"
+
+[[django-stuff.patterns.patterns]]
+include = "#django-template-filter"
+
+
+[django-stuff.patterns.captures.1]
+name = "entity.tag.tagbraces.django"
+[django-stuff.patterns.captures.2]
+name = "keyword.control.tag-name.django"
+[[django-stuff.patterns]]
+begin = "({%) (autoescape|endautoescape|block|endblock|blocktrans|endblocktrans|trans|plural|comment|endcomment|debug|extends|filter|firstof|for|empty|endfor|if|elif|else|endif|include|ifchanged|endifchanged|ifequal|endifequal|ifnotequal|endifnotequal|from|low|regroup|ssi|spaceless|endspaceless|templatetag|widthratio|with|endwith|csrf_token|cycle|url|verbatim|endverbatim|lorem|thumbnail|endthumbnail|get_static_prefix)\\b"
+end = "(%})"
+name = "storage.type.templatetag.django"
+[[django-stuff.patterns.patterns]]
+include = "#string-double-quoted"
+
+[[django-stuff.patterns.patterns]]
+include = "#string-single-quoted"
+
+[[django-stuff.patterns.patterns]]
+include = "#django-template-tag"
+
+[[django-stuff.patterns.patterns]]
+include = "#django-template-filter"
+
+
+[django-stuff.patterns.captures.1]
+name = "entity.tag.tagbraces.django"
+[django-stuff.patterns.captures.2]
+name = "keyword.control.tag-name.django"
+[[django-stuff.patterns]]
+begin = "({%) ([a-zA-Z0-9_.]+) "
+end = "(%})"
+name = "storage.type.customtemplatetag.django"
+[[django-stuff.patterns.patterns]]
+include = "#string-double-quoted"
+
+[[django-stuff.patterns.patterns]]
+include = "#string-single-quoted"
+
+[[django-stuff.patterns.patterns]]
+include = "#django-template-tag"
+
+[[django-stuff.patterns.patterns]]
+include = "#django-template-filter"
+
+
+[django-stuff.patterns.captures.1]
+name = "entity.tag.tagbraces.django"
+[django-stuff.patterns.captures.2]
+name = "constant.other.tag.name.django"
+
+[django-template-filter]
+[[django-template-filter.patterns]]
+match = "(\\|) ?(add|addslashes|capfirst|center|cut|date|default|default_if_none|dictsort|dictsortreversed|divisibleby|escape|escapejs|filesizeformat|first|fix_ampersands|floatformat|force_escape|get_digit|iriencode|join|last|length|length_is|linebreaks|linebreaksbr|linenumbers|ljust|lower|make_list|phone2numeric|pluralize|pprint|random|removetags|rjust|safe|safeseq|slice|slugify|stringformat|striptags|time|timesince|timeutil|title|truncatewords|truncatewords_html|unordered_list|upper|urlencode|urlize|urlizetrunc|wordcount|wordwrap|yesno|apnumber|intcomma|intword|naturalday|ordinal|STATIC_PREFIX)\\b"
+name = "entity.name.function.filter.django"
+
+[django-template-filter.patterns.captures.1]
+name = "entity.tag.filter-pipe.django"
+[django-template-filter.patterns.captures.2]
+name = "keyword.control.filter.django"
+[[django-template-filter.patterns]]
+match = "(\\|)([a-zA-Z0-9_]+)\\b"
+name = "entity.name.function.filter.django"
+
+[django-template-filter.patterns.captures.1]
+name = "entity.tag.filter-pipe.django"
+[django-template-filter.patterns.captures.2]
+name = "constant.other.filter.django"
+[[django-template-filter.patterns]]
+match = ":"
+name = "keyword.operator.filter-argument.django"
+
+[[django-template-filter.patterns]]
+match = "="
+name = "keyword.operator.assignment.django"
+
+[[django-template-filter.patterns]]
+match = "\\."
+name = "keyword.operator.getter.django"
+
+[[django-template-filter.patterns]]
+match = "[a-zA-Z0-9_]+"
+name = "string.unquoted.tag-string.django"
+
+[[django-template-filter.patterns]]
+match = "(>=|>|==|!=|<|<=|and|or|is|not|in)"
+name = "keyword.operator.condition.django"
+
+[[django-template-filter.patterns]]
+include = "#string-double-quoted"
+
+[[django-template-filter.patterns]]
+include = "#string-single-quoted"
+
+[django-template-tag]
+[[django-template-tag.patterns]]
+match = "\\b(and|or|not|in|by|as|asvar|trimmed|with)\\b"
+name = "keyword.operator.django"
+
+[django-template-tag-contrib]
+[[django-template-tag-contrib.patterns]]
+match = "\\b(cache|i18n|l10n|static|tz|flatpages|humanize|admin_list|admin_modify|admin_static|admin_urls|base|log)\\b"
+name = "constant.other.contrib.django"
+
+[entities]
+[[entities.patterns]]
+match = "(&)([a-zA-Z0-9]+|#[0-9]+|#x[0-9a-fA-F]+)(;)"
+name = "constant.character.entity.html"
+
+[entities.patterns.captures.1]
+name = "punctuation.definition.entity.html"
+[entities.patterns.captures.3]
+name = "punctuation.definition.entity.html"
+[[entities.patterns]]
+match = "&"
+name = "invalid.illegal.bad-ampersand.html"
+
+[string-double-quoted]
+begin = "\""
+end = "\""
+name = "string.quoted.double.html"
+[[string-double-quoted.patterns]]
+include = "#django-stuff"
+
+[[string-double-quoted.patterns]]
+include = "#entities"
+
+[string-single-quoted]
+begin = "'"
+end = "'"
+name = "string.quoted.single.html"
+[[string-single-quoted.patterns]]
+include = "#entities"
+
+[tag-generic-attribute]
+match = "\\b([a-zA-Z\\-:]+)"
+name = "entity.other.attribute-name.html"
+
+[tag-id-attribute]
+begin = "\\b(id)\\b\\s*(=)"
+end = "(?<='|\")"
+name = "meta.attribute-with-value.id.html"
+[[tag-id-attribute.patterns]]
+begin = "\""
+contentName = "meta.toc-list.id.html"
+end = "\""
+name = "string.quoted.double.html"
+[[tag-id-attribute.patterns.patterns]]
+include = "#entities"
+
+
+[tag-id-attribute.patterns.beginCaptures.0]
+name = "punctuation.definition.string.begin.html"
+[tag-id-attribute.patterns.endCaptures.0]
+name = "punctuation.definition.string.end.html"
+[[tag-id-attribute.patterns]]
+begin = "'"
+contentName = "meta.toc-list.id.html"
+end = "'"
+name = "string.quoted.single.html"
+[[tag-id-attribute.patterns.patterns]]
+include = "#entities"
+
+
+[tag-id-attribute.patterns.beginCaptures.0]
+name = "punctuation.definition.string.begin.html"
+[tag-id-attribute.patterns.endCaptures.0]
+name = "punctuation.definition.string.end.html"
+
+[tag-stuff]
+[[tag-stuff.patterns]]
+include = "#tag-id-attribute"
+
+[[tag-stuff.patterns]]
+include = "#tag-generic-attribute"
+
+[[tag-stuff.patterns]]
+include = "#string-double-quoted"
+
+[[tag-stuff.patterns]]
+include = "#string-single-quoted"
+
+[string-double-quoted.beginCaptures.0]
+name = "punctuation.definition.string.begin.html"
+
+[string-double-quoted.endCaptures.0]
+name = "punctuation.definition.string.end.html"
+
+[string-single-quoted.beginCaptures.0]
+name = "punctuation.definition.string.begin.html"
+
+[string-single-quoted.endCaptures.0]
+name = "punctuation.definition.string.end.html"
+
+[tag-id-attribute.captures.1]
+name = "entity.other.attribute-name.id.html"
+
+[tag-id-attribute.captures.2]
+name = "punctuation.separator.key-value.html"
