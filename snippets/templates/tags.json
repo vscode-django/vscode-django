@@ -4,24 +4,33 @@
     "variable": {
         "description": "{{ var }}",
         "prefix": "variable",
-        "body": [
-            "{{ $1 }}"
-        ]
+        "body": "{{ $1 }}"
+    },
+
+    "super": {
+        "description": "{{ block.super }}",
+        "prefix": "super",
+        "body": "{{ block.super }}"
     },
 
     "tag": {
         "description": "{% tag %}",
         "prefix": "tag",
-        "body": [
-            "{% $1 %}"
-        ]
+        "body": "{% $1 %}"
     },
 
     "autoescape": {
         "description": "{% autoescape %}",
         "prefix": "autoescape",
+        "body": "{% autoescape ${1|off,on|} %}$0{% endautoescape %}"
+    },
+
+    "autoescape_paste": {
+        "description": "{% autoescape %} (paste)",
+        "prefix": "autoescape_paste",
         "body": [
-            "{% autoescape ${1|off,on|} %}$0",
+            "{% autoescape ${1|off,on|} %}",
+            "$0${CLIPBOARD}",
             "{% endautoescape %}"
         ]
     },
@@ -169,10 +178,13 @@
     "for": {
         "description": "{% for %}",
         "prefix": "for",
-        "body": [
-            "{% for $1 in $2 %}$0",
-            "{% endfor %}"
-        ]
+        "body": "{% for $1 in $2 %}$0{% endfor %}"
+    },
+
+    "for_paste": {
+        "description": "{% for %} (paste)",
+        "prefix": "for_paste",
+        "body": "{% for $1 in $2 %}$3${CLIPBOARD}$0{% endfor %}"
     },
 
     "endfor": {
@@ -184,35 +196,42 @@
     "forempty": {
         "description": "{% forempty %}",
         "prefix": "forempty",
-        "body": [
-            "{% for $1 in $2 %}$0",
-            "{% empty %}$3",
-            "{% endfor %}"
-        ]
+        "body": "{% for $1 in $2 %}$0{% empty %}$3{% endfor %}"
+    },
+
+    "forempty_paste": {
+        "description": "{% forempty %} (paste)",
+        "prefix": "forempty_paste",
+        "body": "{% for $1 in $2 %}$3${CLIPBOARD}{% empty %}$0{% endfor %}"
     },
 
     "if": {
         "description": "{% if %}",
         "prefix": "if",
-        "body": [
-            "{% if $1 %}$0",
-            "{% endif %}"
-        ]
+        "body": "{% if $1 %}$0{% endif %}"
+    },
+
+    "if_paste": {
+        "description": "{% if %} (paste)",
+        "prefix": "if_paste",
+        "body": "{% if $1 %}$0${CLIPBOARD}{% endif %}"
     },
 
     "ifelse": {
+        "description": "{% if %}{% else %}{% endif %}",
         "prefix": "ifelse",
-        "body": [
-            "{% if $1 %}$2",
-            "{% else %}$3",
-            "{% endif %}"
-        ],
-        "description": "if... else..."
+        "body": "{% if $1 %}$2{% else %}$3{% endif %}"
+    },
+
+    "ifelse_paste": {
+        "description": "{% if %}{% else %}{% endif %} (paste)",
+        "prefix": "ifelse_paste",
+        "body": "{% if $1 %}$2${CLIPBOARD}{% else %}$3{% endif %}"
     },
 
     "elif": {
         "prefix": "elif",
-        "body": "{% elif %}%0",
+        "body": "{% elif %}",
         "description": "elif"
     },
     
@@ -231,10 +250,7 @@
     "ifchanged": {
         "description": "{% ifchanged %}",
         "prefix": "ifchanged",
-        "body": [
-            "{% ifchanged $1 %}$0",
-            "{% endifchanged %}"
-        ]
+        "body": "{% ifchanged $1 %}$0{% endifchanged %}"
     },
 
     "endifchanged": {
@@ -246,9 +262,7 @@
     "include": {
         "description": "{% include %}",
         "prefix": "include",
-        "body": [
-            "{% include $1 %}"
-        ]
+        "body": "{% include $1 %}"
     },
 
     "load": {
@@ -262,31 +276,13 @@
     "lorem": {
         "description": "{% lorem %}",
         "prefix": "lorem",
-        "body": [
-            "{% lorem $1 %}$0",
-            "{% endlorem %}"
-        ]
-    },
-
-    "endlorem": {
-        "description": "{% endlorem %}",
-        "prefix": "endlorem",
-        "body": "{% endlorem %}"
+        "body": "{% lorem ${1|1,2,3,4,5,6,7,8,9|} ${2|b,p,w|} ${3:random }%}"
     },
 
     "now": {
         "description": "{% now %}",
         "prefix": "now",
-        "body": [
-            "{% now $1 %}$0",
-            "{% endnow %}"
-        ]
-    },
-
-    "endnow": {
-        "description": "{% endnow %}",
-        "prefix": "endnow",
-        "body": "{% endnow %}"
+        "body": "{% now \"${1|DATE_FORMAT,DATETIME_FORMAT,SHORT_DATE_FORMAT,SHORT_DATETIME_FORMAT,Y-m-d H:i|}\" %}"
     },
 
     "regroup": {
@@ -323,10 +319,7 @@
     "spaceless": {
         "description": "{% spaceless %}",
         "prefix": "spaceless",
-        "body": [
-            "{% spaceless %}$1",
-            "{% endspaceless %}"
-        ]
+        "body": "{% spaceless %}$0{% endspaceless %}"
     },
 
     "spaceless_paste": {
@@ -334,7 +327,7 @@
         "prefix": "spaceless_paste",
         "body": [
             "{% spaceless %}",
-            "    ${CLIPBOARD}$1",
+            "${CLIPBOARD}$0",
             "{% endspaceless %}"
         ]
     },
@@ -374,40 +367,31 @@
     "verbatim": {
         "description": "{% verbatim %}",
         "prefix": "verbatim",
-        "body": [
-            "{% verbatim $1 %}$0",
-            "{% endverbatim %}"
-        ]
+        "body": "{% verbatim $1 %}$0{% endverbatim $1 %}"
+    },
+
+    "verbatim_paste": {
+        "description": "{% verbatim %} (paste)",
+        "prefix": "verbatim_paste",
+        "body": "{% verbatim $1 %}$0${CLIPBOARD}{% endverbatim $1 %}"
     },
 
     "endverbatim": {
         "description": "{% endverbatim %}",
         "prefix": "endverbatim",
-        "body": "{% endverbatim %}"
+        "body": "{% endverbatim $1%}"
     },
 
     "widthratio": {
         "description": "{% widthratio %}",
         "prefix": "widthratio",
-        "body": [
-            "{% widthratio $1 %}$0",
-            "{% endwidthratio %}"
-        ]
-    },
-
-    "endwidthratio": {
-        "description": "{% endwidthratio %}",
-        "prefix": "endwidthratio",
-        "body": "{% endwidthratio %}"
+        "body": "{% widthratio ${1:this_value} ${2:max_value} ${3:max_width} ${4:as ${5:width}}%}"
     },
 
     "with": {
         "description": "{% with %}",
         "prefix": "with",
-        "body": [
-            "{% with $1 as $2 %}$0",
-            "{% endwith %}"
-        ]
+        "body": "{% with $1 as $2 %}$0{% endwith %}"
     },
 
     "endwith": {
@@ -454,10 +438,7 @@
     "blocktrans": {
         "description": "{% blocktrans %}{% endblocktrans %}",
         "prefix": "blocktrans",
-        "body": [
-            "{% blocktrans %}$0",
-            "{% endblocktrans %}"
-        ]
+        "body": "{% blocktrans %}$0{% endblocktrans %}"
     },
 
     "blocktrans_paste": {
@@ -465,7 +446,7 @@
         "prefix": "blocktrans_paste",
         "body": [
             "{% blocktrans ${2:trimmed }%}",
-            "    ${CLIPBOARD}$1",
+            "$0${CLIPBOARD}",
             "{% endblocktrans %}"
         ]
     },
@@ -473,8 +454,14 @@
     "blocktrans_with": {
         "description": "{% blocktrans as %}{% endblocktrans %}",
         "prefix": "blocktrans_with",
-        "body": [
-            "{% blocktrans with $1=$2 ${3:trimmed }%}$0",
+        "body": "{% blocktrans with $1=$2 ${3:trimmed }%}$0{% endblocktrans %}"
+    },
+
+    "blocktrans_with_paste": {
+        "description": "{% blocktrans as %}(paste){% endblocktrans %}",
+        "prefix": "blocktrans_with_paste",
+        "body": ["{% blocktrans with $1=$2 ${3:trimmed }%}",
+            "$0${CLIPBOARD}",
             "{% endblocktrans %}"
         ]
     },
@@ -483,11 +470,5 @@
         "prefix": "static",
         "body": "{% static '${1:$SELECTION}' %}",
         "description": "static"
-    },
-
-    "super": {
-        "description": "{{ block.super }}",
-        "prefix": "super",
-        "body": "{{ block.super }}"
     }
 }
