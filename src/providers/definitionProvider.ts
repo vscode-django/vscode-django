@@ -27,7 +27,9 @@ let cache: any = {}
 
 export class TemplatePathProvider implements DefinitionProvider {
 
-    public selector = { scheme: 'file', language: 'django-html' }
+    public selector = 
+        [{ scheme: 'file', language: 'django-html' },
+        { scheme: 'file', language: 'python' }]
 
     private static getTemplate(document: TextDocument, position: Position, token: CancellationToken): Thenable<Uri | null> {
 
