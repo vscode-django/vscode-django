@@ -14,13 +14,13 @@ import {
     workspace
 } from 'vscode'
 
+import { PYTHON_SELECTOR } from '../constants'
 import { DjangoSnippet, readSnippets } from '../utils'
 
 const settings = workspace.getConfiguration("django");
 
 const exclusions: string[] = settings.snippets.exclude
 
-export const PYTHON_SELECTOR = { scheme: 'file', language: 'python' }
 
 
 export class DjangoCompletionItemProvider implements CompletionItemProvider {

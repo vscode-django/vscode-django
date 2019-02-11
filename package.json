@@ -2,7 +2,7 @@
     "name": "vscode-django",
     "displayName": "Django",
     "description": "Beautiful syntax and scoped snippets for perfectionists with deadlines",
-    "version": "0.18.0",
+    "version": "0.19.0",
     "publisher": "batisteo",
     "license": "MIT",
     "preview": true,

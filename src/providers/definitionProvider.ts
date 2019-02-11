@@ -12,6 +12,7 @@ import {
     Uri,
     workspace,
 } from 'vscode'
+import { DJANGO_HTML_SELECTOR, PYTHON_SELECTOR } from '../constants'
 
 let regex = (regexes: RegExp[]) => new RegExp(regexes.map(re => re.source).join(''))
 
@@ -27,9 +28,7 @@ let cache: any = {}
 
 export class TemplatePathProvider implements DefinitionProvider {
 
-    public selector = 
-        [{ scheme: 'file', language: 'django-html' },
-        { scheme: 'file', language: 'python' }]
+    public selector = [DJANGO_HTML_SELECTOR, PYTHON_SELECTOR]
 
     private static getTemplate(document: TextDocument, position: Position, token: CancellationToken): Thenable<Uri | null> {
 

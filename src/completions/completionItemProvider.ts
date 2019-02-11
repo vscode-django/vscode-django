@@ -1,6 +1,7 @@
 'use strict';
 
-import { DjangoCompletionItemProvider, PYTHON_SELECTOR } from './base'
+import { PYTHON_SELECTOR } from '../constants'
+import { DjangoCompletionItemProvider } from './base'
 
 
 export class DjangoPythonCompletionItemProvider extends DjangoCompletionItemProvider {
