@@ -2,7 +2,7 @@
     "name": "vscode-django",
     "displayName": "Django",
     "description": "Beautiful syntax and scoped snippets for perfectionists with deadlines",
-    "version": "0.17.0",
+    "version": "0.18.0",
     "publisher": "batisteo",
     "license": "MIT",
     "preview": true,
@@ -12,7 +12,7 @@
         "theme": "dark"
     },
     "engines": {
-        "vscode": "^1.24.0"
+        "vscode": "^1.28.0"
     },
     "recommendations": [
         "ms-python.python"
@@ -54,9 +54,9 @@
     "devDependencies": {
         "@types/mocha": "^2.2.48",
         "@types/node": "^7.0.66",
-        "tslint": "^5.10.0",
-        "typescript": "^2.8.3",
-        "vscode": "1.1.18"
+        "tslint": "^5.12",
+        "typescript": "^3.3",
+        "vscode": "1.1.28"
     },
     "contributes": {
         "languages": [
