@@ -9,8 +9,9 @@ or drop this in your settings for more precision:
 
 ```json
 "files.associations": {
-    "**/templates/*.html": "django-html",
-    "**/templates/*": "django-txt",
+    "**/*.html": "html",
+    "**/templates/**/*.html": "django-html",
+    "**/templates/**/*": "django-txt",
     "**/requirements{/**,*}.{txt,in}": "pip-requirements"
 },
 ```
