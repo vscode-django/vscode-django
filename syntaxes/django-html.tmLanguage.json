@@ -9,8 +9,8 @@
     "django-stuff": {
       "patterns": [
         {
-          "begin": "{% comment ?(\"([\\w\\s])*\" )?%}",
-          "end": "{% endcomment %}",
+          "begin": "{%\\s*comment ?(\"([\\w\\s])*\" )?\\s*%}",
+          "end": "{%\\s*endcomment\\s*%}",
           "name": "comment.block.django"
         },
         {
@@ -33,7 +33,7 @@
           }
         },
         {
-          "begin": "({%) (load) ",
+          "begin": "({%)\\s*(load) ",
           "end": "(%})",
           "name": "storage.type.templatetag.django",
           "patterns": [
@@ -54,7 +54,7 @@
           }
         },
         {
-          "begin": "({%) (autoescape|endautoescape|block|endblock|blocktrans|endblocktrans|trans|plural|comment|endcomment|debug|extends|filter|firstof|for|empty|endfor|if|elif|else|endif|include|ifchanged|endifchanged|ifequal|endifequal|ifnotequal|endifnotequal|from|low|regroup|ssi|spaceless|endspaceless|templatetag|widthratio|with|endwith|csrf_token|cycle|url|verbatim|endverbatim|lorem|thumbnail|endthumbnail|get_static_prefix)\\b",
+          "begin": "({%)\\s*(autoescape|endautoescape|block|endblock|blocktrans|endblocktrans|trans|plural|comment|endcomment|debug|extends|filter|firstof|for|empty|endfor|if|elif|else|endif|include|ifchanged|endifchanged|ifequal|endifequal|ifnotequal|endifnotequal|from|low|regroup|ssi|spaceless|endspaceless|templatetag|widthratio|with|endwith|csrf_token|cycle|url|verbatim|endverbatim|lorem|thumbnail|endthumbnail|get_static_prefix)\\b",
           "end": "(%})",
           "name": "storage.type.templatetag.django",
           "patterns": [
@@ -81,7 +81,7 @@
           }
         },
         {
-          "begin": "({%) ([a-zA-Z0-9_.]+)",
+          "begin": "({%)\\s*([a-zA-Z0-9_.]+)",
           "end": "(%})",
           "name": "storage.type.customtemplatetag.django",
           "patterns": [
@@ -497,8 +497,8 @@
           "end": "(</)((?i:script))",
           "patterns": [
             {
-              "begin": "{% comment %}",
-              "end": "{% endcomment %}",
+              "begin": "{%\\s*comment\\s*%}",
+              "end": "{%\\s*endcomment\\s*%}",
               "name": "comment.block.django"
             },
             {

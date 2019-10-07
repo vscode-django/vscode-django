@@ -139,8 +139,8 @@ include = "#django-stuff"
 begin = "(?<!</(?:script|SCRIPT))(>)"
 end = "(</)((?i:script))"
 [[patterns.patterns.patterns]]
-begin = "{% comment %}"
-end = "{% endcomment %}"
+begin = "{%\\s*comment\\s*%}"
+end = "{%\\s*endcomment\\s*%}"
 name = "comment.block.django"
 
 [[patterns.patterns.patterns]]
