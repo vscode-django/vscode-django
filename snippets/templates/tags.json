@@ -111,31 +111,13 @@
     "cycle": {
         "description": "{% cycle %}",
         "prefix": "cycle",
-        "body": [
-            "{% cycle $1 %}$0",
-            "{% endcycle %}"
-        ]
+        "body": "{% cycle $1 %}$0"
     },
-
-    "endcycle": {
-        "description": "{% endcycle %}",
-        "prefix": "endcycle",
-        "body": "{% endcycle %}"
-    },
-
+    
     "debug": {
         "description": "{% debug %}",
         "prefix": "debug",
-        "body": [
-            "{% debug $1 %}$0",
-            "{% enddebug %}"
-        ]
-    },
-
-    "enddebug": {
-        "description": "{% enddebug %}",
-        "prefix": "enddebug",
-        "body": "{% enddebug %}"
+        "body": "{% debug %}"
     },
 
     "extends": {
