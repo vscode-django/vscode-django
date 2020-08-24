@@ -22,6 +22,8 @@ Emmet enthusiasts should have this to their configuration as well:
 "emmet.includeLanguages": {"django-html": "html"},
 ```
 
+Dealing with `django.po` files? Consider installing the [gettext extension](https://marketplace.visualstudio.com/items?itemName=mrorz.language-gettext).
+
 ## Features
 
 ### Go to definition in templates
