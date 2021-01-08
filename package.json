@@ -2,7 +2,7 @@
     "name": "vscode-django",
     "displayName": "Django",
     "description": "Beautiful syntax and scoped snippets for perfectionists with deadlines",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "publisher": "batisteo",
     "license": "MIT",
     "icon": "images/vscode-django-icon.png",
@@ -48,7 +48,6 @@
         "test": "yarn run compile && node ./node_modules/vscode/bin/test"
     },
     "dependencies": {
-        "open": "^7.3.0",
         "path": "^0.12.7",
         "toml": "^3"
     },
