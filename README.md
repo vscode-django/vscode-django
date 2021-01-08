@@ -100,4 +100,4 @@ Hack around
 Press <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>F5</kbd> or 🔄 to reload.
 
 [![Paypal](https://img.shields.io/static/v1?label=Paypal&message=€55&logo=Paypal&color=009cde&link=https://www.paypal.com/paypalme/batisteo/5)](https://www.paypal.com/paypalme/batisteo/5)
-[![Github Sponsor](https://img.shields.io/static/v1?label=Sponsor&message=3 %E2%9D%A4&logo=GitHub&color=ea4aaa&link=https://github.com/sponsor/batisteo)](https://github.com/sponsor/batisteo)
+[![Github Sponsor](https://img.shields.io/static/v1?label=Sponsor&message=3%C2%A0%E2%9D%A4&logo=GitHub&color=ea4aaa&link=https://github.com/sponsor/batisteo)](https://github.com/sponsor/batisteo)
