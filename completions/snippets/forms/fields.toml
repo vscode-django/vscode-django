@@ -61,13 +61,8 @@ detail = "forms.FloatField()"
 
 [[snippets]]
 prefix = "ip_field"
-body = "forms.IPAddressField($1)"
-detail = "postgres.forms.IPAddressField()"
-
-[[snippets]]
-prefix = "ip_field"
 body = "forms.GenericIPAddressField($1)"
-detail = "forms.IPAddressField()"
+detail = "forms.GenericIPAddressField()"
 
 [[snippets]]
 prefix = "img_field"
@@ -78,6 +73,11 @@ detail = "forms.ImageField()"
 prefix = "int_field"
 body = "forms.IntegerField($1, required=${2:False})"
 detail = "forms.IntegerField()"
+
+[[snippets]]
+prefix = "json_field"
+body = "forms.JSONField($1)"
+detail = "forms.JSONField()"
 
 [[snippets]]
 prefix = "mochoice_field"
