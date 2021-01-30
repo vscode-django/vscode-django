@@ -389,12 +389,12 @@
         "prefix": "with_paste",
         "body": "{% with $1 as $2 %}${CLIPBOARD}{% endwith %}"
     },
-
-    "trans": {
-        "description": "{% trans \"\" %}",
-        "prefix": "trans",
-        "body": "{% trans \"${0:$SELECTION}\" %}"
-    },
+   
+    "translate": {
+        "description": "{% translate \"\" %}",
+        "prefix": "translate",
+        "body": "{% translate \"${0:$SELECTION}\" %}"
+    },    
 
     "trans_paste": {
         "description": "{% trans \"(paste)\" %}",
