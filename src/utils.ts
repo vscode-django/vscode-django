@@ -1,9 +1,9 @@
 
 import path = require("path");
-import fs = require('fs');
-import toml = require('toml');
-const folder = path.resolve(__dirname, '../completions/snippets/');
+import fs = require("fs");
+import toml = require("toml");
 
+const folder = path.resolve(__dirname, "../completions/snippets/");
 
 export interface DjangoSnippet {
     prefix: string
@@ -14,5 +14,7 @@ export interface DjangoSnippet {
 
 
 export function readSnippets(name: string): DjangoSnippet[] {
-    return toml.parse(fs.readFileSync(path.resolve(folder, name), 'utf-8')).snippets
+    return toml.parse(fs.readFileSync(path.resolve(folder, name), "utf-8")).snippets
 }
+
+export async function postInitHook(): Promise<void> { }

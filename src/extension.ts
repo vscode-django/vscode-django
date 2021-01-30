@@ -1,6 +1,6 @@
 'use strict'
 
-import { ExtensionContext, languages } from 'vscode'
+import { ExtensionContext, languages } from 'vscode';
 import { TemplatePathProvider } from './providers/definitionProvider'
 import {
     DjangoAdminCompletionItemProvider,
@@ -13,12 +13,12 @@ import {
     DjangoTemplatetagsCompletionItemProvider,
     DjangoUrlCompletionItemProvider,
 } from './completions/completionItemProvider'
+import { postInitHook } from './utils';
 
-
-export function activate(context: ExtensionContext): void {
+export async function activate(context: ExtensionContext): Promise<void> {
     const definitions = new TemplatePathProvider()
     context.subscriptions.push(languages.registerDefinitionProvider(definitions.selector, definitions))
-    
+
     const djangoPythonSnippets = new DjangoPythonCompletionItemProvider()
     context.subscriptions.push(languages.registerCompletionItemProvider(djangoPythonSnippets.selector, djangoPythonSnippets))
 
@@ -45,4 +45,6 @@ export function activate(context: ExtensionContext): void {
 
     const djangoUrlSnippets = new DjangoUrlCompletionItemProvider()
     context.subscriptions.push(languages.registerCompletionItemProvider(djangoUrlSnippets.selector, djangoUrlSnippets))
+
+    postInitHook();
 }

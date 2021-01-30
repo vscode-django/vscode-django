@@ -44,14 +44,11 @@
     "block": {
         "description": "{% block %}",
         "prefix": "block",
-        "body": [
-            "{% block $1 %}$0",
-            "{% endblock $1 %}"
-        ]
+        "body": "{% block $1 %}$0{% endblock $1 %}"
     },
 
-    "block_inline": {
-        "description": "{% block %} (inline)",
+    "blok": {
+        "description": "{% block %} (unnamed endblock)",
         "prefix": "blok",
         "body": "{% block $1 %}$0{% endblock %}"
     },
@@ -71,19 +68,13 @@
     "comment": {
         "description": "{% comment %}",
         "prefix": "comment",
-        "body": [
-            "{% comment '$1' %}$0",
-            "{% endcomment %}"
-        ]
+        "body": "{% comment \"$1\" %}$0{% endcomment %}"
     },
 
     "comment_paste": {
         "description": "{% comment %} (paste)",
         "prefix": "comment",
-        "body": [
-            "{% comment %}${CLIPBOARD}",
-            "{% endcomment %}"
-        ]
+        "body": "{% comment %}${CLIPBOARD}{% endcomment %}"
     },
 
     "comment_selection": {
@@ -111,7 +102,7 @@
     "cycle": {
         "description": "{% cycle %}",
         "prefix": "cycle",
-        "body": "{% cycle $1 %}$0"
+        "body": "{% cycle $1 %}"
     },
     
     "debug": {
@@ -123,18 +114,13 @@
     "extends": {
         "description": "{% extends %}",
         "prefix": "extends",
-        "body": [
-            "{% extends '$1' %}$0"
-        ]
+        "body": "{% extends '$1' %}$0"
     },
 
     "filter": {
         "description": "{% filter %}",
         "prefix": "filter",
-        "body": [
-            "{% filter $1 %}$0",
-            "{% endfilter %}"
-        ]
+        "body": "{% filter $1 %}$0{% endfilter %}"
     },
 
     "endfilter": {
@@ -146,9 +132,7 @@
     "firstof": {
         "description": "{% firstof %}",
         "prefix": "firstof",
-        "body": [
-            "{% firstof $1 as $2 %}"
-        ]
+        "body": "{% firstof $1 as $2 %}"
     },
 
     "endfirstof": {
@@ -250,9 +234,7 @@
     "load": {
         "description": "{% load tags %}",
         "prefix": "load",
-        "body": [
-            "{% load ${1|static,i18n,cache,l10n,tz,humanize,flatpages|} %}"
-        ]
+        "body": "{% load ${1|static,i18n,cache,l10n,tz,humanize,flatpages|} %}"
     },
 
     "lorem": {
@@ -323,9 +305,7 @@
     "templatetag": {
         "description": "{% templatetag %}",
         "prefix": "templatetag",
-        "body": [
-            "{% templatetag ${1|openblock,closeblock,openvariable,closevariable,openbrace,closebrace,opencomment,closecomment|} %}"
-        ]
+        "body": "{% templatetag ${1|openblock,closeblock,openvariable,closevariable,openbrace,closebrace,opencomment,closecomment|} %}"
     },
 
     "url": {
@@ -395,26 +375,19 @@
     "with_paste": {
         "description": "{% with as %} (paste)",
         "prefix": "with_paste",
-        "body": [
-            "{% with $1 as $2 %}${CLIPBOARD}",
-            "{% endwith %}"
-        ]
+        "body": "{% with $1 as $2 %}${CLIPBOARD}{% endwith %}"
     },
 
     "trans": {
         "description": "{% trans \"\" %}",
         "prefix": "trans",
-        "body": [
-            "{% trans \"${0:$SELECTION}\" %}"
-        ]
+        "body": "{% trans \"${0:$SELECTION}\" %}"
     },
 
     "trans_paste": {
         "description": "{% trans \"(paste)\" %}",
         "prefix": "trans_paste",
-        "body": [
-            "{% trans \"${CLIPBOARD}\" %}"
-        ]
+        "body": "{% trans \"${CLIPBOARD}\" %}"
     },
 
     "blocktrans": {
@@ -450,7 +423,7 @@
 
     "static": {
         "prefix": "static",
-        "body": "{% static '${1:$SELECTION}' %}",
-        "description": "static"
+        "description": "static",
+        "body": "{% static '${1:$SELECTION}' %}"
     }
 }

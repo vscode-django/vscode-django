@@ -91,12 +91,6 @@ detail = 'models.ForeignKey()'
 description = 'ForeignKey (fk).\n\nA many-to-one relationship.\n\non_delete will become a required argument in Django 2.0. In older versions it defaults to CASCADE.\n\n'
 
 [[snippets]]
-prefix = 'ip_address_field'
-body = 'models.IPAddressField(_("$1"))'
-detail = 'models.IPAddressField()'
-description = 'This field has been deprecated since version 1.7 in favor of GenericIPAddressField.'
-
-[[snippets]]
 prefix = 'image_field'
 body = 'models.ImageField(_("$1"), upload_to=${3:None}, height_field=${4:None}, width_field=${5:None}, max_length=${5:100})'
 detail = 'models.ImageField()'
@@ -113,6 +107,12 @@ prefix = 'generic_ip_address_field'
 body = 'models.GenericIPAddressField(_("$1"), protocol=${3:"both"}, unpack_ipv4=${4:False})'
 detail = 'models.GenericIPAddressField()'
 description = 'An IPv4 or IPv6 address, in string format.'
+
+[[snippets]]
+prefix = 'json_field'
+body = 'models.JSONField(_("$1")${2:, encoder=$3}${4:, decoder=$5})'
+detail = 'models.JSONField()'
+description = 'A field for storing JSON encoded data.'
 
 [[snippets]]
 prefix = 'many_to_many_field'
