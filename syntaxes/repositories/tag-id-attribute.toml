@@ -18,6 +18,10 @@ name = "string.quoted.double.html"
 name = "punctuation.definition.string.begin.html"
 [patterns.endCaptures.0]
 name = "punctuation.definition.string.end.html"
+
+[[patterns.patterns]]
+include = "#django-stuff"
+
 [[patterns.patterns]]
 include = "#entities"
 

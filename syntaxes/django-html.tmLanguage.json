@@ -262,6 +262,9 @@
           "name": "string.quoted.double.html",
           "patterns": [
             {
+              "include": "#django-stuff"
+            },
+            {
               "include": "#entities"
             }
           ],
