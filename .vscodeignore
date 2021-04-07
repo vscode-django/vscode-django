@@ -1,11 +1,16 @@
-.vscode/**
-.vscode-test/**
-out/test/**
-src/**
-.gitignore
-.yarnrc
-vsc-extension-quickstart.md
-**/tsconfig.json
-**/.eslintrc.json
-**/*.map
-**/*.ts
+*
+*/**
+
+# Include:
+!language-configuration.json
+!package.json
+!client/*
+!completions/*
+!snippets/*
+!syntaxes/*
+!out/*
+!node_modules/*
+!CHANGELOG.md
+!LICENSE.txt
+!README.md
+!images/*
