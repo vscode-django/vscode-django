@@ -9,3 +9,8 @@ vsc-extension-quickstart.md
 **/.eslintrc.json
 **/*.map
 **/*.ts
+__pycache__/**
+.venv/**
+.env
+poetry.lock
+pyproject.toml
