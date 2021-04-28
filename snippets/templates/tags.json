@@ -421,6 +421,49 @@
         ]
     },
 
+    "translate": {
+        "description": "{% translate \"\" %}",
+        "prefix": "translate",
+        "body": "{% translate \"${0:$SELECTION}\" %}"
+    },
+
+    "translate_paste": {
+        "description": "{% translate \"(paste)\" %}",
+        "prefix": "translate_paste",
+        "body": "{% translate \"${CLIPBOARD}\" %}"
+    },
+
+    "blocktranslate": {
+        "description": "{% blocktranslate %}{% endblocktranslate %}",
+        "prefix": "blocktranslate",
+        "body": "{% blocktranslate %}$0{% endblocktranslate %}"
+    },
+
+    "blocktranslate_paste": {
+        "description": "{% blocktranslate %}(paste){% endblocktranslate %}",
+        "prefix": "blocktranslate_paste",
+        "body": [
+            "{% blocktranslate ${2:trimmed }%}",
+            "$0${CLIPBOARD}",
+            "{% endblocktranslate %}"
+        ]
+    },
+
+    "blocktranslate_with": {
+        "description": "{% blocktranslate as %}{% endblocktranslate %}",
+        "prefix": "blocktranslate_with",
+        "body": "{% blocktranslate with $1=$2 ${3:trimmed }%}$0{% endblocktranslate %}"
+    },
+
+    "blocktranslate_with_paste": {
+        "description": "{% blocktranslate as %}(paste){% endblocktranslate %}",
+        "prefix": "blocktranslate_with_paste",
+        "body": ["{% blocktranslate with $1=$2 ${3:trimmed }%}",
+            "$0${CLIPBOARD}",
+            "{% endblocktranslate %}"
+        ]
+    },
+
     "static": {
         "prefix": "static",
         "description": "static",
