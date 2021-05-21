@@ -49,10 +49,8 @@
         "test": "yarn run compile && node ./node_modules/vscode/bin/test"
     },
     "dependencies": {
-        "global": "^4.4.0",
         "path": "^0.12.7",
-        "toml": "^3",
-        "vsce": "^1.88.0"
+        "toml": "^3"
     },
     "devDependencies": {
         "@types/glob": "^7.1.3",
