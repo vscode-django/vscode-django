@@ -2,7 +2,7 @@
     "name": "vscode-django",
     "displayName": "Django",
     "description": "Beautiful syntax and scoped snippets for perfectionists with deadlines",
-    "version": "1.6.0",
+    "version": "1.6.1",
     "publisher": "batisteo",
     "license": "MIT",
     "icon": "images/vscode-django-icon.png",
@@ -36,7 +36,8 @@
     "activationEvents": [
         "onLanguage:django-html",
         "onLanguage:django-txt",
-        "onLanguage:python"
+        "onLanguage:python",
+        "onCommand:django.updateHtmlConfig"
     ],
     "main": "./out/extension",
     "scripts": {
@@ -69,6 +70,10 @@
             {
                 "command": "extension.Message",
                 "title": "Message"
+            },
+            {
+                "command": "django.updateHtmlConfig",
+                "title": "Update html files recognition in Django Projects"
             }
         ],
         "languages": [
