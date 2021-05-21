@@ -14,6 +14,7 @@ import {
     DjangoUrlCompletionItemProvider,
 } from './completions/completionItemProvider'
 import { postInitHook } from './utils';
+import { activateHtmlPatchSettings } from './htmlPatchSettings';
 
 export async function activate(context: ExtensionContext): Promise<void> {
     const definitions = new TemplatePathProvider()
@@ -45,6 +46,6 @@ export async function activate(context: ExtensionContext): Promise<void> {
 
     const djangoUrlSnippets = new DjangoUrlCompletionItemProvider()
     context.subscriptions.push(languages.registerCompletionItemProvider(djangoUrlSnippets.selector, djangoUrlSnippets))
-
+    activateHtmlPatchSettings(context);
     postInitHook();
 }

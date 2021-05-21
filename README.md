@@ -4,8 +4,15 @@
 
 ## Usage
 
-Configure you file association for `Django HTML` in the **Language Mode** menu
-or drop this in your settings for more precision:
+Configure you file association for `Django HTML` in the **Language Mode** menu like below:
+1. Press `ctrl+shift+p`.
+2. Type `Update html files recognition in Django Projects`
+3. Press `Enter`
+
+<details>
+<summary>
+<i>Click to see what configs this plugin will use</i>
+</summary>
 
 ```json
 "files.associations": {
@@ -14,13 +21,9 @@ or drop this in your settings for more precision:
     "**/templates/**/*": "django-txt",
     "**/requirements{/**,*}.{txt,in}": "pip-requirements"
 },
+"emmet.includeLanguages": {"django-html": "html"}
 ```
-
-Emmet enthusiasts should have this to their configuration as well:
-
-```json
-"emmet.includeLanguages": {"django-html": "html"},
-```
+</details>
 
 Dealing with `django.po` files? Consider installing the [gettext extension](https://marketplace.visualstudio.com/items?itemName=mrorz.language-gettext).
 
