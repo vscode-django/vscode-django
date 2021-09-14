@@ -1,6 +1,7 @@
 'use strict';
 
 import { PYTHON_SELECTOR } from '../constants'
+import { SnippetProvider } from '../utils';
 import { DjangoCompletionItemProvider } from './base'
 
 
@@ -10,9 +11,9 @@ export class DjangoPythonCompletionItemProvider extends DjangoCompletionItemProv
     directory = 'python'
     files = ["imports.toml", "utils.toml"]
 
-    constructor () {
+    constructor (snippetPrvider: SnippetProvider) {
         super()
-        this.loadSnippets()
+        this.loadSnippets(snippetPrvider)
     }
 }
 
@@ -23,9 +24,9 @@ export class DjangoAdminCompletionItemProvider extends DjangoCompletionItemProvi
     directory = "admin"
     files = ["classes.toml", "imports.toml", "options.toml"]
 
-    constructor () {
+    constructor (snippetPrvider: SnippetProvider) {
         super()
-        this.loadSnippets()
+        this.loadSnippets(snippetPrvider)
     }
 }
 
@@ -36,9 +37,9 @@ export class DjangoFormCompletionItemProvider extends DjangoCompletionItemProvid
     directory = "forms"
     files = ["classes.toml", "imports.toml", "fields.toml", "fields-postgres.toml", "methods.toml"]
 
-    constructor () {
+    constructor (snippetPrvider: SnippetProvider) {
         super()
-        this.loadSnippets()
+        this.loadSnippets(snippetPrvider)
     }
 }
 
@@ -49,9 +50,9 @@ export class DjangoManagerCompletionItemProvider extends DjangoCompletionItemPro
     directory = "models"
     files = ["managers.toml"]
 
-    constructor () {
+    constructor (snippetPrvider: SnippetProvider) {
         super()
-        this.loadSnippets()
+        this.loadSnippets(snippetPrvider)
     }
 }
 
@@ -62,9 +63,9 @@ export class DjangoMigrationCompletionItemProvider extends DjangoCompletionItemP
     directory = "models"
     files = ["migrations.toml"]
 
-    constructor () {
+    constructor (snippetPrvider: SnippetProvider) {
         super()
-        this.loadSnippets()
+        this.loadSnippets(snippetPrvider)
     }
 }
 
@@ -75,9 +76,9 @@ export class DjangoModelCompletionItemProvider extends DjangoCompletionItemProvi
     directory = "models"
     files = ["classes.toml", "imports.toml", "fields.toml", "fields-postgres.toml", "methods.toml"]
 
-    constructor () {
+    constructor (snippetPrvider: SnippetProvider) {
         super()
-        this.loadSnippets()
+        this.loadSnippets(snippetPrvider)
     }
 }
 
@@ -88,9 +89,9 @@ export class DjangoViewCompletionItemProvider extends DjangoCompletionItemProvid
     directory = "views"
     files = ["classes.toml", "imports.toml", "methods.toml"]
 
-    constructor () {
+    constructor (snippetPrvider: SnippetProvider) {
         super()
-        this.loadSnippets()
+        this.loadSnippets(snippetPrvider)
     }
 }
 
@@ -101,9 +102,9 @@ export class DjangoTemplatetagsCompletionItemProvider extends DjangoCompletionIt
     directory = "templatetags"
     files = ["imports.toml", "methods.toml"]
 
-    constructor () {
+    constructor (snippetPrvider: SnippetProvider) {
         super()
-        this.loadSnippets()
+        this.loadSnippets(snippetPrvider)
     }
 }
 
@@ -114,8 +115,8 @@ export class DjangoUrlCompletionItemProvider extends DjangoCompletionItemProvide
     directory = "urls"
     files = ["imports.toml", "methods.toml", "regexes.toml"]
 
-    constructor () {
+    constructor (snippetPrvider: SnippetProvider) {
         super()
-        this.loadSnippets()
+        this.loadSnippets(snippetPrvider)
     }
 }

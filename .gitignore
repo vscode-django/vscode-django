@@ -7,3 +7,5 @@ package-lock.json
 .venv
 .env
 **/__pycache__
+.vscode-test/
+.vscode-test-web/
