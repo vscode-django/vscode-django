@@ -1,9 +1,8 @@
 
-import path = require("path");
-import fs = require("fs");
 import toml = require("toml");
 
-const folder = path.resolve(__dirname, "../completions/snippets/");
+import vscode = require("vscode");
+import { TextDecoder } from "util";
 
 export interface DjangoSnippet {
     prefix: string
@@ -12,9 +11,19 @@ export interface DjangoSnippet {
     description: string
 }
 
+export class SnippetProvider {
+    constructor(private extensionUri: vscode.Uri) {
+    }
+    async readSnippets(name: string): Promise<DjangoSnippet[]> {
 
-export function readSnippets(name: string): DjangoSnippet[] {
-    return toml.parse(fs.readFileSync(path.resolve(folder, name), "utf-8")).snippets
+        const location = vscode.Uri.joinPath(this.extensionUri, 'completions/snippets', name)
+
+        const buffer = await vscode.workspace.fs.readFile(location);
+        const str = new TextDecoder("utf-8").decode(buffer);
+
+        return toml.parse(str).snippets;
+    }
 }
+
 
 export async function postInitHook(): Promise<void> { }

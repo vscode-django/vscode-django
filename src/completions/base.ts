@@ -15,7 +15,7 @@ import {
 } from 'vscode'
 
 import { PYTHON_SELECTOR } from '../constants'
-import { DjangoSnippet, readSnippets } from '../utils'
+import { DjangoSnippet, SnippetProvider } from '../utils'
 
 const settings = workspace.getConfiguration("django");
 
@@ -29,15 +29,15 @@ export class DjangoCompletionItemProvider implements CompletionItemProvider {
     files: string[] = []
     snippets: DjangoSnippet[] = []
 
-    loadSnippets() {
+    async loadSnippets(snippetPrvider: SnippetProvider) {
         if (! settings.snippets.use) return
         if (exclusions.some(word => this.directory.includes(word))) return
 
-        this.snippets = Array.prototype.concat(...this.files
-            .filter(file => ! exclusions.some(word => file.includes(word)))
-            .map(file => readSnippets(`${this.directory}/${file}`))
-        )
-        if (! settings.i18n) {
+        this.snippets = Array.prototype.concat(...await Promise.all(
+            this.files.filter(file => ! exclusions.some(word => file.includes(word)))
+                .map(file => snippetPrvider.readSnippets(`${this.directory}/${file}`))
+        ));
+        if (!settings.i18n) {
             this.snippets = this.snippets.map(snippet => {
                 snippet.body = snippet.body.replace(/_\("(\S*)"\)/g, '"$1"');
                 return snippet
