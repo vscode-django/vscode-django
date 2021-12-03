@@ -6,13 +6,13 @@ authors = ["Baptiste Darthenay <baptiste.darthenay@gmail.com>"]
 license = "MIT"
 
 [tool.poetry.dependencies]
-python = ">=3.5"
-tomlkit = "0.7.0"
+python = ">=3.5,<4"
+tomlkit = "^0.7"
 
 [tool.poetry.dev-dependencies]
 toml = "*"
 tomlkit = "*"
-bpython = "0.20"
+bpython = "*"
 
 [tool.poetry.scripts]
 syntax = "syntaxes.build:main"
