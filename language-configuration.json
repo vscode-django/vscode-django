@@ -8,13 +8,15 @@
         ["<!--", "-->"],
         ["<", ">"],
         ["{", "}"],
-        ["%", "%"],
+        ["{{", "}}"],
+        ["{%", "%}"],
+        ["{#", "#}"],
         ["(", ")"]
     ],
     // symbols that are auto closed when typing
     "autoClosingPairs": [
         { "open": "{", "close": "}"},
-        { "open": "%", "close": "%"},
+        { "open": "%", "close": "%", "notIn": [ "comment", "string" ]},
         { "open": "[", "close": "]"},
         { "open": "(", "close": ")" },
         { "open": "'", "close": "'" },
