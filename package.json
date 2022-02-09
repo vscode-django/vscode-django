@@ -87,8 +87,8 @@
                     "Django HTML",
                     "django"
                 ],
-                "extensions": [
-                    ".html"
+                "filenamePatterns": [
+                    "**/templates/**/*.html"
                 ],
                 "firstLine": "{%",
                 "configuration": "./language-configuration.json"
@@ -99,8 +99,8 @@
                     "Django txt",
                     "django"
                 ],
-                "extensions": [
-                    ".txt"
+                "filenamePatterns": [
+                    "**/templates/**/*"
                 ],
                 "firstLine": "{%",
                 "configuration": "./language-configuration.json"
