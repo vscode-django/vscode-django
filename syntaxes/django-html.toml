@@ -245,7 +245,7 @@ name = "entity.name.tag.inline.any.html"
 name = "punctuation.definition.tag.end.html"
 
 [[patterns]]
-begin = "(</?)([a-zA-Z0-9:]+)"
+begin = "(</?)([a-zA-Z0-9:-]+)"
 end = "(>)"
 name = "meta.tag.other.html"
 [[patterns.patterns]]
