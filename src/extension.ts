@@ -13,6 +13,7 @@ import {
     DjangoTemplatetagsCompletionItemProvider,
     DjangoUrlCompletionItemProvider,
 } from './completions/completionItemProvider'
+import {DjangoDocumentFormattingEditProvider} from './formatting/documentFormattingEditProvider'
 import { postInitHook, SnippetProvider } from './utils';
 
 export async function activate(context: ExtensionContext): Promise<void> {
@@ -47,6 +48,9 @@ export async function activate(context: ExtensionContext): Promise<void> {
 
     const djangoUrlSnippets = new DjangoUrlCompletionItemProvider(snippetProvider)
     context.subscriptions.push(languages.registerCompletionItemProvider(djangoUrlSnippets.selector, djangoUrlSnippets))
+
+    const djangoFormatter = DjangoDocumentFormattingEditProvider()
+    context.subscriptions.push(languages.registerDocumentFormattingEditProvider('django-html',djangoFormatter))
 
     postInitHook();
 }
