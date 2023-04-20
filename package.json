@@ -100,7 +100,7 @@
                     "django"
                 ],
                 "filenamePatterns": [
-                    "**/templates/**/*"
+                    "**/templates/**/*.txt"
                 ],
                 "firstLine": "{%",
                 "configuration": "./language-configuration.json"
