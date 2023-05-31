@@ -43,7 +43,7 @@ export class TemplatePathProvider implements DefinitionProvider {
             search = workspace.asRelativePath(resolve(dirname(document.uri.path), path))
         } else if (match) {
             path = match[1]
-            search = `**/templates/${path}`
+            search = `**/{templates,jinja2}/${path}`
         } else {
             return Promise.resolve(null)
         }
