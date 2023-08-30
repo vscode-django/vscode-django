@@ -104,7 +104,7 @@
         "prefix": "cycle",
         "body": "{% cycle $1 %}"
     },
-    
+
     "debug": {
         "description": "{% debug %}",
         "prefix": "debug",
@@ -114,7 +114,7 @@
     "extends": {
         "description": "{% extends %}",
         "prefix": "extends",
-        "body": "{% extends '$1' %}$0"
+        "body": "{% extends \"$1\" %}$0"
     },
 
     "filter": {
@@ -200,7 +200,7 @@
         "body": "{% elif %}",
         "description": "elif"
     },
-    
+
     "else": {
         "prefix": "else",
         "body": "{% else %}",
@@ -228,7 +228,7 @@
     "include": {
         "description": "{% include %}",
         "prefix": "include",
-        "body": "{% include $1 %}"
+        "body": "{% include \"$1\"%}"
     },
 
     "load": {
@@ -311,19 +311,19 @@
     "url": {
         "description": "{% url %}",
         "prefix": "url",
-        "body": "{% url '$1' %}"
+        "body": "{% url \"$1\" %}"
     },
 
     "urlpk": {
         "description": "{% url pk=object.pk %}",
         "prefix": "urlpk",
-        "body": "{% url '$1' pk=${2:${3:object}.pk} %}"
+        "body": "{% url \"$1\" pk=${2:${3:object}.pk} %}"
     },
 
     "urlslug": {
         "description": "{% url slug=object.slug %}",
         "prefix": "urlslug",
-        "body": "{% url '$1' slug=${2:${3:object}.slug} %}"
+        "body": "{% url \"$1\" slug=${2:${3:object}.slug} %}"
     },
 
     "verbatim": {
@@ -467,6 +467,6 @@
     "static": {
         "prefix": "static",
         "description": "static",
-        "body": "{% static '${1:$SELECTION}' %}"
+        "body": "{% static \"${1:$SELECTION}\" %}"
     }
 }
