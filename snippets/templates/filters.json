@@ -2,9 +2,9 @@
     "_comment" : "This section is autocomplete for django template filters",
 
     "join": {
-        "description": "Filter |join:', '",
+        "description": "Filter |join:\", \"",
         "prefix": "join",
-        "body": "join:${1:', '}$0"
+        "body": "join:${1:\", \"}$0"
     },
 
     "addslashes": {
@@ -128,9 +128,9 @@
     },
 
     "wordwrap": {
-        "description": "Filter |wordwrap",
+        "description": "Filter |wordwrap:number",
         "prefix": "wordwrap",
-        "body": "wordwrap"
+        "body": "wordwrap:$1"
     },
 
     "ljust": {
@@ -146,15 +146,15 @@
     },
 
     "center": {
-        "description": "Filter |center",
+        "description": "Filter |center:\"\"",
         "prefix": "center",
-        "body": "center"
+        "body": "center:\"$1\""
     },
 
     "cut": {
-        "description": "Filter |cut",
+        "description": "Filter |cut:\"\"",
         "prefix": "cut",
-        "body": "cut"
+        "body": "cut:\"$1\""
     },
 
     "escape": {
@@ -290,15 +290,15 @@
     },
 
     "default": {
-        "description": "Filter |default",
+        "description": "Filter |default:\"\"",
         "prefix": "default",
-        "body": "default"
+        "body": "default:\"$1\""
     },
 
     "default_if_none": {
-        "description": "Filter |stuff:default_if_none",
+        "description": "Filter |default_if_none:\"\"",
         "prefix": "default_if_none",
-        "body": "default_if_none"
+        "body": "default_if_none:\"$1\""
     },
 
     "divisibleby": {
