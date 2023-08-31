@@ -231,7 +231,7 @@
     "include": {
         "description": "{% include %}",
         "prefix": "include",
-        "body": "{% include \"$1\"%}"
+        "body": "{% include \"$1\" %}"
     },
 
     "load": {
