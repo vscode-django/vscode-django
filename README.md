@@ -47,25 +47,8 @@ Add the following item to the **Emmet: Include Languages** settings:
 
 ## Sponsors
 
-<p>
-  <a title="Try Duckly for free" href="https://bit.ly/3JdaN3M">
-    <img src="https://storage.googleapis.com/gitduck/img/duckly-sponsor-vsc-opt.png" height="50">
-  </a><br>
-  Easy pair programming with any IDE. Duckly enables you to talk, share your code
-  in real-time, server and terminal with people using different IDEs.
-  <a href="https://bit.ly/3JdaN3M">Try it out for free</a>
-</p>
-
-<p>
-  <a title="Try CodeStream" href="https://sponsorlink.codestream.com/?utm_source=vscmarket&amp;utm_campaign=batisteo_django&amp;utm_medium=banner">
-    <img src="https://alt-images.codestream.com/codestream_logo_batisteo_django.png" height="50">
-  </a><br>
-  Manage GitHub PRs & GitLab MRs and conduct code reviews in your IDE with
-  full source-tree context. Comment on any line, not just the diffs.
-  Use jump-to-definition, your favorite keybindings, and code intelligence
-  with more of your workflow.
-  <a title="Try CodeStream" href="https://sponsorlink.codestream.com/?utm_source=vscmarket&amp;utm_campaign=batisteo_django&amp;utm_medium=banner">Learn More</a>
-</p>
+- [tpberntsen](https://github.com/tpberntsen)
+- [moving-content](https://github.com/moving-content)
 
 [![Paypal](https://img.shields.io/static/v1?label=Paypal&message=€66&logo=Paypal&color=009cde&link=https://www.paypal.com/paypalme/batisteo/5)](https://www.paypal.com/paypalme/batisteo/5)
 [![Github Sponsor](https://img.shields.io/static/v1?label=Sponsor&message=6%C2%A0%E2%9D%A4&logo=GitHub&color=ea4aaa&link=https://github.com/sponsor/batisteo)](https://github.com/sponsor/batisteo)
