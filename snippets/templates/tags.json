@@ -234,6 +234,12 @@
         "body": "{% include \"$1\" %}"
     },
 
+    "include_with": {
+        "description": "{% include with %}",
+        "prefix": "include_with",
+        "body": "{% include with $1=$2 %}"
+    },
+
     "load": {
         "description": "{% load tags %}",
         "prefix": "load",
@@ -413,13 +419,13 @@
     },
 
     "blocktrans_with": {
-        "description": "{% blocktrans as %}{% endblocktrans %}",
+        "description": "{% blocktrans with %}{% endblocktrans %}",
         "prefix": "blocktrans_with",
         "body": "{% blocktrans with $1=$2 ${3:trimmed }%}$0{% endblocktrans %}"
     },
 
     "blocktrans_with_paste": {
-        "description": "{% blocktrans as %}(paste){% endblocktrans %}",
+        "description": "{% blocktrans with %}(paste){% endblocktrans %}",
         "prefix": "blocktrans_with_paste",
         "body": ["{% blocktrans with $1=$2 ${3:trimmed }%}",
             "$0${CLIPBOARD}",
@@ -456,13 +462,13 @@
     },
 
     "blocktranslate_with": {
-        "description": "{% blocktranslate as %}{% endblocktranslate %}",
+        "description": "{% blocktranslate with %}{% endblocktranslate %}",
         "prefix": "blocktranslate_with",
         "body": "{% blocktranslate with $1=$2 ${3:trimmed }%}$0{% endblocktranslate %}"
     },
 
     "blocktranslate_with_paste": {
-        "description": "{% blocktranslate as %}(paste){% endblocktranslate %}",
+        "description": "{% blocktranslate with %}(paste){% endblocktranslate %}",
         "prefix": "blocktranslate_with_paste",
         "body": ["{% blocktranslate with $1=$2 ${3:trimmed }%}",
             "$0${CLIPBOARD}",
