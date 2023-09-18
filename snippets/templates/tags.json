@@ -1,24 +1,6 @@
 {
     "_comment" : "This section is autocomplete for django template tags",
 
-    "variable": {
-        "description": "{{ var }}",
-        "prefix": "variable",
-        "body": "{{ $1 }}"
-    },
-
-    "super": {
-        "description": "{{ block.super }}",
-        "prefix": "super",
-        "body": "{{ block.super }}"
-    },
-
-    "tag": {
-        "description": "{% tag %}",
-        "prefix": "tag",
-        "body": "{% $1 %}"
-    },
-
     "autoescape": {
         "description": "{% autoescape %}",
         "prefix": "autoescape",
@@ -42,14 +24,14 @@
     },
 
     "block": {
-        "description": "{% block %}",
+        "description": "{% block name %}{% endblock name %}",
         "prefix": "block",
         "body": "{% block $1 %}$0{% endblock $1 %}"
     },
 
-    "blok": {
-        "description": "{% block %} (unnamed endblock)",
-        "prefix": "blok",
+    "block_unnamed": {
+        "description": "{% block name %}{% endblock %},
+        "prefix": "block_unnamed",
         "body": "{% block $1 %}$0{% endblock %}"
     },
 
@@ -57,6 +39,12 @@
         "description": "{% endblock %}",
         "prefix": "endblock",
         "body": "{% endblock %}"
+    },
+
+    "super": {
+        "description": "{{ block.super }}",
+        "prefix": "super",
+        "body": "{{ block.super }}"
     },
 
     "comment_inline": {
@@ -112,14 +100,19 @@
     },
 
     "extends": {
-        "description": "{% extends %}",
+        "description": "{% extends "template_name.html" %}",
         "prefix": "extends",
-        "body": "{% extends \"$1\" %}$0"
-        "body": "{% extends \"$1\" %}$0"
+        "body": "{% extends \"$1.html\" %}$0"
+    },
+
+    "extends_var": {
+        "description": "{% extends variable %}",
+        "prefix": "extends_variable",
+        "body": "{% extends $1 %}$0"
     },
 
     "filter": {
-        "description": "{% filter %}",
+        "description": "{% filter filter_name %}",
         "prefix": "filter",
         "body": "{% filter $1 %}$0{% endfilter %}"
     },
@@ -309,35 +302,148 @@
         "body": "{% endspaceless %}"
     },
 
+    "static": {
+        "prefix": "static",
+        "description": "static",
+        "body": "{% static \"${1:$SELECTION}\" %}"
+    }
+
+    "tag": {
+        "description": "{% tag %}",
+        "prefix": "tag",
+        "body": "{% $1 %}"
+    },
+
     "templatetag": {
         "description": "{% templatetag %}",
         "prefix": "templatetag",
         "body": "{% templatetag ${1|openblock,closeblock,openvariable,closevariable,openbrace,closebrace,opencomment,closecomment|} %}"
     },
 
+    "trans": {
+        "description": "{% trans \"text to translate\" %}",
+        "prefix": "trans",
+        "body": "{% trans \"${0:$SELECTION}\" %}"
+    },
+
+    "trans_paste": {
+        "description": "{% trans \"(paste)\" %}",
+        "prefix": "trans_paste",
+        "body": "{% trans \"${CLIPBOARD}\" %}"
+    },
+
+    "blocktrans": {
+        "description": "{% blocktrans %}text to translate{% endblocktrans %}",
+        "prefix": "blocktrans",
+        "body": "{% blocktrans %}$0{% endblocktrans %}"
+    },
+
+    "blocktrans_paste": {
+        "description": "{% blocktrans %}(paste){% endblocktrans %}",
+        "prefix": "blocktrans_paste",
+        "body": [
+            "{% blocktrans ${2:trimmed }%}",
+            "$0${CLIPBOARD}",
+            "{% endblocktrans %}"
+        ]
+    },
+
+    "blocktrans_with": {
+        "description": "{% blocktrans with %}text to translate{% endblocktrans %}",
+        "prefix": "blocktrans_with",
+        "body": "{% blocktrans with $1=$2 ${3:trimmed }%}$0{% endblocktrans %}"
+    },
+
+    "blocktrans_with_paste": {
+        "description": "{% blocktrans with %}(paste){% endblocktrans %}",
+        "prefix": "blocktrans_with_paste",
+        "body": ["{% blocktrans with $1=$2 ${3:trimmed }%}",
+            "$0${CLIPBOARD}",
+            "{% endblocktrans %}"
+        ]
+    },
+
+    "translate": {
+        "description": "{% translate \"text to translate\" %}",
+        "prefix": "translate",
+        "body": "{% translate \"${0:$SELECTION}\" %}"
+    },
+
+    "translate_paste": {
+        "description": "{% translate \"(paste)\" %}",
+        "prefix": "translate_paste",
+        "body": "{% translate \"${CLIPBOARD}\" %}"
+    },
+
+    "blocktranslate": {
+        "description": "{% blocktranslate %}text to translate{% endblocktranslate %}",
+        "prefix": "blocktranslate",
+        "body": "{% blocktranslate %}$0{% endblocktranslate %}"
+    },
+
+    "blocktranslate_paste": {
+        "description": "{% blocktranslate %}(paste){% endblocktranslate %}",
+        "prefix": "blocktranslate_paste",
+        "body": [
+            "{% blocktranslate ${2:trimmed }%}",
+            "$0${CLIPBOARD}",
+            "{% endblocktranslate %}"
+        ]
+    },
+
+    "blocktranslate_with": {
+        "description": "{% blocktranslate with %}text to translate{% endblocktranslate %}",
+        "prefix": "blocktranslate_with",
+        "body": "{% blocktranslate with $1=$2 ${3:trimmed }%}$0{% endblocktranslate %}"
+    },
+
+    "blocktranslate_with_paste": {
+        "description": "{% blocktranslate with %}(paste){% endblocktranslate %}",
+        "prefix": "blocktranslate_with_paste",
+        "body": ["{% blocktranslate with $1=$2 ${3:trimmed }%}",
+            "$0${CLIPBOARD}",
+            "{% endblocktranslate %}"
+        ]
+    },
+
     "url": {
-        "description": "{% url %}",
+        "description": "{% url \"some-url-name\" %}",
         "prefix": "url",
-        "body": "{% url \"$1\" %}"
         "body": "{% url \"$1\" %}"
     },
 
     "urlpk": {
-        "description": "{% url pk=object.pk %}",
+        "description": "{% url \"some-url-name\" pk=object.pk %}",
         "prefix": "urlpk",
-        "body": "{% url \"$1\" pk=${2:${3:object}.pk} %}"
         "body": "{% url \"$1\" pk=${2:${3:object}.pk} %}"
     },
 
     "urlslug": {
-        "description": "{% url slug=object.slug %}",
+        "description": "{% url \"some-url-name\" slug=object.slug %}",
         "prefix": "urlslug",
-        "body": "{% url \"$1\" slug=${2:${3:object}.slug} %}"
         "body": "{% url \"$1\" slug=${2:${3:object}.slug} %}"
     },
 
+    "urlvar": {
+        "description": "{% url \"some-url-name\" as the_url %}",
+        "prefix": "urlvar",
+        "body": "{% url \"$1\" as $2 %}"
+    },
+
+    "variable": {
+        "description": "{{ variable }}",
+        "prefix": "variable",
+        "body": "{{ $1 }}"
+    },
+
+    "variable_default": {
+        "description": "{{ variable|default:\"default value\" }}",
+        "prefix": "variable_default",
+        "body": "{{ $1|default:\"$2\" }}"
+    },
+
     "verbatim": {
-        "description": "{% verbatim %}",
+        "description": "{% verbatim name %}some content{% endverbatim name %}",
         "prefix": "verbatim",
         "body": "{% verbatim $1 %}$0{% endverbatim $1 %}"
     },
@@ -361,9 +467,9 @@
     },
 
     "with": {
-        "description": "{% with %}",
+        "description": "{% with key=value %}",
         "prefix": "with",
-        "body": "{% with $1 as $2 %}$0{% endwith %}"
+        "body": "{% with $1=$2 %}$0{% endwith %}"
     },
 
     "endwith": {
@@ -373,110 +479,18 @@
     },
 
     "with_selection": {
-        "description": "{% with as %} (selection)",
+        "description": "{% with key=value %} (selection)",
         "prefix": "with_selection",
         "body": [
-            "$0{% with $1 as $2 %}",
+            "$0{% with $1=$2 %}",
             "\t${TM_SELECTED_TEXT}",
             "$0{% endwith %}"
         ]
     },
 
     "with_paste": {
-        "description": "{% with as %} (paste)",
+        "description": "{% with key=value %} (paste)",
         "prefix": "with_paste",
-        "body": "{% with $1 as $2 %}${CLIPBOARD}{% endwith %}"
+        "body": "{% with $1=$2 %}${CLIPBOARD}{% endwith %}"
     },
-
-    "trans": {
-        "description": "{% trans \"\" %}",
-        "prefix": "trans",
-        "body": "{% trans \"${0:$SELECTION}\" %}"
-    },
-
-    "trans_paste": {
-        "description": "{% trans \"(paste)\" %}",
-        "prefix": "trans_paste",
-        "body": "{% trans \"${CLIPBOARD}\" %}"
-    },
-
-    "blocktrans": {
-        "description": "{% blocktrans %}{% endblocktrans %}",
-        "prefix": "blocktrans",
-        "body": "{% blocktrans %}$0{% endblocktrans %}"
-    },
-
-    "blocktrans_paste": {
-        "description": "{% blocktrans %}(paste){% endblocktrans %}",
-        "prefix": "blocktrans_paste",
-        "body": [
-            "{% blocktrans ${2:trimmed }%}",
-            "$0${CLIPBOARD}",
-            "{% endblocktrans %}"
-        ]
-    },
-
-    "blocktrans_with": {
-        "description": "{% blocktrans with %}{% endblocktrans %}",
-        "prefix": "blocktrans_with",
-        "body": "{% blocktrans with $1=$2 ${3:trimmed }%}$0{% endblocktrans %}"
-    },
-
-    "blocktrans_with_paste": {
-        "description": "{% blocktrans with %}(paste){% endblocktrans %}",
-        "prefix": "blocktrans_with_paste",
-        "body": ["{% blocktrans with $1=$2 ${3:trimmed }%}",
-            "$0${CLIPBOARD}",
-            "{% endblocktrans %}"
-        ]
-    },
-
-    "translate": {
-        "description": "{% translate \"\" %}",
-        "prefix": "translate",
-        "body": "{% translate \"${0:$SELECTION}\" %}"
-    },
-
-    "translate_paste": {
-        "description": "{% translate \"(paste)\" %}",
-        "prefix": "translate_paste",
-        "body": "{% translate \"${CLIPBOARD}\" %}"
-    },
-
-    "blocktranslate": {
-        "description": "{% blocktranslate %}{% endblocktranslate %}",
-        "prefix": "blocktranslate",
-        "body": "{% blocktranslate %}$0{% endblocktranslate %}"
-    },
-
-    "blocktranslate_paste": {
-        "description": "{% blocktranslate %}(paste){% endblocktranslate %}",
-        "prefix": "blocktranslate_paste",
-        "body": [
-            "{% blocktranslate ${2:trimmed }%}",
-            "$0${CLIPBOARD}",
-            "{% endblocktranslate %}"
-        ]
-    },
-
-    "blocktranslate_with": {
-        "description": "{% blocktranslate with %}{% endblocktranslate %}",
-        "prefix": "blocktranslate_with",
-        "body": "{% blocktranslate with $1=$2 ${3:trimmed }%}$0{% endblocktranslate %}"
-    },
-
-    "blocktranslate_with_paste": {
-        "description": "{% blocktranslate with %}(paste){% endblocktranslate %}",
-        "prefix": "blocktranslate_with_paste",
-        "body": ["{% blocktranslate with $1=$2 ${3:trimmed }%}",
-            "$0${CLIPBOARD}",
-            "{% endblocktranslate %}"
-        ]
-    },
-
-    "static": {
-        "prefix": "static",
-        "description": "static",
-        "body": "{% static \"${1:$SELECTION}\" %}"
-    }
 }

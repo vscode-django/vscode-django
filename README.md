@@ -8,7 +8,7 @@
 
 ### Go to definition in templates
 
-Ctrl-click or press F12 on the template path in a `include` or `extends` tag
+Ctrl+click (cmd+click on MacOS) or press F12 on the template path in a `include` or `extends` tag
 to jump to this template
 
 ### Snippets
@@ -19,7 +19,7 @@ to jump to this template
 
 ### Improved syntax
 
-- Adds the filetype `django-html` 
+- Adds the filetype `django-html`
 - Adds the filetype `django-txt` for email templates.
 - Better syntax with more operators and default keywords:
   - Known default tags and filters
@@ -41,7 +41,7 @@ Consider installing the [Gettext extension](https://marketplace.visualstudio.com
 
 Add the following item to the **Emmet: Include Languages** settings:
 
-|     Item      | Value  |
+| Item          | Value  |
 | ------------- | ------ |
 | `django-html` | `html` |
 
@@ -71,7 +71,6 @@ code .
 
 It’s better to have [TSlint](https://marketplace.visualstudio.com/items?itemName=eg2.tslint) installed.
 
-
 ### Launching the extension debugger
 
 Make sure you have this snippet in `.vscode/launch.json`:
@@ -98,4 +97,3 @@ Press <kbd>F5</kbd> or click on Debug then Start (▶️) to launch the extensio
 Hack around
 
 Press <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>F5</kbd> or 🔄 to reload.
-
