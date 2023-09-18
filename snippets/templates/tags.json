@@ -105,7 +105,6 @@
         "body": "{% cycle $1 %}"
     },
 
-
     "debug": {
         "description": "{% debug %}",
         "prefix": "debug",
@@ -202,7 +201,6 @@
         "body": "{% elif %}",
         "description": "elif"
     },
-
 
     "else": {
         "prefix": "else",
