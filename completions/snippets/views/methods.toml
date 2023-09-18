@@ -11,9 +11,9 @@ def dispatch(self, request, *args, **kwargs):
 prefix = "get_context_data"
 detail = "get_context_data(self, **kwargs)"
 body = """
-def get_context_data(self, **kwargs):
+def get_context_data(self, **kwargs) -> dict[str, Any]:
     context = super().get_context_data(**kwargs)
-    context["$1"] = $0
+    context["$1"] = $2
     return context
 """
 
@@ -23,4 +23,32 @@ detail = "get_queryset(self)"
 body = """
 def get_queryset(self):
     ${1:return} super().get_queryset()$0
+"""
+
+[[snippets]]
+prefix = "get_template_names"
+detail = "get_template_names(self)"
+body = """
+def get_queryset(self) -> list[str]:
+    if ${1:condition}:
+        return ["$2"]
+    return super().get_template_names()
+"""
+
+[[snippets]]
+prefix = "form_valid"
+detail = "form_valid(self, form)"
+body = """
+def form_valid(self, form):
+    ${1:form}
+    return super().form_valid(form)
+"""
+
+[[snippets]]
+prefix = "form_invalid"
+detail = "form_invalid(self, form)"
+body = """
+def form_invalid(self, form):
+    response = super().form_invalid(form)
+    ${1:response}
 """
