@@ -30,7 +30,7 @@
     },
 
     "block_unnamed": {
-        "description": "{% block name %}{% endblock %},
+        "description": "{% block name %}{% endblock %}",
         "prefix": "block_unnamed",
         "body": "{% block $1 %}$0{% endblock %}"
     },
@@ -303,10 +303,10 @@
     },
 
     "static": {
-        "prefix": "static",
+        "prefix": "{% static %}",
         "description": "static",
         "body": "{% static \"${1:$SELECTION}\" %}"
-    }
+    },
 
     "tag": {
         "description": "{% tag %}",
@@ -492,5 +492,5 @@
         "description": "{% with key=value %} (paste)",
         "prefix": "with_paste",
         "body": "{% with $1=$2 %}${CLIPBOARD}{% endwith %}"
-    },
+    }
 }
