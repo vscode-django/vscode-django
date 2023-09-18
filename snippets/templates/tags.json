@@ -100,7 +100,7 @@
     },
 
     "extends": {
-        "description": "{% extends "template_name.html" %}",
+        "description": "{% extends \"template_name.html\" %}",
         "prefix": "extends",
         "body": "{% extends \"$1.html\" %}$0"
     },
