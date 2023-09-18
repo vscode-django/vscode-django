@@ -29,7 +29,7 @@ def get_queryset(self):
 prefix = "get_template_names"
 detail = "get_template_names(self)"
 body = """
-def get_queryset(self) -> list[str]:
+def get_template_names(self) -> list[str]:
     if ${1:condition}:
         return ["$2"]
     return super().get_template_names()
