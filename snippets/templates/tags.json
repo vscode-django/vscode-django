@@ -154,51 +154,51 @@
     },
 
     "forempty": {
-        "description": "{% forempty %}",
+        "description": "{% for %}{% empty %}{% endfor %}",
         "prefix": "forempty",
         "body": "{% for $1 in $2 %}$0{% empty %}$3{% endfor %}"
     },
 
     "forempty_paste": {
-        "description": "{% forempty %} (paste)",
+        "description": "{% for %}(paste){% empty %}{% endfor %}",
         "prefix": "forempty_paste",
         "body": "{% for $1 in $2 %}$3${CLIPBOARD}{% empty %}$0{% endfor %}"
     },
 
     "if": {
-        "description": "{% if %}",
+        "description": "{% if condition %}",
         "prefix": "if",
         "body": "{% if $1 %}$0{% endif %}"
     },
 
     "if_paste": {
-        "description": "{% if %} (paste)",
+        "description": "{% if condition %} (paste)",
         "prefix": "if_paste",
         "body": "{% if $1 %}$0${CLIPBOARD}{% endif %}"
     },
 
     "ifelse": {
-        "description": "{% if %}{% else %}{% endif %}",
+        "description": "{% if condition %}{% else %}{% endif %}",
         "prefix": "ifelse",
         "body": "{% if $1 %}$2{% else %}$3{% endif %}"
     },
 
     "ifelse_paste": {
-        "description": "{% if %}{% else %}{% endif %} (paste)",
+        "description": "{% if condition %}(paste){% else %}{% endif %}",
         "prefix": "ifelse_paste",
         "body": "{% if $1 %}$2${CLIPBOARD}{% else %}$3{% endif %}"
     },
 
     "elif": {
+        "description": "{% elif condition %}"
         "prefix": "elif",
-        "body": "{% elif %}",
-        "description": "elif"
+        "body": "{% elif $1 %}",
     },
 
     "else": {
+        "description": "{% else %}"
         "prefix": "else",
         "body": "{% else %}",
-        "description": "else"
     },
 
     "endif": {
@@ -226,7 +226,7 @@
     },
 
     "include_with": {
-        "description": "{% include with %}",
+        "description": "{% include with var=value %}",
         "prefix": "include_with",
         "body": "{% include with $1=$2 %}"
     },
