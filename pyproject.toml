@@ -6,8 +6,8 @@ authors = ["Baptiste Darthenay <baptiste.darthenay@gmail.com>"]
 license = "MIT"
 
 [tool.poetry.dependencies]
-python = ">=3.5,<4"
-tomlkit = "^0.7"
+python = ">=3.9,<4"
+tomlkit = "^0.12.1"
 
 [tool.poetry.dev-dependencies]
 toml = "*"
