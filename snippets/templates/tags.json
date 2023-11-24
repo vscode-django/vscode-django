@@ -47,6 +47,34 @@
         "body": "{{ block.super }}"
     },
 
+    "cache": {
+        "description": "{% cache %}{% endcache %}",
+        "prefix": "cache",
+        "body": "{% cache ${1:timeout} ${2:cache_name} ${3:dynamic_var} %}$0{% endcache %}"
+    },
+
+    "cache_selection": {
+        "description": "{% cache %} (selection) {% endcache %}",
+        "prefix": "cache_selection",
+        "body": [
+            "$0{% cache ${1:timeout} ${2:cache_name} ${3:dynamic_var} %}",
+            "\t${TM_SELECTED_TEXT}",
+            "$0{% endcache %}"
+        ]
+    },
+
+    "startcache": {
+        "description": "{% cache %}",
+        "prefix": "startcache",
+        "body": "{% cache ${1:timeout} ${2:cache_name} ${3:dynamic_var} %}$0"
+    },
+
+    "endcache": {
+        "description": "{% endcache %}",
+        "prefix": "endcache",
+        "body": "{% endcache %}"
+    },
+
     "comment_inline": {
         "description": "{% comment %} (inline)",
         "prefix": "comm",
