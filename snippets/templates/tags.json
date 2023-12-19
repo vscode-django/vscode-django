@@ -218,15 +218,15 @@
     },
 
     "elif": {
-        "description": "{% elif condition %}"
+        "description": "{% elif condition %}",
         "prefix": "elif",
-        "body": "{% elif $1 %}",
+        "body": "{% elif $1 %}"
     },
 
     "else": {
-        "description": "{% else %}"
+        "description": "{% else %}",
         "prefix": "else",
-        "body": "{% else %}",
+        "body": "{% else %}"
     },
 
     "endif": {
