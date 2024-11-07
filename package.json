@@ -149,6 +149,11 @@
           "type": "boolean",
           "default": true,
           "description": "Seldom show notifications about this extension"
+        },
+        "djangoCotton.componentFolder": {
+        "type": "string",
+        "default": "templates/cotton",
+        "description": "Path for Django Cotton component templates"
         }
       }
     }
