@@ -78,13 +78,6 @@
         "filenamePatterns": ["**/templates/**/*.html"],
         "firstLine": "{%",
         "configuration": "./language-configuration.json"
-      },
-      {
-        "id": "django-txt",
-        "aliases": ["Django txt", "django"],
-        "filenamePatterns": ["**/templates/**/*"],
-        "firstLine": "{%",
-        "configuration": "./language-configuration.json"
       }
     ],
     "grammars": [
