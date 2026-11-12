@@ -82,7 +82,7 @@
       {
         "id": "django-txt",
         "aliases": ["Django txt", "django"],
-        "filenamePatterns": ["**/templates/**/*"],
+        "filenamePatterns": ["**/templates/**/*.txt", "**/templates/**/*.svg", "**/templates/**/*.tex", "**/templates/**/*.latex", "**/templates/**/*.ly"],
         "firstLine": "{%",
         "configuration": "./language-configuration.json"
       }
