@@ -46,7 +46,7 @@ export class DjangoCompletionItemProvider implements CompletionItemProvider {
     }
 
     private buildSnippet(snippet: DjangoSnippet): CompletionItem {
-        let item = new CompletionItem(snippet.prefix, CompletionItemKind.Snippet);
+        const item = new CompletionItem(snippet.prefix, CompletionItemKind.Snippet);
         item.insertText = new SnippetString(snippet.body);
         item.detail = snippet.detail;
         item.documentation = new MarkdownString(snippet.description);

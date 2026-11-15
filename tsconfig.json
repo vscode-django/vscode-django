@@ -8,6 +8,7 @@
         ],
         "sourceMap": true,
         "rootDir": "src",
+        "types": ["node", "mocha"],
         /* Strict Type-Checking Option */
         "strict": true,   /* enable all strict type-checking options */
         /* Additional Checks */

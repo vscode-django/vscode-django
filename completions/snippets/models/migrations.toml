@@ -3,7 +3,7 @@
 prefix = "run_python_function"
 body = """
 def $1(apps, schema_editor):
-    ${2:Model} = apps.get_model("${3:${TM_FILEPATH/.*[\\/](\w+)[\\/]migrations.*/$1/g}}", "$2")$0
+    ${2:Model} = apps.get_model("${3:${TM_FILEPATH/.*[\\/](\\w+)[\\/]migrations.*/$1/g}}", "$2")$0
 """
 
 [[snippets]]

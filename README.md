@@ -65,11 +65,20 @@ Please [create an issue on Github](https://github.com/vscode-django/vscode-djang
 ```bash
 git clone https://github.com/vscode-django/vscode-django
 cd vscode-django
-npm install
+yarn install
 code .
 ```
 
-It’s better to have [TSlint](https://marketplace.visualstudio.com/items?itemName=eg2.tslint) installed.
+It’s better to have [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) installed.
+
+### Running the tests
+
+```bash
+yarn test
+```
+
+This compiles, lints, then runs the smoke tests from `src/test` in a downloaded VS Code,
+with `test-fixtures` as workspace.
 
 ### Launching the extension debugger
 

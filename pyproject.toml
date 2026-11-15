@@ -7,9 +7,9 @@ license = "MIT"
 
 [tool.poetry.dependencies]
 python = ">=3.9,<4"
-tomlkit = "^0.12.1"
+tomlkit = "^0.15.2"
 
-[tool.poetry.dev-dependencies]
+[tool.poetry.group.dev.dependencies]
 toml = "*"
 tomlkit = "*"
 bpython = "*"

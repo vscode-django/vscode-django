@@ -1,8 +1,7 @@
 
-import toml = require("toml");
+import * as toml from "toml";
 
-import vscode = require("vscode");
-import { TextDecoder } from "util";
+import * as vscode from "vscode";
 
 export interface DjangoSnippet {
     prefix: string

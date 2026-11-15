@@ -3,11 +3,13 @@
 .vscode-test-web/**
 out/test/**
 src/**
+test-fixtures/**
+.vscode-test.mjs
+eslint.config.mjs
 .gitignore
 .yarnrc
 vsc-extension-quickstart.md
 **/tsconfig.json
-**/.eslintrc.json
 **/*.map
 **/*.ts
 __pycache__/**
