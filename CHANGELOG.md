@@ -5,6 +5,10 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [Unreleased]
 
+## [2.0.0] - 2026-11-15
+
+Published as a pre-release on the Marketplace.
+
 ### Changed
 - Templates open as HTML instead of `django-html`, with the Django syntax highlighted on top of
   VS Code's HTML grammar. VS Code's HTML features and HTML extensions now work in templates:
