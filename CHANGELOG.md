@@ -5,8 +5,13 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [Unreleased]
 
+## [1.17.0] - 2026-11-15
+
 ### Added
 - Go to definition on [django-cotton](https://django-cotton.com) components, like `<c-card>` or `<c-forms.text-input />`. Set `django.cotton.dir` if you changed `COTTON_DIR`.
+
+### Changed
+- Releases are published from GitHub Actions with Marketplace trusted publishing.
 
 ## [1.16.0] - 2026-11-15
 
