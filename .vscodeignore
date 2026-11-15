@@ -17,5 +17,5 @@ vsc-extension-quickstart.md
 __pycache__/**
 .venv/**
 .env
-poetry.lock
+uv.lock
 pyproject.toml

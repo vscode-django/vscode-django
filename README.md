@@ -83,6 +83,14 @@ yarn test
 This compiles, lints, then runs the smoke tests from `src/test` in a downloaded VS Code,
 with `test-fixtures` as workspace.
 
+### Editing the grammars
+
+The `syntaxes/*.tmLanguage.json` files are generated. Edit the TOML sources in `syntaxes/`, then run:
+
+```bash
+uv run syntaxes/build.py
+```
+
 ### Releasing
 
 1. Bump `version` in `package.json` and describe the changes in `CHANGELOG.md`, then commit and push.
