@@ -20,6 +20,9 @@ const quote = /(?:'|")/
 const path_re = /([\w/-]+\.[\w]+)/
 const rel_path_re = /((?:(?:\.\/|(?:\.\.\/)+))[\w/-]+\.[\w]+)/
 
+// django-cotton component tag, like <c-card> or <c-forms.text-input />
+const COMPONENT_RE = /<c-([\w.-]+)/g
+
 const PATH_RE = regex([quote, path_re, quote])
 const RELATIVE_PATH_RE = regex([quote, rel_path_re, quote])
 const BEGIN_OF_FILE = new Position(0, 0)
@@ -45,29 +48,39 @@ export class TemplatePathProvider implements DefinitionProvider {
             path = match[1]
             search = `**/{templates,jinja2}/${path}`
         } else {
-            return Promise.resolve(null)
+            return TemplatePathProvider.getComponent(line, position, token)
         }
 
         const pos = position.character
         const cursorOverPath = pos > line.indexOf(path) && pos < line.indexOf(path) + path.length
 
-        let uri: Thenable<Uri | null>
+        return cursorOverPath ? TemplatePathProvider.find(search, token) : Promise.resolve(null)
+    }
+
+    // <c-forms.text-input> lives in cotton/forms/text_input.html or cotton/forms/text_input/index.html
+    private static getComponent(line: string, position: Position, token: CancellationToken): Thenable<Uri | null> {
+        COMPONENT_RE.lastIndex = 0
+        let match: RegExpExecArray | null
+        while ((match = COMPONENT_RE.exec(line))) {
+            const start = match.index + 3
+            if (position.character < start || position.character > start + match[1].length) continue
+            const dir = workspace.getConfiguration('django').get<string>('cotton.dir', 'cotton')
+            const path = match[1].replace(/-/g, '_').replace(/\./g, '/')
+            return TemplatePathProvider.find(`**/templates/${dir}/{${path}.html,${path}/index.html}`, token)
+        }
+        return Promise.resolve(null)
+    }
+
+    private static find(search: string, token: CancellationToken): Thenable<Uri | null> {
 
         if (search in cache) {
-            uri = Promise.resolve(cache[search])
-        } else {
-            uri = workspace.findFiles(search, '', 1, token).then(results => {
-                const result = results.length ? results[0] : null
-                if (result) cache[search] = result
-                return result
-            })
+            return Promise.resolve(cache[search])
         }
-
-        if (cursorOverPath) {
-            return uri
-        } else {
-            return Promise.resolve(null)
-        }
+        return workspace.findFiles(search, '', 1, token).then(results => {
+            const result = results.length ? results[0] : null
+            if (result) cache[search] = result
+            return result
+        })
     }
 
     public provideDefinition(document: TextDocument, position: Position, token: CancellationToken): ProviderResult<Definition> {
