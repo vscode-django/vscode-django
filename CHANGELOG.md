@@ -5,6 +5,9 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [Unreleased]
 
+### Added
+- Emmet is enabled in `django-html` templates by default, no setting needed (#131, #152).
+
 ## [1.18.0] - 2026-11-15
 
 ### Added

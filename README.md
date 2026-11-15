@@ -62,11 +62,21 @@ Consider installing the [Gettext extension](https://marketplace.visualstudio.com
 
 ### Emmet
 
-Add the following item to the **Emmet: Include Languages** settings:
+Emmet abbreviations work in `django-html` templates out of the box.
 
-| Item          | Value  |
-| ------------- | ------ |
-| `django-html` | `html` |
+### HTML IntelliSense in templates
+
+Templates use the `django-html` language, so VS Code's HTML features and HTML extensions
+(tag and attribute completion, auto-closing tags, Tailwind CSS, Alpine.js…) don't run on them.
+To keep them, open your templates as plain HTML:
+
+```json
+"files.associations": {
+    "**/templates/**/*.html": "html"
+}
+```
+
+You lose the Django syntax highlighting, template snippets and go to definition in templates.
 
 ## Sponsors
 

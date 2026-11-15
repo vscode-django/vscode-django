@@ -58,6 +58,11 @@ suite('vscode-django', () => {
         assert.strictEqual(document.languageId, 'django-html')
     })
 
+    test('Emmet is enabled in django-html by default', () => {
+        const languages = workspace.getConfiguration('emmet').get<Record<string, string>>('includeLanguages')
+        assert.strictEqual(languages?.['django-html'], 'html')
+    })
+
     test('go to definition on an extends path', async () => {
         const document = await workspace.openTextDocument(fixture('app/templates/app/page.html'))
         const results = await commands.executeCommand<(Location | LocationLink)[]>(
