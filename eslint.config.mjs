@@ -3,7 +3,7 @@ import { defineConfig } from 'eslint/config'
 import tseslint from 'typescript-eslint'
 
 export default defineConfig({
-    files: ['src/**/*.ts'],
+    files: ['src/**/*.ts', 'test/**/*.ts'],
     extends: [js.configs.recommended, tseslint.configs.recommended],
     rules: {
         // Provider methods keep the full VS Code interface signature

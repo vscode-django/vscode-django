@@ -20,3 +20,5 @@ syntaxes/build.py
 .env
 uv.lock
 pyproject.toml
+test/**
+vitest.config.mts

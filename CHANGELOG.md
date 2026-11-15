@@ -8,6 +8,9 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 ### Added
 - Emmet is enabled in `django-html` templates by default, no setting needed (#131, #152).
 
+### Changed
+- Grammar tests with Vitest, and CI runs all tests on every push and pull request.
+
 ## [1.18.0] - 2026-11-15
 
 ### Added

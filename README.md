@@ -110,8 +110,11 @@ It’s better to have [ESLint](https://marketplace.visualstudio.com/items?itemNa
 yarn test
 ```
 
-This compiles, lints, then runs the smoke tests from `src/test` in a downloaded VS Code,
-with `test-fixtures` as workspace.
+This compiles and lints, then runs two kinds of tests:
+
+- the grammar tests from `test/` with [Vitest](https://vitest.dev), which tokenize templates
+  like VS Code does. Run `yarn test:unit` to keep them running while you edit a grammar.
+- the extension tests from `src/test` in a downloaded VS Code, with `test-fixtures` as workspace.
 
 ### Editing the grammars
 
