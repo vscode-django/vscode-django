@@ -5,6 +5,10 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [Unreleased]
 
+### Fixed
+- CSS inside `<style>` tags is highlighted again (#43, #111).
+- Tags with a hyphen, like custom elements or `<c-card>`, are no longer cut at the hyphen (#98).
+
 ## [1.17.0] - 2026-11-15
 
 ### Added
