@@ -41,7 +41,10 @@ jobs:
 
       - run: xvfb-run -a yarn test
 
-      - run: yarn vsce package --out vscode-django.vsix
+      # A GitHub pre-release is published as a pre-release on the Marketplace
+      - run: yarn vsce package ${PRE_RELEASE:+--pre-release} --out vscode-django.vsix
+        env:
+          PRE_RELEASE: ${{ github.event.release.prerelease && 'true' || '' }}
 
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
@@ -71,4 +74,6 @@ jobs:
 
       # Trusted publishing: the GitHub OIDC token is exchanged for a short-lived
       # Marketplace token, so no Personal Access Token is stored anywhere
-      - run: npx --yes @vscode/vsce@4.1.1 publish --oidc --packagePath vscode-django.vsix
+      - run: npx --yes @vscode/vsce@4.1.1 publish --oidc ${PRE_RELEASE:+--pre-release} --packagePath vscode-django.vsix
+        env:
+          PRE_RELEASE: ${{ github.event.release.prerelease && 'true' || '' }}
