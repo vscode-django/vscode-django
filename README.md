@@ -9,7 +9,10 @@
 ### Go to definition in templates
 
 Ctrl+click (cmd+click on MacOS) or press F12 on the template path in a `include` or `extends` tag
-to jump to this template
+to jump to this template.
+
+It also works on [django-cotton](https://django-cotton.com) components, like `<c-card>` or `<c-forms.text-input />`.
+Set `django.cotton.dir` if you changed `COTTON_DIR`.
 
 ### Snippets
 

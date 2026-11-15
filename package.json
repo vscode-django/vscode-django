@@ -148,6 +148,11 @@
           "type": "boolean",
           "default": true,
           "description": "Seldom show notifications about this extension"
+        },
+        "django.cotton.dir": {
+          "type": "string",
+          "default": "cotton",
+          "description": "Folder of the django-cotton components inside the templates folders, like the COTTON_DIR setting"
         }
       }
     }

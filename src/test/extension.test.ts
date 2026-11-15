@@ -65,6 +65,17 @@ suite('vscode-django', () => {
         assert.strictEqual(target.path, fixture('app/templates/app/base.html').path)
     })
 
+    test('go to definition on a cotton component', async () => {
+        const document = await workspace.openTextDocument(fixture('app/templates/app/page.html'))
+        const line = document.getText().split('\n').findIndex(l => l.includes('<c-forms.text-input'))
+        const character = document.lineAt(line).text.indexOf('text-input')
+        const results = await commands.executeCommand<(Location | LocationLink)[]>(
+            'vscode.executeDefinitionProvider', document.uri, new Position(line, character))
+        assert.strictEqual(results!.length, 1)
+        const target = 'uri' in results![0] ? results![0].uri : results![0].targetUri
+        assert.strictEqual(target.path, fixture('app/templates/cotton/forms/text_input.html').path)
+    })
+
     test('model snippets are offered in models.py', async () => {
         const labels = await completionLabels('app/models.py', new Position(4, 4), 'char_field')
         assert.ok(labels.includes('char_field'), `char_field not in ${labels.length} items`)
