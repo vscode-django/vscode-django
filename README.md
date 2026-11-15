@@ -33,6 +33,26 @@ Set `django.cotton.dir` if you changed `COTTON_DIR`.
   - In the id, class or any attribute
   - In inline CSS or Javascript code
 
+### Formatting
+
+The extension can format `django-html` templates with the tool your project already uses.
+Install one of them, then set `django.format.command` to a command that reads the template on stdin
+and writes the result on stdout:
+
+| Tool                                          | `django.format.command`                     | Formats                        |
+| --------------------------------------------- | ------------------------------------------- | ------------------------------ |
+| [djLint](https://github.com/djlint/djlint) | `["djlint", "-", "--reformat"]`             | HTML and template tags         |
+| [djangofmt](https://github.com/UnknownPlatypus/djangofmt) | `["djangofmt", "-"]`            | HTML and template tags         |
+| [djade](https://github.com/adamchainz/djade)  | `["djade", "-"]`                            | Template tags only             |
+| [DjHTML](https://github.com/rtts/djhtml)      | `["djhtml", "-"]`                           | Indentation only               |
+
+Tools installed in the project `.venv` are found first. Each tool reads its own configuration,
+like `[tool.djlint]` in `pyproject.toml`, so the editor formats like your pre-commit hooks and CI.
+Formatting runs on your machine, so it is not available in VS Code for the Web.
+
+You can also use [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+with [prettier-plugin-jinja-template](https://github.com/davidodenwald/prettier-plugin-jinja-template).
+
 ## Tricks
 
 ### Gettext and internationalization

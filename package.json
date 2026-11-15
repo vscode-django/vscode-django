@@ -150,6 +150,13 @@
           "default": true,
           "description": "Seldom show notifications about this extension"
         },
+        "django.format.command": {
+          "type": "array",
+          "items": { "type": "string" },
+          "default": [],
+          "markdownDescription": "Command that formats `django-html` templates: it reads the template on stdin and writes the result on stdout. For example `[\"djlint\", \"-\", \"--reformat\"]`, `[\"djangofmt\", \"-\"]`, `[\"djade\", \"-\"]` or `[\"djhtml\", \"-\"]`. Tools in the project `.venv` are found first. The tool reads its own configuration, like `[tool.djlint]` in `pyproject.toml`.",
+          "scope": "resource"
+        },
         "django.cotton.dir": {
           "type": "string",
           "default": "cotton",

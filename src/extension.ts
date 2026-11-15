@@ -2,6 +2,7 @@
 
 import { ExtensionContext, languages } from 'vscode';
 import { TemplatePathProvider } from './providers/definitionProvider'
+import { TemplateFormattingProvider } from './providers/formattingProvider'
 import {
     DjangoAdminCompletionItemProvider,
     DjangoFormCompletionItemProvider,
@@ -20,6 +21,11 @@ export async function activate(context: ExtensionContext): Promise<void> {
 
     const definitions = new TemplatePathProvider()
     context.subscriptions.push(languages.registerDefinitionProvider(definitions.selector, definitions))
+
+    if (TemplateFormattingProvider.isAvailable()) {
+        const formatter = new TemplateFormattingProvider()
+        context.subscriptions.push(languages.registerDocumentFormattingEditProvider(formatter.selector, formatter))
+    }
 
     const djangoPythonSnippets = new DjangoPythonCompletionItemProvider(snippetProvider)
     context.subscriptions.push(languages.registerCompletionItemProvider(djangoPythonSnippets.selector, djangoPythonSnippets))

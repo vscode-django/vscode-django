@@ -8,3 +8,4 @@ package-lock.json
 **/__pycache__
 .vscode-test/
 .vscode-test-web/
+test-fixtures/.vscode

@@ -5,6 +5,9 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [Unreleased]
 
+### Added
+- Format `django-html` templates with djLint, djangofmt, djade, DjHTML or any other tool, set with `django.format.command` (#112).
+
 ### Fixed
 - CSS inside `<style>` tags is highlighted again (#43, #111).
 - Tags with a hyphen, like custom elements or `<c-card>`, are no longer cut at the hyphen (#98).
