@@ -1,0 +1,74 @@
+name: Publish
+
+on:
+  release:
+    types: [published]
+
+permissions: {}
+
+concurrency:
+  group: publish
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: Build and test
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read # to check out the repository
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      # No dependency cache: a release must not reuse files other runs could have written
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 22
+          package-manager-cache: false
+
+      - name: Check that the release tag matches package.json
+        env:
+          TAG: ${{ github.event.release.tag_name }}
+        run: |
+          version=$(node -p "require('./package.json').version")
+          if [ "$version" != "$TAG" ] && [ "$version" != "$TAG.0" ]; then
+            echo "::error::Release $TAG does not match version $version in package.json"
+            exit 1
+          fi
+
+      - run: yarn install --frozen-lockfile
+
+      - run: xvfb-run -a yarn test
+
+      - run: yarn vsce package --out vscode-django.vsix
+
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: vsix
+          path: vscode-django.vsix
+          if-no-files-found: error
+          retention-days: 1
+
+  publish:
+    name: Publish to the Marketplace
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: marketplace
+      url: https://marketplace.visualstudio.com/items?itemName=batisteo.vscode-django
+    permissions:
+      id-token: write # to request the OIDC token exchanged with the Marketplace
+    steps:
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: vsix
+
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 22
+          package-manager-cache: false
+
+      # Trusted publishing: the GitHub OIDC token is exchanged for a short-lived
+      # Marketplace token, so no Personal Access Token is stored anywhere
+      - run: npx --yes @vscode/vsce@4.1.1 publish --oidc --packagePath vscode-django.vsix

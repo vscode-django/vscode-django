@@ -1,4 +1,6 @@
 .vscode/**
+.github/**
+Makefile
 .vscode-test/**
 .vscode-test-web/**
 out/test/**

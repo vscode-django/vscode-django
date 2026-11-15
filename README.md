@@ -83,6 +83,16 @@ yarn test
 This compiles, lints, then runs the smoke tests from `src/test` in a downloaded VS Code,
 with `test-fixtures` as workspace.
 
+### Releasing
+
+1. Bump `version` in `package.json` and describe the changes in `CHANGELOG.md`, then commit and push.
+2. Run `make publish`. It tags the version (`1.17` for `1.17.0`) and creates the GitHub release
+   with the notes from the changelog.
+3. The release triggers the [Publish workflow](.github/workflows/publish.yml), which tests,
+   packages and publishes the extension to the Marketplace through
+   [trusted publishing](https://code.visualstudio.com/api/working-with-extensions/publishing-extension),
+   without any stored token.
+
 ### Launching the extension debugger
 
 Make sure you have this snippet in `.vscode/launch.json`:

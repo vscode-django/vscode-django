@@ -2,7 +2,6 @@
 node_modules
 *.vsix
 out
-yarn.lock
 package-lock.json
 .venv
 .env
