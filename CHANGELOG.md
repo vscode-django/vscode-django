@@ -5,6 +5,8 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [Unreleased]
 
+## [1.18.0] - 2026-11-15
+
 ### Added
 - Format `django-html` templates with djLint, djangofmt, djade, DjHTML or any other tool, set with `django.format.command` (#112).
 
