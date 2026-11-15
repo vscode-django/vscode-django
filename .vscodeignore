@@ -14,7 +14,8 @@ vsc-extension-quickstart.md
 **/tsconfig.json
 **/*.map
 **/*.ts
-__pycache__/**
+syntaxes/build.py
+**/__pycache__/**
 .venv/**
 .env
 uv.lock
