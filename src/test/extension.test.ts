@@ -31,11 +31,11 @@ async function listFiles(dir: Uri, extension: string): Promise<Uri[]> {
     return files
 }
 
-// Snippets are loaded asynchronously after activation, so poll until the expected one shows up
-async function completionLabels(path: string, position: Position, expected: string): Promise<string[]> {
+// Snippets and language servers load asynchronously after activation, so poll until the expected items show up
+async function completionLabels(path: string, position: Position, ...expected: string[]): Promise<string[]> {
     const document = await workspace.openTextDocument(fixture(path))
     let labels: string[] = []
-    for (let attempt = 0; attempt < 20 && !labels.includes(expected); attempt++) {
+    for (let attempt = 0; attempt < 40 && !expected.every(label => labels.includes(label)); attempt++) {
         if (attempt) await new Promise(resolve => setTimeout(resolve, 250))
         const list = await commands.executeCommand<CompletionList>(
             'vscode.executeCompletionItemProvider', document.uri, position)
@@ -53,9 +53,22 @@ suite('vscode-django', () => {
         await extensions.getExtension(EXTENSION_ID)!.activate()
     })
 
-    test('templates folder opens as django-html', async () => {
+    test('templates open as HTML, to keep the HTML features', async () => {
         const document = await workspace.openTextDocument(fixture('app/templates/app/page.html'))
-        assert.strictEqual(document.languageId, 'django-html')
+        assert.strictEqual(document.languageId, 'html')
+    })
+
+    test('template snippets are offered in templates', async () => {
+        // After "<", the tag names come from VS Code's HTML language features
+        const labels = await completionLabels('app/templates/app/complete.html', new Position(1, 1), 'autoescape', 'blockquote')
+        assert.ok(labels.includes('autoescape'), `autoescape not in ${labels.length} items`)
+        assert.ok(labels.includes('blockquote'), 'HTML completions are missing')
+    })
+
+    test('template snippets are not offered in other HTML files', async () => {
+        const labels = await completionLabels('static/index.html', new Position(1, 1), 'blockquote')
+        assert.ok(labels.includes('blockquote'), 'HTML completions are missing')
+        assert.ok(!labels.includes('autoescape'), 'template snippets leaked into a non-template HTML file')
     })
 
     test('Emmet is enabled in django-html by default', () => {
@@ -90,8 +103,13 @@ suite('vscode-django', () => {
         await config.update('format.command', ['node', '-e', squeeze], ConfigurationTarget.Workspace)
         try {
             const document = await workspace.openTextDocument(fixture('app/templates/app/unformatted.html'))
-            const edits = await commands.executeCommand<TextEdit[]>(
-                'vscode.executeFormatDocumentProvider', document.uri, { tabSize: 4, insertSpaces: true })
+            // The formatter is registered for HTML templates once the setting changes
+            let edits: TextEdit[] | undefined
+            for (let attempt = 0; attempt < 20 && !edits?.length; attempt++) {
+                if (attempt) await new Promise(resolve => setTimeout(resolve, 250))
+                edits = await commands.executeCommand<TextEdit[]>(
+                    'vscode.executeFormatDocumentProvider', document.uri, { tabSize: 4, insertSpaces: true })
+            }
             let text = document.getText()
             for (const edit of [...edits!].sort((a, b) => document.offsetAt(b.range.start) - document.offsetAt(a.range.start))) {
                 text = text.slice(0, document.offsetAt(edit.range.start)) + edit.newText + text.slice(document.offsetAt(edit.range.end))

@@ -1,0 +1,20 @@
+# Highlights the Django template syntax inside VS Code's HTML grammar, so
+# templates keep the "html" language and every HTML feature and extension
+name = "Django in HTML"
+scopeName = "text.html.django.injection"
+injectionSelector = "L:text.html.basic -comment.block.django"
+
+repositories = [
+    "django-stuff",
+    "django-template-filter",
+    "django-template-tag-contrib",
+    "django-template-tag",
+    "entities",
+    "string-double-quoted",
+    "string-single-quoted",
+]
+
+[repository]
+
+[[patterns]]
+include = "#django-stuff"

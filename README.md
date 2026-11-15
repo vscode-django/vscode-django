@@ -6,52 +6,83 @@
 
 ## Features
 
-### Go to definition in templates
+### Templates stay HTML
 
-Ctrl+click (cmd+click on MacOS) or press F12 on the template path in a `include` or `extends` tag
-to jump to this template.
+Your templates open as regular HTML files, with the Django syntax highlighted on top:
+tags, variables, filters and comments, even inside attributes, `<style>` and `<script>`.
+
+Everything VS Code and your other extensions do for HTML keeps working in templates:
+tag and attribute completion, auto-closing and linked editing of tags, Emmet, the CSS color picker,
+Tailwind CSS, Alpine.js, htmx…
+
+The Django syntax is highlighted in every HTML file, while the features below are only active
+in templates, which are the files in a `templates` or `jinja2` folder.
+Other templates, like emails in `.txt` files, use the `django-txt` language.
+
+### Go to definition
+
+Ctrl+click (Cmd+click on macOS) or press F12 on a template path, like in an `{% include %}`
+or `{% extends %}` tag or in a view, to jump to this template.
 
 It also works on [django-cotton](https://django-cotton.com) components, like `<c-card>` or `<c-forms.text-input />`.
 Set `django.cotton.dir` if you changed `COTTON_DIR`.
 
 ### Snippets
 
-- Support for selected text (when inserting snippet from the menu)
-- Support for copied text
-- No unnecessary new lines
-
-### Improved syntax
-
-- Adds the filetype `django-html`
-- Adds the filetype `django-txt` for email templates.
-- Better syntax with more operators and default keywords:
-  - Known default tags and filters
-  - Known templatetags namespace from contrib in the {% load %} tag
-  - Known keywords in tags, like: `as`, `asvar`, `with`, `trimmed`…
-- Syntax highlighting everywhere in your HTML document:
-  - In the HTML tag itself"
-  - In the id, class or any attribute
-  - In inline CSS or Javascript code
+- Template tags and filters in templates.
+- Python snippets in `models.py`, `views.py`, `forms.py`, `admin.py`, `urls.py`, migrations…
+  each file only gets the snippets that make sense there.
+- Snippets use the selected or copied text when it fits, without unnecessary new lines.
 
 ### Formatting
 
-The extension can format `django-html` templates with the tool your project already uses.
+The extension can format templates with the tool your project already uses.
 Install one of them, then set `django.format.command` to a command that reads the template on stdin
 and writes the result on stdout:
 
-| Tool                                          | `django.format.command`                     | Formats                        |
-| --------------------------------------------- | ------------------------------------------- | ------------------------------ |
-| [djLint](https://github.com/djlint/djlint) | `["djlint", "-", "--reformat"]`             | HTML and template tags         |
-| [djangofmt](https://github.com/UnknownPlatypus/djangofmt) | `["djangofmt", "-"]`            | HTML and template tags         |
-| [djade](https://github.com/adamchainz/djade)  | `["djade", "-"]`                            | Template tags only             |
-| [DjHTML](https://github.com/rtts/djhtml)      | `["djhtml", "-"]`                           | Indentation only               |
+| Tool                                                      | `django.format.command`         | Formats                |
+| --------------------------------------------------------- | ------------------------------- | ---------------------- |
+| [djLint](https://github.com/djlint/djlint)                | `["djlint", "-", "--reformat"]` | HTML and template tags |
+| [djangofmt](https://github.com/UnknownPlatypus/djangofmt) | `["djangofmt", "-"]`            | HTML and template tags |
+| [djade](https://github.com/adamchainz/djade)              | `["djade", "-"]`                | Template tags only     |
+| [DjHTML](https://github.com/rtts/djhtml)                  | `["djhtml", "-"]`               | Indentation only       |
 
 Tools installed in the project `.venv` are found first. Each tool reads its own configuration,
 like `[tool.djlint]` in `pyproject.toml`, so the editor formats like your pre-commit hooks and CI.
-Formatting runs on your machine, so it is not available in VS Code for the Web.
+
+Templates are HTML files, so VS Code's HTML formatter can format them too, but it doesn't know the
+Django syntax. Once `django.format.command` is set, choose **Django** when VS Code asks which formatter
+to use for HTML files. Formatting runs on your machine, so it is not available in VS Code for the Web.
 
 You can also use [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
 with [prettier-plugin-jinja-template](https://github.com/davidodenwald/prettier-plugin-jinja-template).
+
+## Settings
+
+| Setting                 | Default               | Description                                                     |
+| ----------------------- | --------------------- | --------------------------------------------------------------- |
+| `django.snippets.use`     | `true`                | Python snippets                                                 |
+| `django.snippets.exclude` | `["cms", "wagtail"]`  | Python snippet files to leave out, like `import` or `postgres`  |
+| `django.i18n`             | `true`                | Wrap strings in `_("")` in the Python snippets                  |
+| `django.cotton.dir`       | `"cotton"`            | Folder of the django-cotton components, like `COTTON_DIR`       |
+| `django.format.command`   | `[]`                  | Command that formats templates, see [Formatting](#formatting)   |
+
+## Upgrading from 1.x
+
+Before 2.0, templates used a separate `django-html` language, which hid them from VS Code's HTML
+features and HTML extensions. Templates are now HTML files, so:
+
+- settings you scoped to `"[django-html]"` should move to `"[html]"`,
+- the `emmet.includeLanguages` and `files.associations` workarounds are no longer needed,
+- HTML comments toggle with <kbd>Ctrl</kbd> + <kbd>/</kbd>, as in any HTML file.
+
+To get the 1.x behavior back, open your templates as `django-html`:
+
+```json
+"files.associations": {
+    "**/templates/**/*.html": "django-html"
+}
+```
 
 ## Tricks
 
@@ -59,24 +90,6 @@ with [prettier-plugin-jinja-template](https://github.com/davidodenwald/prettier-
 
 Dealing with `django.po` files?
 Consider installing the [Gettext extension](https://marketplace.visualstudio.com/items?itemName=mrorz.language-gettext) by MrOrz.
-
-### Emmet
-
-Emmet abbreviations work in `django-html` templates out of the box.
-
-### HTML IntelliSense in templates
-
-Templates use the `django-html` language, so VS Code's HTML features and HTML extensions
-(tag and attribute completion, auto-closing tags, Tailwind CSS, Alpine.js…) don't run on them.
-To keep them, open your templates as plain HTML:
-
-```json
-"files.associations": {
-    "**/templates/**/*.html": "html"
-}
-```
-
-You lose the Django syntax highlighting, template snippets and go to definition in templates.
 
 ## Sponsors
 
@@ -91,7 +104,7 @@ You lose the Django syntax highlighting, template snippets and go to definition 
 ### Issues
 
 Something odd? New feature request?
-Please [create an issue on Github](https://github.com/vscode-django/vscode-django/issues/new).
+Please [create an issue on GitHub](https://github.com/vscode-django/vscode-django/issues/new).
 
 ### Setup
 
@@ -103,6 +116,8 @@ code .
 ```
 
 It’s better to have [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) installed.
+Press <kbd>F5</kbd> to launch a VS Code window with the extension, and
+<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>F5</kbd> to reload it after a change.
 
 ### Running the tests
 
@@ -116,6 +131,8 @@ This compiles and lints, then runs two kinds of tests:
   like VS Code does. Run `yarn test:unit` to keep them running while you edit a grammar.
 - the extension tests from `src/test` in a downloaded VS Code, with `test-fixtures` as workspace.
 
+The CI runs them all on every push and pull request.
+
 ### Editing the grammars
 
 The `syntaxes/*.tmLanguage.json` files are generated. Edit the TOML sources in `syntaxes/`, then run:
@@ -124,39 +141,15 @@ The `syntaxes/*.tmLanguage.json` files are generated. Edit the TOML sources in `
 uv run syntaxes/build.py
 ```
 
+`django-html-injection` is the grammar used in HTML templates: it adds the Django syntax to VS Code's
+HTML grammar. `django-html` and `django-txt` are full grammars for the languages of the same names.
+
 ### Releasing
 
 1. Bump `version` in `package.json` and describe the changes in `CHANGELOG.md`, then commit and push.
 2. Run `make publish`. It tags the version (`1.17` for `1.17.0`) and creates the GitHub release
-   with the notes from the changelog.
+   with the notes from the changelog. `make prerelease` does the same for a pre-release.
 3. The release triggers the [Publish workflow](.github/workflows/publish.yml), which tests,
    packages and publishes the extension to the Marketplace through
    [trusted publishing](https://code.visualstudio.com/api/working-with-extensions/publishing-extension),
-   without any stored token.
-
-### Launching the extension debugger
-
-Make sure you have this snippet in `.vscode/launch.json`:
-
-```javascript
-{
-  "version": "0.2.0",
-  "configurations": [
-    {
-      "name": "Extension",
-      "type": "extensionHost",
-      "request": "launch",
-      "runtimeExecutable": "${execPath}",
-      "args": [
-        "--extensionDevelopmentPath=${workspaceFolder}"
-      ]
-    }
-  ]
-}
-```
-
-Press <kbd>F5</kbd> or click on Debug then Start (▶️) to launch the extension host window.
-
-Hack around
-
-Press <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>F5</kbd> or 🔄 to reload.
+   without any stored token. A GitHub pre-release is published as a Marketplace pre-release.

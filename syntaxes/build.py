@@ -3,7 +3,7 @@ from os.path import abspath, dirname, join
 import tomlkit
 
 SYNTAX_DIR = abspath(dirname(join("syntaxes", __name__)))
-SYNTAXES = ["django-html", "django-txt"]
+SYNTAXES = ["django-html", "django-html-injection", "django-txt"]
 
 
 def load(path):

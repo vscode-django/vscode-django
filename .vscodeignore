@@ -22,3 +22,4 @@ uv.lock
 pyproject.toml
 test/**
 vitest.config.mts
+syntaxes/**/*.toml

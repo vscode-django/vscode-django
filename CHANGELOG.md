@@ -5,6 +5,15 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [Unreleased]
 
+### Changed
+- Templates open as HTML instead of `django-html`, with the Django syntax highlighted on top of
+  VS Code's HTML grammar. VS Code's HTML features and HTML extensions now work in templates:
+  tag and attribute completion, auto-closing and linked editing of tags, Emmet, the color picker,
+  Tailwind CSS, Alpine.js… (#16, #34, #70, #102, #105, #110, #113, #114, #124, #125, #143, #146, #172, #180, #182, #187, #192).
+- Template snippets, go to definition and formatting work in HTML files in `templates` and `jinja2` folders.
+- `django-html` is still available: set it in `files.associations` to get the 1.x behavior back.
+- Requires VS Code 1.63 or later.
+
 ## [1.19.0] - 2026-11-15
 
 ### Added

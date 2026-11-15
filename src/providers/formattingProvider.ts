@@ -5,7 +5,10 @@ import * as fs from 'fs'
 import { delimiter, dirname, join } from 'path'
 import {
     CancellationToken,
+    Disposable,
     DocumentFormattingEditProvider,
+    ExtensionContext,
+    languages,
     ProviderResult,
     Range,
     TextDocument,
@@ -13,17 +16,33 @@ import {
     window,
     workspace,
 } from 'vscode'
-import { DJANGO_HTML_SELECTOR } from '../constants'
+import { DJANGO_HTML_SELECTOR, HTML_TEMPLATE_SELECTOR } from '../constants'
 
 // Runs the formatter set in django.format.command, like ["djlint", "-", "--reformat"].
 // The template is sent on stdin and the formatted template is read from stdout.
 export class TemplateFormattingProvider implements DocumentFormattingEditProvider {
 
-    public selector = DJANGO_HTML_SELECTOR
-
     // child_process does not exist in VS Code for the Web
-    public static isAvailable(): boolean {
-        return typeof child_process.spawn === 'function'
+    public static register(context: ExtensionContext): void {
+        if (typeof child_process.spawn !== 'function') return
+        const formatter = new TemplateFormattingProvider()
+        context.subscriptions.push(languages.registerDocumentFormattingEditProvider(DJANGO_HTML_SELECTOR, formatter))
+
+        // HTML templates already have VS Code's HTML formatter: only compete with it once a command is set
+        let html: Disposable | undefined
+        const update = () => {
+            const command = workspace.getConfiguration('django').get<string[]>('format.command', [])
+            if (command.length && !html) {
+                html = languages.registerDocumentFormattingEditProvider(HTML_TEMPLATE_SELECTOR, formatter)
+            } else if (!command.length && html) {
+                html.dispose()
+                html = undefined
+            }
+        }
+        update()
+        context.subscriptions.push(workspace.onDidChangeConfiguration(event => {
+            if (event.affectsConfiguration('django.format.command')) update()
+        }), { dispose: () => html?.dispose() })
     }
 
     public provideDocumentFormattingEdits(document: TextDocument, _options: unknown, token: CancellationToken): ProviderResult<TextEdit[]> {

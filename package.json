@@ -11,7 +11,7 @@
     "theme": "dark"
   },
   "engines": {
-    "vscode": "^1.49.0"
+    "vscode": "^1.63.0"
   },
   "recommendations": ["ms-python.python"],
   "keywords": ["python", "django", "web"],
@@ -53,7 +53,7 @@
     "@types/mocha": "^10.0.10",
     "@typescript/native": "npm:typescript@^7.0.2",
     "@types/node": "^22",
-    "@types/vscode": "~1.49.0",
+    "@types/vscode": "~1.63.0",
     "@vscode/test-cli": "^0.0.15",
     "@vscode/test-electron": "^3.1.0",
     "@vscode/test-web": "^0.0.81",
@@ -81,8 +81,6 @@
       {
         "id": "django-html",
         "aliases": ["Django HTML", "django"],
-        "filenamePatterns": ["**/templates/**/*.html"],
-        "firstLine": "{%",
         "configuration": "./language-configuration.json"
       },
       {
@@ -103,6 +101,11 @@
         "language": "django-txt",
         "scopeName": "text.django",
         "path": "./syntaxes/django-txt.tmLanguage.json"
+      },
+      {
+        "scopeName": "text.html.django.injection",
+        "path": "./syntaxes/django-html-injection.tmLanguage.json",
+        "injectTo": ["text.html.basic"]
       }
     ],
     "snippets": [

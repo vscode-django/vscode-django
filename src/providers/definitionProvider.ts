@@ -12,7 +12,7 @@ import {
     Uri,
     workspace,
 } from 'vscode'
-import { DJANGO_HTML_SELECTOR, PYTHON_SELECTOR } from '../constants'
+import { PYTHON_SELECTOR, TEMPLATE_SELECTOR } from '../constants'
 
 const regex = (regexes: RegExp[]) => new RegExp(regexes.map(re => re.source).join(''))
 
@@ -31,7 +31,7 @@ const cache: { [search: string]: Uri } = {}
 
 export class TemplatePathProvider implements DefinitionProvider {
 
-    public selector = [DJANGO_HTML_SELECTOR, PYTHON_SELECTOR]
+    public selector = [...TEMPLATE_SELECTOR, PYTHON_SELECTOR]
 
     private static getTemplate(document: TextDocument, position: Position, token: CancellationToken): Thenable<Uri | null> {
 
