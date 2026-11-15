@@ -157,5 +157,11 @@
         }
       }
     }
+  },
+  "resolutions": {
+    "minimatch": "^11.0.1",
+    "morgan": "^1.12.1",
+    "on-headers": "^1.1.0",
+    "serialize-javascript": "^7.1.3"
   }
 }
