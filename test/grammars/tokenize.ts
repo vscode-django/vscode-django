@@ -10,6 +10,7 @@ const thirdParty = (name: string) => require.resolve(`tm-grammars/grammars/${nam
 
 // The grammars VS Code ships, plus ours, by scope name
 const GRAMMARS: Record<string, string> = {
+    'text.html.derivative': thirdParty('html-derivative'),
     'text.html.basic': thirdParty('html'),
     'source.css': thirdParty('css'),
     'source.js': thirdParty('javascript'),

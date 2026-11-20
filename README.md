@@ -76,6 +76,14 @@ features and HTML extensions. Templates are now HTML files, so:
 - the `emmet.includeLanguages` and `files.associations` workarounds are no longer needed,
 - HTML comments toggle with <kbd>Ctrl</kbd> + <kbd>/</kbd>, as in any HTML file.
 
+Two other changes come with that:
+
+- Other extensions that extend HTML, like Vue, Alpine.js or other HTML highlighters, now also apply to your templates.
+  If one of them recolors Django tags or attributes, check its settings for the `html` language, or turn it off for templates.
+  Keeping templates as `django-html` (below) hides them from extensions that only target HTML.
+- The extension now starts as soon as any HTML file opens, not only a template, because it adds the Django syntax to every HTML file.
+  The template-only features (snippets, go to definition and formatting) still only apply to templates.
+
 To get the 1.x behavior back, open your templates as `django-html`:
 
 ```json

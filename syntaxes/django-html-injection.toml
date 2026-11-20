@@ -2,7 +2,7 @@
 # templates keep the "html" language and every HTML feature and extension
 name = "Django in HTML"
 scopeName = "text.html.django.injection"
-injectionSelector = "L:text.html.basic -comment.block.django"
+injectionSelector = "L:text.html -comment.block.django"
 
 repositories = [
     "django-stuff",

@@ -27,6 +27,7 @@
   "activationEvents": [
     "onLanguage:django-html",
     "onLanguage:django-txt",
+    "onLanguage:html",
     "onLanguage:python"
   ],
   "main": "./out/extension",
@@ -105,7 +106,7 @@
       {
         "scopeName": "text.html.django.injection",
         "path": "./syntaxes/django-html-injection.tmLanguage.json",
-        "injectTo": ["text.html.basic"]
+        "injectTo": ["text.html.derivative", "text.html.basic"]
       }
     ],
     "snippets": [
@@ -129,6 +130,9 @@
     "configurationDefaults": {
       "emmet.includeLanguages": {
         "django-html": "html"
+      },
+      "[html]": {
+        "editor.language.colorizedBracketPairs": [["{%", "%}"], ["{{", "}}"]]
       },
       "[django-html]": {
         "editor.quickSuggestions": {
@@ -166,7 +170,7 @@
           "type": "array",
           "items": { "type": "string" },
           "default": [],
-          "markdownDescription": "Command that formats `django-html` templates: it reads the template on stdin and writes the result on stdout. For example `[\"djlint\", \"-\", \"--reformat\"]`, `[\"djangofmt\", \"-\"]`, `[\"djade\", \"-\"]` or `[\"djhtml\", \"-\"]`. Tools in the project `.venv` are found first. The tool reads its own configuration, like `[tool.djlint]` in `pyproject.toml`.",
+          "markdownDescription": "Command that formats templates, the HTML files in a `templates` or `jinja2` folder: it reads the template on stdin and writes the result on stdout. For example `[\"djlint\", \"-\", \"--reformat\"]`, `[\"djangofmt\", \"-\"]`, `[\"djade\", \"-\"]` or `[\"djhtml\", \"-\"]`. Tools in the project `.venv` are found first. The tool reads its own configuration, like `[tool.djlint]` in `pyproject.toml`.",
           "scope": "resource"
         },
         "django.cotton.dir": {

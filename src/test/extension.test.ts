@@ -49,13 +49,23 @@ async function completionLabels(path: string, position: Position, ...expected: s
 
 suite('vscode-django', () => {
 
-    suiteSetup(async () => {
-        await extensions.getExtension(EXTENSION_ID)!.activate()
+    // Runs first: nothing else has started the extension yet
+    test('the extension starts when a template opens', async () => {
+        const extension = extensions.getExtension(EXTENSION_ID)!
+        assert.ok(!extension.isActive, 'the extension started before any file was opened')
+        await workspace.openTextDocument(fixture('app/templates/app/page.html'))
+        for (let i = 0; i < 40 && !extension.isActive; i++) await new Promise(resolve => setTimeout(resolve, 250))
+        assert.ok(extension.isActive, 'the extension did not start on an HTML template')
     })
 
     test('templates open as HTML, to keep the HTML features', async () => {
         const document = await workspace.openTextDocument(fixture('app/templates/app/page.html'))
         assert.strictEqual(document.languageId, 'html')
+    })
+
+    test('Django tags get bracket pair colors in HTML', () => {
+        const pairs = workspace.getConfiguration('editor', { languageId: 'html' }).get('language.colorizedBracketPairs')
+        assert.deepStrictEqual(pairs, [['{%', '%}'], ['{{', '}}']])
     })
 
     test('template snippets are offered in templates', async () => {

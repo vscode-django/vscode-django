@@ -1,8 +1,9 @@
 import { describe, expect, test } from 'vitest'
 import { scopesOf, tokenize } from './tokenize'
 
-// Templates keep the "html" language: the Django syntax is injected into VS Code's HTML grammar
-const html = (source: string) => tokenize('text.html.basic', source)
+// Templates keep the "html" language: the Django syntax is injected into VS Code's HTML grammar.
+// The grammar of the "html" language is text.html.derivative, which includes text.html.basic.
+const html = (source: string) => tokenize('text.html.derivative', source)
 
 describe('Django syntax injected in HTML', () => {
 
