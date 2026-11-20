@@ -5,6 +5,19 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [Unreleased]
 
+## [2.0.1] - 2026-11-20
+
+Published as a pre-release on the Marketplace.
+
+### Fixed
+- The Django syntax is highlighted in templates again: the injection targets the root grammar of the `html` language.
+- The extension starts when an HTML file opens, not only when a Django file or a Python file does.
+- Django tags get bracket pair colors in HTML files, like in `django-html`.
+- The `django.format.command` description refers to templates, not `django-html`.
+
+### Changed
+- The README explains how other HTML extensions and the activation change when upgrading from 1.x.
+
 ## [2.0.0] - 2026-11-15
 
 Published as a pre-release on the Marketplace.
