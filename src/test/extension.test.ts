@@ -6,6 +6,7 @@ import {
     commands,
     CompletionList,
     ConfigurationTarget,
+    DocumentLink,
     extensions,
     FileType,
     Location,
@@ -13,6 +14,7 @@ import {
     Position,
     TextEdit,
     Uri,
+    window,
     workspace,
 } from 'vscode'
 
@@ -104,6 +106,36 @@ suite('vscode-django', () => {
         assert.strictEqual(results!.length, 1)
         const target = 'uri' in results![0] ? results![0].uri : results![0].targetUri
         assert.strictEqual(target.path, fixture('app/templates/cotton/forms/text_input.html').path)
+    })
+
+    test('{% url %} and {% static %} links replace the HTML links', async () => {
+        const document = await workspace.openTextDocument(fixture('app/templates/app/links.html'))
+        const onLine = (links: DocumentLink[], line: number) => links.filter(link => link.range.start.line === line)
+        // The link of the plain href on line 3 comes from VS Code's HTML language server: wait for it
+        let links: DocumentLink[] = []
+        for (let attempt = 0; attempt < 40 && !onLine(links, 2).length; attempt++) {
+            if (attempt) await new Promise(resolve => setTimeout(resolve, 250))
+            links = await commands.executeCommand<DocumentLink[]>('vscode.executeLinkProvider', document.uri, 10)
+        }
+        assert.strictEqual(onLine(links, 2).length, 1, 'the HTML links are missing')
+
+        const url = onLine(links, 0)
+        assert.strictEqual(url.length, 1, 'the HTML link to "{% url ... %}" is still there')
+        assert.strictEqual(document.getText(url[0].range), "{% url 'app:detail' pk=1 %}")
+        // app/urls.py has app_name = "app", project/urls.py also has a "detail" without namespace
+        assert.strictEqual(url[0].target!.path, fixture('app/urls.py').path)
+
+        const css = onLine(links, 1)
+        assert.strictEqual(css.length, 1, 'the HTML link to "{% static ... %}" is still there')
+        assert.strictEqual(css[0].target!.path, fixture('app/static/css/app.css').path)
+
+        // The link opens urls.py on the name of the URL pattern
+        await commands.executeCommand('vscode.open', url[0].target)
+        const editor = window.activeTextEditor!
+        const position = editor.selection.active
+        assert.strictEqual(editor.document.uri.path, fixture('app/urls.py').path)
+        assert.ok(editor.document.lineAt(position.line).text.slice(position.character).startsWith('name="detail"'),
+            `opened at ${position.line}:${position.character}`)
     })
 
     test('templates are formatted with django.format.command', async () => {

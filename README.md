@@ -27,6 +27,17 @@ or `{% extends %}` tag or in a view, to jump to this template.
 It also works on [django-cotton](https://django-cotton.com) components, like `<c-card>` or `<c-forms.text-input />`.
 Set `django.cotton.dir` if you changed `COTTON_DIR`.
 
+### Links to URLs and static files
+
+In templates, <kbd>Ctrl</kbd>+click (<kbd>Cmd</kbd>+click on macOS) on a `{% url %}` tag opens the `urls.py`
+on the name of the URL pattern, like `name="detail"` for `{% url 'blog:detail' pk=post.pk %}`.
+With a namespace, the `urls.py` whose `app_name` matches comes first.
+On a `{% static %}` tag, it opens the file from a `static` folder.
+
+VS Code's HTML support turns every `href`, `src` and `action` value into a link to a file. These links replace
+the ones on Django tags, which pointed to files that don't exist. Values with a variable, like `href="/blog/{{ post.slug }}/"`,
+still get the HTML link.
+
 ### Snippets
 
 - Template tags and filters in templates.
