@@ -5,6 +5,14 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [Unreleased]
 
+## [2.0.2] - 2026-11-20
+
+Published as a pre-release on the Marketplace.
+
+### Added
+- Ctrl+click on `{% url %}` opens the URL pattern in `urls.py`, and on `{% static %}` the static file.
+  In HTML attributes, these links replace the HTML links to files that don't exist.
+
 ## [2.0.1] - 2026-11-20
 
 Published as a pre-release on the Marketplace.
