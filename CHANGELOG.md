@@ -5,6 +5,27 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 ## [Unreleased]
 
+### Added
+- Ctrl+click on the name of a tag or a filter of Django, like `{% firstof %}` or `|date`, opens its page in the
+  Django documentation, for the version of Django of the project (the stable version when it is not known).
+- F12 on the name of a tag opens the function that registers it: in the `templatetags` modules of the workspace,
+  or, when the virtual environment is inside the workspace, in the source of Django and of the installed packages,
+  like django-vite.
+- Ctrl+click on the name of a custom tag, like `{% custom_tag "app.js" %}`, opens the same function.
+  In HTML attributes, these links replace the HTML links to files that don't exist.
+- Go to definition on the libraries of `{% load %}`, like `myapp_tags`, `i18n` or `django_vite`, opens the
+  `templatetags` module, once even when the virtual environment has `lib64` as a link to `lib`.
+- Ctrl+click on `block.super` of `{{ block.super }}` opens the block of the parent template, going up the
+  `{% extends %}` chain to the first template that defines it. `{% block %}` links to the guide on template inheritance.
+- Go to references (Shift+F12): where a custom tag is used, where a block is defined or overridden, and where a template
+  is extended, included or rendered.
+- `uv run syntaxes/update_builtins.py` updates the built-in tags and filters of the grammar and the links to the
+  documentation from the latest stable version of Django. A weekly workflow (Fridays) opens a pull request when they change.
+
+### Changed
+- The grammar knows the tags and filters of Django 6.1, like `now`, `translate`, `blocktranslate`, `cache`,
+  `localtime`, `partial`, `querystring`, `json_script` or `truncatechars`, and `{% endfilter %}`.
+
 ## [2.0.2] - 2026-11-20
 
 Published as a pre-release on the Marketplace.

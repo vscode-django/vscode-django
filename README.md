@@ -27,16 +27,47 @@ or `{% extends %}` tag or in a view, to jump to this template.
 It also works on [django-cotton](https://django-cotton.com) components, like `<c-card>` or `<c-forms.text-input />`.
 Set `django.cotton.dir` if you changed `COTTON_DIR`.
 
-### Links to URLs and static files
+F12 on the name of a tag opens the function that registers it: your own `templatetags` modules
+(`@register.tag`, `@register.simple_tag`, `@register.inclusion_tag`, whatever the name of the function),
+or, when the virtual environment is inside the workspace, like `.venv`, the source of Django for its tags
+like `{% if %}` and the packages you installed, like django-vite.
+On the library of a `{% load %}` tag, like `myapp_tags` in `{% load myapp_tags i18n %}`, it opens the module
+of the library, in your project, in Django (`i18n`, `static`, `humanize`…) or in an installed package
+(`django_vite/templatetags/django_vite.py`).
 
-In templates, <kbd>Ctrl</kbd>+click (<kbd>Cmd</kbd>+click on macOS) on a `{% url %}` tag opens the `urls.py`
-on the name of the URL pattern, like `name="detail"` for `{% url 'blog:detail' pk=post.pk %}`.
-With a namespace, the `urls.py` whose `app_name` matches comes first.
-On a `{% static %}` tag, it opens the file from a `static` folder.
+### Links to the documentation, URLs and static files
 
-VS Code's HTML support turns every `href`, `src` and `action` value into a link to a file. These links replace
-the ones on Django tags, which pointed to files that don't exist. Values with a variable, like `href="/blog/{{ post.slug }}/"`,
-still get the HTML link.
+In templates, <kbd>Ctrl</kbd>+click (<kbd>Cmd</kbd>+click on macOS) on:
+
+- the name of a tag or a filter of Django, like `{% firstof %}` or `|date`, opens its page in the Django documentation,
+  for the version of Django of your project. The version is read from the virtual environment when it is inside
+  the workspace, and the stable version is used otherwise.
+- the name of a custom tag, like `{% custom_tag "app.js" %}`, opens the function in your `templatetags` modules
+  that registers it, or in the package of the virtual environment when the template loads its library.
+  When two libraries define the same tag, the one loaded by the template comes first.
+- `block.super` in `{{ block.super }}` opens the same block in the parent template. If the parent template does not
+  define the block, it goes up the `{% extends %}` chain to the first template that does.
+- `{% block %}` opens the guide on [template inheritance](https://docs.djangoproject.com/en/stable/ref/templates/language/#template-inheritance).
+- a `{% url %}` tag opens the `urls.py` on the name of the URL pattern, like `name="detail"` for
+  `{% url 'blog:detail' pk=post.pk %}`. With a namespace, the `urls.py` whose `app_name` matches comes first.
+- a `{% static %}` tag opens the file from a `static` folder.
+
+`{% extends %}` and `{% include %}` still open the template, and `{% load %}` goes to its libraries,
+as described in the previous section.
+
+VS Code's HTML support turns every `href`, `src` and `action` value into a link to a file. These links are replaced
+by the ones above when the value has a Django tag or filter. Other values with a variable,
+like `href="/blog/{{ post.slug }}/"`, still get the HTML link.
+
+### Go to references
+
+Shift+F12 answers "where is this used?":
+
+- on a custom tag in a template, or on the function that registers it in a `templatetags` module:
+  the templates that use the tag,
+- on the name of a block, like `{% block content %}`: the templates that define or override it,
+- on the path of a template, like in `{% extends "app/base.html" %}` or `render(request, "app/base.html")`:
+  the templates and the Python code that use it.
 
 ### Snippets
 
@@ -162,6 +193,20 @@ uv run syntaxes/build.py
 
 `django-html-injection` is the grammar used in HTML templates: it adds the Django syntax to VS Code's
 HTML grammar. `django-html` and `django-txt` are full grammars for the languages of the same names.
+
+The built-in tags and filters of the grammar, and the links to the documentation, come from the
+[Django documentation](https://docs.djangoproject.com/en/stable/). To update them for the latest stable version of Django:
+
+```bash
+uv run syntaxes/update_builtins.py
+```
+
+It reads the `objects.inv` of the docs, adds the missing names to the grammar, writes `data/django-docs.json` and
+builds the grammars again. A [workflow](.github/workflows/update-builtins.yaml) runs it every Friday and opens a pull
+request when something changed, so nothing changes at release time. The Publish workflow only warns when the
+grammar is out of date. Names that are not in the docs anymore, like `{% ifequal %}`, are kept for older projects
+(`--prune` removes them). `--version 5.2` uses another version, and `--check` changes nothing and fails when
+something is out of date.
 
 ### Releasing
 

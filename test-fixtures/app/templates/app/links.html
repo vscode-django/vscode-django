@@ -1,3 +1,10 @@
 <a href="{% url 'app:detail' pk=1 %}">Detail</a>
 <link rel="stylesheet" href="{% static "css/app.css" %}">
 <a href="base.html">Base</a>
+<script type="module" src="{% custom_tag "app.js" %}"></script>
+<p>{% shout "hi" %}</p>
+{% if user %}<p>{{ user }}</p>{% endif %}
+<p>{% whisper "hi" %}</p>
+<p>{{ title|upper }} {{ count|intcomma }}</p>
+<script src="{% vite_asset "main.js" %}"></script>
+{% load django_vite %}

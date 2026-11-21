@@ -4,6 +4,10 @@ import { ExtensionContext, languages } from 'vscode';
 import { TemplatePathProvider } from './providers/definitionProvider'
 import { TemplateFormattingProvider } from './providers/formattingProvider'
 import { TemplateLinkProvider } from './providers/linkProvider'
+import { TagIndex } from './providers/tagIndex'
+import { TagDefinitionProvider } from './providers/tagDefinitionProvider'
+import { DjangoDocs } from './providers/djangoDocs'
+import { TemplateReferenceProvider } from './providers/referenceProvider'
 import { TemplateSnippetsCompletionItemProvider } from './completions/templateCompletionItemProvider'
 import {
     DjangoAdminCompletionItemProvider,
@@ -24,8 +28,16 @@ export async function activate(context: ExtensionContext): Promise<void> {
     const definitions = new TemplatePathProvider()
     context.subscriptions.push(languages.registerDefinitionProvider(definitions.selector, definitions))
 
-    const links = new TemplateLinkProvider()
-    context.subscriptions.push(languages.registerDocumentLinkProvider(links.selector, links))
+    const tagIndex = new TagIndex()
+    const links = new TemplateLinkProvider(tagIndex, new DjangoDocs(context.extensionUri))
+    const tagDefinitions = new TagDefinitionProvider(tagIndex)
+    const references = new TemplateReferenceProvider(tagIndex)
+    context.subscriptions.push(
+        tagIndex,
+        languages.registerDocumentLinkProvider(links.selector, links),
+        languages.registerDefinitionProvider(tagDefinitions.selector, tagDefinitions),
+        languages.registerReferenceProvider(references.selector, references),
+    )
 
     TemplateFormattingProvider.register(context)
 

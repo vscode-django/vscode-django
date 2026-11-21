@@ -138,6 +138,167 @@ suite('vscode-django', () => {
             `opened at ${position.line}:${position.character}`)
     })
 
+    // The links of a template, once VS Code's HTML language server has made its own
+    const linksOf = async (path: string) => {
+        const document = await workspace.openTextDocument(fixture(path))
+        let links: DocumentLink[] = []
+        for (let attempt = 0; attempt < 40 && !links.length; attempt++) {
+            if (attempt) await new Promise(resolve => setTimeout(resolve, 250))
+            links = await commands.executeCommand<DocumentLink[]>('vscode.executeLinkProvider', document.uri, 10)
+        }
+        const on = (line: number) => links.filter(link => link.range.start.line === line)
+        return { document, links, on, text: (link: DocumentLink) => document.getText(link.range) }
+    }
+    const TAGS = fixture('app/templatetags/myapp_tags.py').path
+    const DJANGO = fixture('env/lib/python3.15/site-packages/django').path
+    const DOCS = 'https://docs.djangoproject.com/en/6.0/'
+
+    test('custom tags link to the function that registers them', async () => {
+        const { on, text } = await linksOf('app/templates/app/links.html')
+
+        // @register.tag("custom_tag") on do_custom_tag: the name comes from the decorator, not from the function
+        const custom = on(3)
+        assert.strictEqual(custom.length, 1, 'the HTML link to the attribute value is still there')
+        assert.strictEqual(text(custom[0]), 'custom_tag')
+        assert.strictEqual(custom[0].target!.path, TAGS)
+        assert.strictEqual(custom[0].target!.fragment, 'L7,5', 'should open on do_custom_tag')
+
+        // @register.simple_tag(name="shout") on make_shout
+        const shout = on(4)
+        assert.strictEqual(shout.length, 1)
+        assert.strictEqual(shout[0].target!.path, TAGS)
+        assert.strictEqual(shout[0].target!.fragment, 'L12,5', 'should open on make_shout')
+
+        // A package of the virtual environment: django_vite/templatetags/django_vite.py
+        const vite = on(8)
+        assert.strictEqual(vite.length, 1, 'the HTML link to the attribute value is still there')
+        assert.strictEqual(text(vite[0]), 'vite_asset')
+        assert.strictEqual(vite[0].target!.path, DJANGO + '_vite/templatetags/django_vite.py')
+        assert.strictEqual(vite[0].target!.fragment, 'L7,5', 'should open on vite_asset')
+
+        // Stacked decorators register two tags for one function: @register.simple_tag(name="whisper") on lower
+        const whisper = on(6)
+        assert.strictEqual(whisper.length, 1)
+        assert.strictEqual(whisper[0].target!.path, TAGS)
+        assert.strictEqual(whisper[0].target!.fragment, 'L18,5', 'should open on lower')
+    })
+
+    test('the tags and filters of Django link to its documentation, for the version of the project', async () => {
+        const { on, text } = await linksOf('app/templates/app/links.html')
+
+        // The version comes from django/__init__.py of the virtual environment: 6.0.5
+        const tag = on(5)
+        assert.strictEqual(tag.length, 1, 'only {% if %} has a link, not {% endif %} or {{ user }}')
+        assert.strictEqual(text(tag[0]), 'if')
+        assert.strictEqual(tag[0].target!.toString(), DOCS + 'ref/templates/builtins/#std-templatetag-if')
+
+        const filters = on(7)
+        assert.deepStrictEqual(filters.map(text), ['upper', 'intcomma'])
+        assert.strictEqual(filters[0].target!.toString(), DOCS + 'ref/templates/builtins/#std-templatefilter-upper')
+        assert.strictEqual(filters[1].target!.toString(), DOCS + 'ref/contrib/humanize/#std-templatefilter-intcomma')
+
+        // {% block %} goes to the guide on template inheritance
+        const { on: onPage, text: textOfPage } = await linksOf('app/templates/app/page.html')
+        assert.strictEqual(textOfPage(onPage(2)[0]), 'block')
+        assert.strictEqual(onPage(2)[0].target!.toString(), DOCS + 'ref/templates/language/#template-inheritance')
+
+        // {% extends %} keeps going to the template, with go to definition
+        const page = await workspace.openTextDocument(fixture('app/templates/app/page.html'))
+        const pageLinks = await commands.executeCommand<DocumentLink[]>('vscode.executeLinkProvider', page.uri, 10)
+        assert.deepStrictEqual(pageLinks.filter(link => link.range.start.line === 0), [])
+    })
+
+    test('{{ block.super }} links to the block of the parent template', async () => {
+        const PAGE = fixture('app/templates/app/page.html').path
+
+        // The parent defines the block: {% block content %} of page.html
+        const child = await linksOf('app/templates/app/child.html')
+        const [first, ...others] = child.on(1).filter(link => child.text(link) === 'block.super')
+        assert.deepStrictEqual(others, [])
+        assert.strictEqual(first.target!.path, PAGE)
+        assert.strictEqual(first.target!.fragment, 'L3,10', 'should open on the name of the block')
+
+        // middle.html does not override the block: the chain goes up to page.html
+        const leaf = await linksOf('app/templates/app/leaf.html')
+        const supers = leaf.on(1).filter(link => leaf.text(link) === 'block.super')
+        // The one in {% block inner %} has no link: no parent template defines this block
+        assert.strictEqual(supers.length, 1)
+        assert.strictEqual(supers[0].range.start.character, leaf.document.lineAt(1).text.lastIndexOf('block.super'))
+        assert.strictEqual(supers[0].target!.path, PAGE)
+        assert.strictEqual(supers[0].target!.fragment, 'L3,10')
+    })
+
+    test('go to definition on the name of a tag', async () => {
+        const document = await workspace.openTextDocument(fixture('app/templates/app/links.html'))
+        const definitionAt = async (line: number, word: string) => {
+            const results = await commands.executeCommand<(Location | LocationLink)[]>(
+                'vscode.executeDefinitionProvider', document.uri, new Position(line, document.lineAt(line).text.indexOf(word) + 1))
+            return results.map(result => 'uri' in result ? [result.uri.path, result.range.start.line, result.range.start.character]
+                : [result.targetUri.path, result.targetSelectionRange!.start.line, result.targetSelectionRange!.start.character])
+        }
+        // A custom tag: do_custom_tag, registered with @register.tag("custom_tag")
+        assert.deepStrictEqual(await definitionAt(3, 'custom_tag'), [[TAGS, 6, 4]])
+        // A tag of Django opens its source, while Ctrl+click opens the documentation
+        assert.deepStrictEqual(await definitionAt(5, 'if'), [[DJANGO + '/template/defaulttags.py', 12, 4]])
+        assert.deepStrictEqual(await definitionAt(7, 'upper'), [])
+    })
+
+    test('go to definition on the libraries of {% load %}', async () => {
+        const document = await workspace.openTextDocument(fixture('app/templates/app/load.html'))
+        const definitionAt = async (line: number, word: string) => {
+            const results = await commands.executeCommand<(Location | LocationLink)[]>(
+                'vscode.executeDefinitionProvider', document.uri, new Position(line, document.lineAt(line).text.indexOf(word) + 1))
+            return results.map(result => 'uri' in result ? result.uri.path : result.targetUri.path)
+        }
+        const i18n = DJANGO + '/templatetags/i18n.py'
+
+        // A library of the project, then one of Django
+        assert.deepStrictEqual(await definitionAt(0, 'myapp_tags'), [TAGS])
+        assert.deepStrictEqual(await definitionAt(0, 'i18n'), [i18n])
+        // A package of the virtual environment. lib64 is a link to lib: the same file is only found once
+        assert.deepStrictEqual(await definitionAt(2, 'django_vite'), [DJANGO + '_vite/templatetags/django_vite.py'])
+        // After "from" is the library, before it are the tags
+        assert.deepStrictEqual(await definitionAt(1, 'i18n'), [i18n])
+        assert.deepStrictEqual(await definitionAt(1, 'trans'), [])
+        // The name of the tag itself goes to its function, like any other tag
+        assert.deepStrictEqual(await definitionAt(1, 'load'), [DJANGO + '/template/defaulttags.py'])
+
+        // No documentation link on {% load %}: each library has its own definition
+        const links = await commands.executeCommand<DocumentLink[]>('vscode.executeLinkProvider', document.uri, 10)
+        assert.deepStrictEqual(links, [])
+    })
+
+    suite('go to references', () => {
+        const referencesAt = async (path: string, line: number, word: string) => {
+            const document = await workspace.openTextDocument(fixture(path))
+            const character = document.lineAt(line).text.indexOf(word) + 1
+            const locations = await commands.executeCommand<Location[]>(
+                'vscode.executeReferenceProvider', document.uri, new Position(line, character))
+            // The file and the line of each usage, without the definition of a tag
+            return [...new Set(locations.map(location => `${location.uri.path.split('/').pop()}:${location.range.start.line}`))]
+                .filter(reference => !reference.startsWith('myapp_tags.py')).sort()
+        }
+
+        test('where a custom tag is used', async () => {
+            assert.deepStrictEqual(await referencesAt('app/templates/app/links.html', 3, 'custom_tag'), ['links.html:3', 'refs.html:1'])
+        })
+
+        test('where the function of a tag is used', async () => {
+            assert.deepStrictEqual(await referencesAt('app/templatetags/myapp_tags.py', 6, 'do_custom_tag'), ['links.html:3', 'refs.html:1'])
+        })
+
+        test('where a block is defined or overridden', async () => {
+            assert.deepStrictEqual(await referencesAt('app/templates/app/page.html', 2, 'content'),
+                ['base.html:2', 'child.html:1', 'complete.html:0', 'leaf.html:1', 'page.html:2', 'refs.html:1'])
+        })
+
+        test('where a template is extended, included or rendered', async () => {
+            const expected = ['page.html:0', 'refs.html:0', 'render.py:4']
+            assert.deepStrictEqual(await referencesAt('app/templates/app/page.html', 0, 'app/base.html'), expected)
+            assert.deepStrictEqual(await referencesAt('app/render.py', 4, 'app/base.html'), expected)
+        })
+    })
+
     test('templates are formatted with django.format.command', async () => {
         // Stands in for djlint or djangofmt: squeezes the spaces inside the tags
         const squeeze = "let s='';process.stdin.on('data',d=>s+=d).on('end',()=>process.stdout.write(s.replace(/{%\\s+(.*?)\\s+%}/g,'{% $1 %}')))"
