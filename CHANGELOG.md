@@ -3,7 +3,9 @@ All notable changes to the "django" extension will be documented in this file.
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
-## [Unreleased]
+## [2.1.0] - 2026-11-21
+
+Published as a pre-release on the Marketplace.
 
 ### Added
 - Ctrl+click on the name of a tag or a filter of Django, like `{% firstof %}` or `|date`, opens its page in the
