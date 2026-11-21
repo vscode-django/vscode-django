@@ -52,7 +52,7 @@
           ]
         },
         {
-          "begin": "({%)\\s*(autoescape|endautoescape|block|endblock|blocktrans|endblocktrans|trans|plural|comment|endcomment|debug|extends|filter|firstof|for|empty|endfor|if|elif|else|endif|include|ifchanged|endifchanged|ifequal|endifequal|ifnotequal|endifnotequal|from|low|regroup|ssi|spaceless|endspaceless|templatetag|widthratio|with|endwith|csrf_token|cycle|url|verbatim|endverbatim|lorem|thumbnail|endthumbnail|get_static_prefix)\\b",
+          "begin": "({%)\\s*(autoescape|block|blocktrans|blocktranslate|cache|comment|csp_nonce_attr|csrf_token|cycle|debug|elif|else|empty|endautoescape|endblock|endblocktrans|endblocktranslate|endcache|endcomment|endfilter|endfor|endif|endifchanged|endifequal|endifnotequal|endlanguage|endlocalize|endlocaltime|endpartialdef|endspaceless|endthumbnail|endtimezone|endverbatim|endwith|extends|filter|firstof|for|from|get_available_languages|get_current_language|get_current_language_bidi|get_current_timezone|get_flatpages|get_language_info|get_language_info_list|get_media_prefix|get_static_prefix|if|ifchanged|ifequal|ifnotequal|include|language|load|localize|localtime|lorem|low|now|partial|partialdef|plural|querystring|regroup|resetcycle|spaceless|ssi|static|templatetag|thumbnail|timezone|trans|translate|url|verbatim|widthratio|with)\\b",
           "end": "(%})",
           "name": "storage.type.templatetag.django",
           "captures": {
@@ -110,7 +110,7 @@
     "django-template-filter": {
       "patterns": [
         {
-          "match": "(\\|) ?(add|addslashes|capfirst|center|cut|date|default|default_if_none|dictsort|dictsortreversed|divisibleby|escape|escapejs|filesizeformat|first|fix_ampersands|floatformat|force_escape|get_digit|iriencode|join|last|length|length_is|linebreaks|linebreaksbr|linenumbers|ljust|lower|make_list|phone2numeric|pluralize|pprint|random|removetags|rjust|safe|safeseq|slice|slugify|stringformat|striptags|time|timesince|timeutil|title|truncatewords|truncatewords_html|unordered_list|upper|urlencode|urlize|urlizetrunc|wordcount|wordwrap|yesno|apnumber|intcomma|intword|naturalday|ordinal|STATIC_PREFIX)\\b",
+          "match": "(\\|) ?(STATIC_PREFIX|add|addslashes|apnumber|capfirst|center|cut|date|default|default_if_none|dictsort|dictsortreversed|divisibleby|escape|escapejs|escapeseq|filesizeformat|first|fix_ampersands|floatformat|force_escape|get_digit|intcomma|intword|iriencode|join|json_script|language_bidi|language_name|language_name_local|language_name_translated|last|length|length_is|linebreaks|linebreaksbr|linenumbers|ljust|localize|localtime|lower|make_list|naturalday|naturaltime|ordinal|phone2numeric|pluralize|pprint|random|removetags|rjust|safe|safeseq|slice|slugify|stringformat|striptags|time|timesince|timeuntil|timeutil|timezone|title|truncatechars|truncatechars_html|truncatewords|truncatewords_html|unlocalize|unordered_list|upper|urlencode|urlize|urlizetrunc|utc|wordcount|wordwrap|yesno)\\b",
           "name": "entity.name.function.filter.django",
           "captures": {
             "1": {

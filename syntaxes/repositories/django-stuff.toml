@@ -32,7 +32,7 @@ include = "#django-template-filter"
 
 
 [[patterns]]
-begin = "({%)\\s*(autoescape|endautoescape|block|endblock|blocktrans|endblocktrans|trans|plural|comment|endcomment|debug|extends|filter|firstof|for|empty|endfor|if|elif|else|endif|include|ifchanged|endifchanged|ifequal|endifequal|ifnotequal|endifnotequal|from|low|regroup|ssi|spaceless|endspaceless|templatetag|widthratio|with|endwith|csrf_token|cycle|url|verbatim|endverbatim|lorem|thumbnail|endthumbnail|get_static_prefix)\\b"
+begin = "({%)\\s*(autoescape|block|blocktrans|blocktranslate|cache|comment|csp_nonce_attr|csrf_token|cycle|debug|elif|else|empty|endautoescape|endblock|endblocktrans|endblocktranslate|endcache|endcomment|endfilter|endfor|endif|endifchanged|endifequal|endifnotequal|endlanguage|endlocalize|endlocaltime|endpartialdef|endspaceless|endthumbnail|endtimezone|endverbatim|endwith|extends|filter|firstof|for|from|get_available_languages|get_current_language|get_current_language_bidi|get_current_timezone|get_flatpages|get_language_info|get_language_info_list|get_media_prefix|get_static_prefix|if|ifchanged|ifequal|ifnotequal|include|language|load|localize|localtime|lorem|low|now|partial|partialdef|plural|querystring|regroup|resetcycle|spaceless|ssi|static|templatetag|thumbnail|timezone|trans|translate|url|verbatim|widthratio|with)\\b"
 end = "(%})"
 name = "storage.type.templatetag.django"
 [patterns.captures.1]

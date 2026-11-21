@@ -15,6 +15,7 @@ vsc-extension-quickstart.md
 **/*.map
 **/*.ts
 syntaxes/build.py
+syntaxes/update_builtins.py
 **/__pycache__/**
 .venv/**
 .env

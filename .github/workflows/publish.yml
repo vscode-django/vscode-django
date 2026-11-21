@@ -37,6 +37,11 @@ jobs:
             exit 1
           fi
 
+      # Only a warning: a new version of Django must not block a release of the extension.
+      # The weekly workflow opens a pull request to update the grammar.
+      - name: Check that the built-in tags and filters are up to date
+        run: python3 syntaxes/update_builtins.py --check || echo "::warning::The built-in tags and filters are out of date with the latest Django docs, see syntaxes/update_builtins.py"
+
       - run: yarn install --frozen-lockfile
 
       - run: xvfb-run -a yarn test
